@@ -28,7 +28,7 @@
 
 ```sh
 # Assumes your partitions are set up and root is mounted on /mnt
-git clone https://github.com/hlissner/dotfiles /etc/dotfiles
+git clone --recurse-submodules -j8 https://github.com/ztlevi/nix-dotfiles /etc/dotfiles
 make -C /etc/dotfiles install
 ```
 
