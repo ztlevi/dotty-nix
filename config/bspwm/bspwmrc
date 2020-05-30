@@ -8,7 +8,6 @@ GDK_SCALE=2
 # Essentials
 #
 _run sxhkd &# keyboard daemon
-_run compton &# perdy effects + transparency
 
 {
   sleep 1
@@ -118,7 +117,7 @@ _run google-chrome-stable &
 _run slack &
 
 # dunst need to use zsh to run, otherwise click function fails
-zsh -c "dunst-start &" # notifyciation daemon.
+_run dunst &
 
 # set cursor
 _call xsetroot -cursor_name left_ptr &
