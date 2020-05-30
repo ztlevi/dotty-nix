@@ -1,0 +1,10 @@
+* Inbox
+** TODO Personal packages https://git.ophanim.de/derped/nixos/src/commit/bb62fe82b496e863aa05efce00b6403a87c7ca4a/pkgs
+** TODO Fix zsh error
+** TODO Fix fzf
+** fix camera
+** Make gnome-control-center app, profile env
+** Cursor xsetroot -xcf ${pkgs.capitaine-cursors}/share/icons/capitaine-cursors-white/cursors/default 64
+~/.dotfiles/hosts/kuro/default.nix
+  # hardware.logitech.enable = true;
+  hardware.facetimehd.enable = true;
