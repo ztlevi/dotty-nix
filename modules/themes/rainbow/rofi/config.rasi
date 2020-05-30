@@ -1,6 +1,7 @@
+
 /* -*- mode: css; -*- */
 configuration {
-  icon-theme:       "Paper";
+  icon-theme:       "Flat-Remix-Blue";
   cycle:            true;
   disable-history:  false;
   monitor:          "-4";
@@ -13,22 +14,22 @@ configuration {
 }
 
 * {
-  accent:   #bd93f9;
-  bg:       #1E2029FA;
-  bg-light: #1c1c1c;
-  bg-focus: #282a36;
-  bg-dark:  #181a23;
-  fg:       #bbc2cf;
-  fg-list:  #bbc2cf;
-  on:       #8BD49C;
-  off:      #cc6666;
+  accent:   #1564bf;
+  bg:       #f0f0f0FA;
+  bg-light: #ffffff;
+  bg-focus: #eeeeee;
+  bg-dark:  #eeeeee;
+  fg:       #2c2c2c;
+  fg-list:  #2c2c2c;
+  on:       #558b2e;
+  off:      #c62727;
 
-  magenta: #bd93f9;
-  blue:    #61bfff;
+  magenta: #691e99;
+  blue:    #1564bf;
 
-  text-font:      "Ubuntu Mono 28";
-  text-mono-font: "Fira Code 26";
-  icon-font:      "Fira Code Nerd Font Mono 26";
+  text-font:      "Ubuntu Nerd Font 22";
+  text-mono-font: "UbuntuMono Nerd Font Mono 22";
+  icon-font:      "UbuntuMono Nerd Font Mono 42";
 
   background-color: transparent;
   text-color: @fg-list;
@@ -43,8 +44,8 @@ window {
   y-offset: -20%;
   anchor:   north;
   location: center;
-  border: 1px;
-  border-radius: 6px 6px 0 0;
+  border: 2px;
+  border-radius: 12px 12px 0 0;
   children: [ inputbar, listview ];
 
 }
@@ -55,9 +56,9 @@ listview {
   /* reverse: true; */
   columns: 2;
   scrollbar: true;
-  spacing: 1px;
+  spacing: 2px;
   /* Remove strange gap between listview and inputbar */
-  margin: -2px 0 0;
+  margin: -4px 0 0;
 }
 
 /*
@@ -73,27 +74,27 @@ listview {
 */
 
 scrollbar {
-  handle-width: 1px;
+  handle-width: 2px;
 }
 inputbar {
   children: [ textbox-icon, prompt, entry ];
   border: 0 0 0;
 }
 textbox-icon, prompt {
-  padding: 11px;
+  padding: 22px;
   expand: false;
-  border: 0 1px 0 0;
-  margin: 0 -2px 0 0;
+  border: 0 2px 0 0;
+  margin: 0 -4px 0 0;
 }
 textbox-icon {
-  padding: 7px -6px 0;
+  padding: 4px -12px 0;
 }
 entry, element {
-  padding: 10px 13px;
+  padding: 20px 26px;
 }
 textbox {
-  padding: 24px;
-  margin: 20px;
+  padding: 48px;
+  margin: 40px;
 }
 
 
@@ -113,7 +114,7 @@ prompt, entry {
   background-color: @bg-focus;
 }
 textbox-icon, prompt {
-  background-color: #2f313d;
+  background-color: @bg;
 }
 prompt {
   background-color: @bg-focus;

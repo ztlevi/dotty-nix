@@ -40,7 +40,7 @@ with lib; {
         # :tools lookup & :lang org +roam
         sqlite
         # :lang cc
-        ccls
+        # ccls
         # :lang javascript
         nodePackages.javascript-typescript-langserver
         # :lang latex & :lang org (latex previews)
