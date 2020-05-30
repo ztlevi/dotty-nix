@@ -50,7 +50,7 @@ with lib; {
         rls
       ];
 
-      env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
+      env.PATH = [ "$HOME/.doom.d/bin" ];
       zsh.rc = lib.readFile <config/emacs/aliases.zsh>;
     };
 
