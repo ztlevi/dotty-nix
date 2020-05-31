@@ -54,8 +54,9 @@ move_to_home: $(HOME)/.dotfiles
 channels:
 	@sudo nix-channel --add "https://nixos.org/channels/nixos-${NIXOS_VERSION}" nixos
 	@sudo nix-channel --add "https://github.com/rycee/home-manager/archive/release-${NIXOS_VERSION}.tar.gz" home-manager
-	@sudo nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable
 	@sudo nix-channel --add "https://nixos.org/channels/nixos-unstable" nixos-unstable
+	# for other linux
+	# @sudo nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable
 
 $(NIXOS_PREFIX)/configuration.nix:
 	@sudo nixos-generate-config --root "$(PREFIX)"

@@ -39,8 +39,8 @@ device: username:
     sshfs
     nixfmt
     fd
+    unstable.cached-nix-shell
     gnumake # for our own makefile
-    my.cached-nix-shell # for instant nix-shell scripts
   ];
   environment.shellAliases = {
     nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
