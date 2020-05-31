@@ -20,6 +20,18 @@ with lib; {
       })
     ];
 
+    # link recursively so other modules can link files in their folders
+    my = {
+      home.xdg.configFile = {
+        "sxhkd".source = <config/sxhkd>;
+        "bspwm" = {
+          source = <config/bspwm>;
+          recursive = true;
+        };
+      };
+      env.PATH = [ "$DOTFILES/bin/bspwm" ];
+    };
+
     console.useXkbConfig = true;
     services = {
       picom.enable = true;
@@ -39,19 +51,15 @@ with lib; {
         # displayManager.sddm.enable = true;
         # Clairvoyance theme for sddm https://github.com/JorelAli/nixos/blob/master/README.md
         # displayManager.sddm.theme = "clairvoyance";
-      };
-    };
+        displayManager.sessionCommands = ''
+          export GDK_SCALE=$SCREEN_SCALE
+          export QT_AUTO_SCREEN_SCALE_FACTOR=0
+          export QT_SCALE_FACTOR=$GDK_SCALE
 
-    # link recursively so other modules can link files in their folders
-    my = {
-      home.xdg.configFile = {
-        "sxhkd".source = <config/sxhkd>;
-        "bspwm" = {
-          source = <config/bspwm>;
-          recursive = true;
-        };
+          # revert gnome screen scale settings
+          command -v gsettings >/dev/null && gsettings set org.gnome.desktop.interface scaling-factor 1
+        '';
       };
-      env.PATH = [ "$DOTFILES/bin/bspwm" ];
     };
   };
 }
