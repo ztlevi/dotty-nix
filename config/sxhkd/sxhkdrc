@@ -54,7 +54,7 @@ super + o
 #     rofi -show window
 
 super + grave
-    emacsclient -e '(open-scratch-frame)'
+    scratch
 
 # make sxhkd reload its configuration files:
 super + Escape

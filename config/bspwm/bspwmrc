@@ -95,6 +95,7 @@ bspc rule -a Unity-control-center state=floating
 
 bspc rule -a Alacritty:Alacritty_2 desktop=^2
 bspc rule -a Alacritty-scratch state=floating sticky=on center=on
+bspc rule -a scratch state=floating desktop=^any
 
 bspc rule -a Emacs state=tiled
 bspc rule -a "Emacs:Emacs_1" state=tiled desktop=^1
