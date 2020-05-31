@@ -34,6 +34,7 @@ in {
       # activeOpacity = "1.00";
       # inactiveOpacity = "0.90";
       settings = {
+        focus-exclude = [ "class_g = 'Rofi'" "class_g = 'Dunst'" ];
         shadow-radius = 10;
         inactive-dim = 0.1;
         # blur-background = true;

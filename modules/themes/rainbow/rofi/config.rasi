@@ -18,7 +18,7 @@ configuration {
   bg:       #f0f0f0FA;
   bg-light: #ffffff;
   bg-focus: #eeeeee;
-  bg-dark:  #eeeeee;
+  bg-dark:  #dddddd;
   fg:       #2c2c2c;
   fg-list:  #2c2c2c;
   on:       #558b2e;
@@ -56,7 +56,7 @@ listview {
   /* reverse: true; */
   columns: 2;
   scrollbar: true;
-  spacing: 2px;
+  spacing: 0px;
   /* Remove strange gap between listview and inputbar */
   margin: -4px 0 0;
 }
