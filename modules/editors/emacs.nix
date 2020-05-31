@@ -50,8 +50,13 @@ with lib; {
         rls
       ];
 
-      env.PATH = [ "$HOME/.doom.d/bin" ];
-      zsh.rc = lib.readFile <config/emacs/aliases.zsh>;
+      zsh = {
+        rc = ''
+          alias e='emacsclient -n'
+          ediff() { e --eval "(ediff-files \"$1\" \"$2\")"; }
+        '';
+        env = ''export PATH="$HOME/.emacs.d/bin:$PATH"'';
+      };
     };
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];

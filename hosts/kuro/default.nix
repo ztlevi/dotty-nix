@@ -45,6 +45,7 @@
       common-lisp.enable = true;
       rust.enable = true;
       node.enable = true;
+      python.enable = true;
       # lua.enable = true;
       # lua.love2d.enable = true;
     };

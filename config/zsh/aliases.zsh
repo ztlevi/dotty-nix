@@ -62,3 +62,5 @@ compdef take=mkdir
 hex() { echo -n $@ | xxd -psdu; }
 
 _is_callable antigen && alias ar="antigen reset"
+
+alias get_window_class="xprop | grep WM_CLASS"

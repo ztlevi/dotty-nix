@@ -1,0 +1,7 @@
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
+export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node/repl_history"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR/npm"
+export NPM_CONFIG_PREFIX="$XDG_CACHE_HOME/npm"
+
+export PATH="$XDG_CACHE_HOME/npm/bin:$PATH"
