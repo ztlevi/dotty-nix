@@ -49,8 +49,6 @@ device: username:
     nsh = "nix-shell";
     nen = "nix-env";
     dots = "make -C ~/.dotfiles";
-    nx =
-      "sudo nixos-rebuild -I 'config=~/.dotfiles/config' -I 'modules=~/.dotfiles/modules' -I 'bin=~/.dotfiles/bin'";
   };
 
   # Default settings for primary user account. `my` is defined in

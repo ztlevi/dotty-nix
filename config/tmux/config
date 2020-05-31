@@ -6,6 +6,11 @@
 set-option -g default-terminal "xterm-256color"
 set -g @yank_selection_mouse 'clipboard'
 
+# set tmux prefix key
+set-option -g prefix C-t
+unbind-key C-b
+bind-key C-t send-prefix
+
 # source $TMUX_HOME/plugins
 # if '[ -f $TMUX_HOME/theme ]' 'source $TMUX_HOME/theme'
 # if '[ -f ~/.tmux.conf ]' 'source ~/.tmux.conf'
@@ -58,18 +63,13 @@ set -g @tpm_plugins '                     \
 '
 
 # Initialize TMUX plugin manager
-run '$TMUX_PLUGINS_HOME/tpm/tpm'
+run -b '$TMUX_PLUGINS_HOME/tpm/tpm'
 
 # #################################################################################################
 # Key Bindings
 # #################################################################################################
 # tmux-cssh
 bind-key = set-window-option synchronize-panes
-
-# set tmux prefix key
-set-option -g prefix C-t
-unbind-key C-b
-bind-key C-t send-prefix
 
 # Copy mode bind v
 unbind-key -T copy-mode-vi v

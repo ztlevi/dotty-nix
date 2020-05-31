@@ -64,3 +64,6 @@ hex() { echo -n $@ | xxd -psdu; }
 _is_callable antigen && alias ar="antigen reset"
 
 alias get_window_class="xprop | grep WM_CLASS"
+
+alias nr="nix repl '<nixpkgs/nixos>'"
+alias nx="sudo nixos-rebuild -I 'config=~/.dotfiles/config' -I 'modules=~/.dotfiles/modules' -I 'bin=~/.dotfiles/bin'"
