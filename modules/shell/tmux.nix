@@ -20,16 +20,19 @@ with lib;
           '')
         ];
 
-      env.TMUX_HOME = "$XDG_CONFIG_HOME/tmux";
-      env.TMUX_PLUGINS_HOME = "$XDG_DATA_HOME/tmux/plugins";
-      env.TMUXIFIER = "$XDG_DATA_HOME/tmuxifier";
-      env.TMUXIFIER_LAYOUT_PATH = "$XDG_DATA_HOME/tmuxifier";
-      env.PATH = [ "$XDG_DATA_HOME/tmuxifier/bin" "$XDG_CONFIG_HOME/tmux/bin" ];
-
-      zsh.rc = ''
-        _cache tmuxifier init -
-        ${lib.readFile <config/tmux/aliases.zsh>}
-      '';
+      zsh = {
+        rc = ''
+          _cache tmuxifier init -
+          ${lib.readFile <config/tmux/aliases.zsh>}
+        '';
+        env = ''
+          export TMUX_HOME="$XDG_CONFIG_HOME/tmux"
+          export TMUX_PLUGINS_HOME="$XDG_DATA_HOME/tmux/plugins"
+          export TMUXIFIER="$XDG_DATA_HOME/tmuxifier"
+          export TMUXIFIER_LAYOUT_PATH="$XDG_DATA_HOME/tmuxifier"
+          export PATH="$XDG_DATA_HOME/tmuxifier/bin:$XDG_CONFIG_HOME/tmux/bin:$PATH";
+        '';
+      };
 
       home.xdg.dataFile = {
         "tmux/plugins/tpm" = {

@@ -33,6 +33,7 @@ with lib; {
         # displayManager.lightdm.greeters.mini.enable = true;
         displayManager.lightdm.greeters.enso.enable = true;
         windowManager.bspwm.enable = true;
+        desktopManager.gnome3.enable = true;
 
         # sddm is a better alternative rather gdm
         # displayManager.sddm.enable = true;
