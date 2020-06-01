@@ -1,7 +1,7 @@
 # default.nix --- the heart of my dotfiles
 #
 # Author:  Henrik Lissner <henrik@lissner.net>
-# URL:     https://github.com/hlissner/dotfiles
+# URL:     https://github.com/ztlevi/nix-dotfiles
 # License: MIT
 #
 # This is ground zero, where the absolute essentials go, to be present on all

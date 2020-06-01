@@ -35,12 +35,12 @@ make -C /etc/dotfiles install
 Which is equivalent to:
 
 ```sh
-USER=${USER:-hlissner}
+USER=${USER:-ztlevi}
 HOST=${HOST:-kuro}
 NIXOS_VERSION=20.03
 DOTFILES=/home/$USER/.dotfiles
 
-git clone https://github.com/hlissner/dotfiles /etc/dotfiles
+git clone https://github.com/ztlevi/nix-dotfiles /etc/dotfiles
 ln -s /etc/dotfiles $DOTFILES
 chown -R $USER:users $DOTFILES
 
@@ -68,4 +68,3 @@ nixos-install --root /mnt -I "my=/etc/dotfiles"
 
 
 [doom-emacs]: https://github.com/hlissner/doom-emacs
-[vimrc]: https://github.com/hlissner/.vim
