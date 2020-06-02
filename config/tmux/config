@@ -48,7 +48,7 @@ set -g @continuum-restore 'on'
 set-environment -g TMUX_PLUGIN_MANAGER_PATH "$TMUX_PLUGINS_HOME"
 
 set -g @tpm_plugins '                     \
-    caiogondim/maglev                     \
+    ztlevi/maglev                         \
     tmux-plugins/tpm                      \
     tmux-plugins/tmux-sensible            \
     tmux-plugins/tmux-resurrect           \
