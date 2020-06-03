@@ -17,12 +17,18 @@ with lib; {
     my = {
       packages = with pkgs; [
         python37
+        pipenv
         python37Packages.pip
+        python37Packages.conda
+        python37Packages.grip
         python37Packages.ipython
         python37Packages.black
         python37Packages.setuptools
+        python37Packages.gnureadline
         python37Packages.pylint
-        python37Packages.poetry
+        python37Packages.python-language-server
+        python37Packages.pyls-mypy
+        python37Packages.pyls-isort
       ];
 
       env.IPYTHONDIR = "$XDG_CONFIG_HOME/ipython";
