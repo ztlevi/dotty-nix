@@ -5,8 +5,6 @@
     ../personal.nix # common settings
     ./hardware-configuration.nix
   ];
-  # services.xserver.desktopManager.gnome3.enable = true;
-  # services.xserver.displayManager.lightdm.enable = true;
 
   modules = {
     desktop = {
@@ -70,14 +68,12 @@
     services = {
       # syncthing.enable = true;
       docker.enable = true;
+      fcitx.enable = true;
     };
 
     # themes.aquanaut.enable = true;
     themes.rainbow.enable = true;
   };
-
-  # hardware.logitech.enable = true;
-  hardware.facetimehd.enable = true;
 
   programs.ssh.startAgent = true;
   networking.networkmanager.enable = true;

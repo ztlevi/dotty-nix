@@ -9,3 +9,5 @@
 ~/.dotfiles/hosts/kuro/default.nix
   # hardware.logitech.enable = true;
   hardware.facetimehd.enable = true;
+** home.home.activation.downloadSougouDict =
+        lib.hm.dag.entryAfter [ "writeBoundary" ] ''

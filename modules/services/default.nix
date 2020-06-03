@@ -4,6 +4,7 @@
   imports = [
     # ./calibre-server.nix
     ./docker.nix
+    ./fcitx.nix
     # ./gitea.nix
     # ./jellyfin.nix
     # ./keybase.nix
