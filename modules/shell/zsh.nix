@@ -51,6 +51,9 @@ with lib; {
         };
         "starship.toml" = { source = <config/zsh/starship.toml>; };
       };
+      zsh.env = ''
+        export DOTFILES=$HOME/.dotfiles
+      '';
     };
 
     programs.zsh = {
@@ -71,6 +74,8 @@ with lib; {
     system.userActivationScripts.cleanupInitCache = ''
       rm -rf $HOME/.cache/zsh
       rm -f $HOME/.config/zsh/*.zwc
+      rm -f $HOME/.config/zsh/.zshrc.zwc
+      rm -f $HOME/.config/zsh/.zshenv.zwc
     '';
   };
 }
