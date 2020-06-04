@@ -17,6 +17,7 @@ with lib; {
     my = {
       packages = with pkgs; [
         python37
+        jetbrains.pycharm-professional
         pipenv
         python37Packages.pip
         python37Packages.conda

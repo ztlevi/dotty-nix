@@ -31,6 +31,7 @@ with lib; {
         neofetch
         mosh
         jq
+        bandwhich
       ];
       env.ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
       env.ZSH_CACHE_DIR = "$XDG_CACHE_HOME/zsh";
