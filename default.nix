@@ -36,6 +36,7 @@ device: username:
     unzip
     vim
     wget
+    curl
     sshfs
     nixfmt
     fd

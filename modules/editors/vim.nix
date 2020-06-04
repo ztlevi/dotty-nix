@@ -12,12 +12,24 @@ with lib; {
 
   config = mkIf config.modules.editors.vim.enable {
     my = {
-      packages = with pkgs; [ editorconfig-core-c neovim ];
+      packages = with pkgs; [ editorconfig-core-c neovim vimPlugins.spacevim ];
 
-      env.VIMINIT =
-        "let \\$MYVIMRC='\\$XDG_CONFIG_HOME/nvim/init.vim' | source \\$MYVIMRC";
       alias.vim = "nvim";
       alias.v = "nvim";
+      alias.sv = "sudo ${pkgs.neovim}/bin/nvim";
+      env.EDITOR = "nvim";
+      env.VISUAL = "nvim";
+
+      home.home.file.".SpaceVim.d".source = <config/vim/SpaceVim.d>;
+      home.home.file.".ideavimrc".source = <config/vim/ideavimrc>;
+
+      # Install spacevim
+      zsh.rc = ''
+        if [ ! -d "$HOME/.SpaceVim" ]; then
+          curl -sLf https://spacevim.org/install.sh | bash
+        fi
+      '';
     };
+
   };
 }

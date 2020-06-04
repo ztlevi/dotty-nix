@@ -11,5 +11,4 @@ source ${ZDOTDIR}/completion.zsh
 source ${ZDOTDIR}/keybinds.zsh
 
 source ${ZDOTDIR}/extra.zshrc
-[ -f ${ZDOTDIR}/local.zsh ] && source ${ZDOTDIR}/local.zsh
-[ -f ~/.zshrc ] && source ~/.zshrc
+if [ -f ~/.zshrc ]; then source ~/.zshrc; fi
