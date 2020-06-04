@@ -44,21 +44,26 @@ fi
 autoload -Uz edit-command-line; zle -N edit-command-line
 bindkey '^ ' edit-command-line
 
-bindkey -M viins '^n' history-substring-search-down
-bindkey -M viins '^p' history-substring-search-up
-bindkey -M viins '^s' history-incremental-pattern-search-backward
-bindkey -M viins '^u' backward-kill-line
-bindkey -M viins '^w' backward-kill-word
-bindkey -M viins '^h' backward-delete-char
-bindkey -M viins '^d' delete-char
-bindkey -M viins '^b' backward-char
-bindkey -M viins '^f' forward-char
-bindkey -M viins '^g' push-line-or-edit
-bindkey -M viins '^a' beginning-of-line
-bindkey -M viins '^e' end-of-line
-bindkey -M viins '^k' kill-line
+bindkey -M viins '^N' history-substring-search-down
+bindkey -M viins '^P' history-substring-search-up
+bindkey -M viins '^S' history-incremental-pattern-search-backward
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^?' backward-delete-char # backspace key
+bindkey -M viins '^D' delete-char
+bindkey -M viins '^B' backward-char
+bindkey -M viins '^F' forward-char
+bindkey -M viins '^G' push-line-or-edit
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+bindkey -M viins '^K' kill-line
 
 bindkey -M vicmd 'H'  run-help
+
+# Fix the DEL key
+bindkey -M vicmd "^[[3~" delete-char
+bindkey "^[[3~" delete-char
 
 # Shift + Tab
 bindkey -M viins '^[[Z' reverse-menu-complete
@@ -114,10 +119,6 @@ history-beginning-search-backward-then-append() {
 }
 zle -N history-beginning-search-backward-then-append
 bindkey -M viins '^x^l' history-beginning-search-backward-then-append
-
-# Fix the DEL key
-bindkey -M vicmd "^[[3~" delete-char
-bindkey "^[[3~" delete-char
 
 # Fix vimmish ESC
 bindkey -sM vicmd '^[' '^G'
