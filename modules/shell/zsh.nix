@@ -14,7 +14,6 @@ with lib; {
       packages = with pkgs; [
         zsh
         antigen
-        oh-my-zsh
         htop
         starship
         tldr
@@ -51,9 +50,14 @@ with lib; {
         };
         "starship.toml" = { source = <config/zsh/starship.toml>; };
       };
-      zsh.env = ''
-        export DOTFILES=$HOME/.dotfiles
-      '';
+      zsh = {
+        rc = ''
+          _cache fasd --init posix-alias zsh-{hook,{c,w}comp{,-install}}
+        '';
+        env = ''
+          export DOTFILES=$HOME/.dotfiles
+        '';
+      };
     };
 
     programs.zsh = {
@@ -66,7 +70,6 @@ with lib; {
       promptInit = "";
 
       interactiveShellInit = ''
-        export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh
         source ${pkgs.antigen}/share/antigen/antigen.zsh
       '';
     };
