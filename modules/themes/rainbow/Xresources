@@ -81,7 +81,7 @@ Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
 
 ! cursor
-Xcursor.theme: capitaine-cursors
+Xcursor.theme: capitaine-cursors-white
 Xcursor.size: 64
 
 ! emacs

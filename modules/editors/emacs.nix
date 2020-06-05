@@ -60,7 +60,7 @@ with lib; {
 
     };
     system.userActivationScripts.InstallDoomEmacs = ''
-      [ ! -d $HOME/.doom.d ] && ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config ~/.doom.d
+      if [ ! -d $HOME/.doom.d ]; then ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config ~/.doom.d; fi
       if [ ! -d $HOME/.emacs.d ];then
         ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs -b develop ~/.emacs.d
         $HOME/.emacs.d/bin/doom install

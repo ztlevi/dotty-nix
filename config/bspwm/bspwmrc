@@ -2,8 +2,6 @@
 
 source $ZDOTDIR/env.zsh
 
-GDK_SCALE=2
-
 #
 # Essentials
 #
