@@ -65,6 +65,11 @@ in {
     # my.zsh.rc = lib.readFile ./zsh/prompt.zsh;
 
     my.home = {
+      xsession.pointerCursor = {
+        name = "capitaine-cursors-white";
+        package = pkgs.capitaine-cursors;
+        size = 64;
+      };
       home.file = mkMerge [
         (mkIf cfg.desktop.browsers.firefox.enable {
           ".mozilla/firefox/${cfg.desktop.browsers.firefox.profileName}.default/chrome/userChrome.css" =
@@ -84,8 +89,6 @@ in {
             gtk-icon-theme-name=Flat-Remix-Blue
             gtk-fallback-icon-theme=gnome
             gtk-application-prefer-dark-theme=false
-            gtk-cursor-theme-name=capitaine-cursors-white
-            gtk-cursor-theme-size=64
             gtk-xft-hinting=1
             gtk-xft-hintstyle=hintfull
             gtk-xft-rgba=none
@@ -94,8 +97,6 @@ in {
           "gtk-2.0/gtkrc".text = ''
             gtk-theme-name="Flat-Remix-GTK"
             gtk-icon-theme-name="Flat-Remix-Blue"
-            gtk-cursor-theme-name=capitaine-cursors-white
-            gtk-cursor-theme-size=64
             gtk-font-name="Sans 10"
           '';
           # QT4/5 global theme
