@@ -38,7 +38,7 @@ dry:
 	@sudo nixos-rebuild $(FLAGS) dry-build
 
 gc:
-	@nix-collect-garbage -d
+	@sudo nix-collect-garbage -d
 
 vm:
 	@sudo nixos-rebuild $(FLAGS) build-vm
@@ -55,8 +55,8 @@ channels:
 	@sudo nix-channel --add "https://nixos.org/channels/nixos-${NIXOS_VERSION}" nixos
 	@sudo nix-channel --add "https://github.com/rycee/home-manager/archive/release-${NIXOS_VERSION}.tar.gz" home-manager
 	@sudo nix-channel --add "https://nixos.org/channels/nixos-unstable" nixos-unstable
-	# for other linux
-	# @sudo nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable
+# for other linux
+# @sudo nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable
 
 $(NIXOS_PREFIX)/configuration.nix:
 	@sudo nixos-generate-config --root "$(PREFIX)"

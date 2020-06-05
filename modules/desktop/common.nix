@@ -23,8 +23,6 @@
     # Use gnome control center
     dconf
     polkit_gnome
-    # gnome3.gnome-control-center
-    # gnome3.nautilus
   ];
 
   ## Sound
