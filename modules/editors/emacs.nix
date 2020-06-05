@@ -58,14 +58,14 @@ with lib; {
         env = ''export PATH="$HOME/.emacs.d/bin:$PATH"'';
       };
 
-      system.userActivationScripts.InstallDoomEmacs = ''
-        [ ! -d $HOME/.doom.d ] && ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config ~/.doom.d
-        if [ ! -d $HOME/.emacs.d ];then
-          ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs -b develop ~/.emacs.d
-          $HOME/.emacs.d/bin/doom install
-        fi
-      '';
     };
+    system.userActivationScripts.InstallDoomEmacs = ''
+      [ ! -d $HOME/.doom.d ] && ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config ~/.doom.d
+      if [ ! -d $HOME/.emacs.d ];then
+        ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs -b develop ~/.emacs.d
+        $HOME/.emacs.d/bin/doom install
+      fi
+    '';
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
   };
