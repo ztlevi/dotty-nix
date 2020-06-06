@@ -34,19 +34,14 @@
     enableFontDir = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
-      ubuntu_font_family
       dejavu_fonts
-      fira-code
-      fira-code-symbols
-      symbola
       noto-fonts
       noto-fonts-cjk
       font-awesome-ttf
-      siji
     ];
     fontconfig.defaultFonts = {
-      sansSerif = [ "Ubuntu Nerd Font" "FZYouSongS" "DejaVu Sans" ];
-      serif = [ "DejaVu Serif" "FZYouSongS" ];
+      sansSerif = [ "DejaVu Sans" "Noto Sans CJK SC" "Noto Color Emoji" ];
+      serif = [ "DejaVu Serif" "Noto Sans CJK SC" "Noto Color Emoji" ];
       monospace = [ "Ubuntu Nerd Font Mono" "DejaVu Sans Mono" ];
     };
   };
