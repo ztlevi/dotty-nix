@@ -4,6 +4,7 @@
   imports = [
     ./daw.nix
     ./discord.nix
+    ./telegram.nix
     ./graphics.nix
     ./recording.nix
     ./rofi.nix

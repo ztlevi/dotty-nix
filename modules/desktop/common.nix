@@ -112,7 +112,7 @@
     # xrandr --output DisplayPort-0 --primary --auto  --output DisplayPort-1 --auto --right-of DisplayPort-0 --dpi 144
     RESOLUTION=$(xrandr -q | grep primary | grep ' connected' | cut -d' ' -f4 | cut -d 'x' -f1)
     if [ -z $RESOLUTION ]; then RESOLUTION=1920; fi
-    export SCREEN_SCALE=$(($RESOLUTION / 1920))
+    export GDK_SCALE=$(($RESOLUTION / 1920))
 
     if _is_callable gnome-keyring-daemon; then
       eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)

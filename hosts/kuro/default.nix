@@ -12,6 +12,7 @@
 
       apps.rofi.enable = true;
       apps.discord.enable = true;
+      apps.telegram.enable = true;
       # apps.skype.enable = true;
       apps.daw.enable = true; # making music
       apps.graphics.enable = true; # raster/vector/sprites

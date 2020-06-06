@@ -55,9 +55,6 @@ with lib; {
         rc = ''
           _cache fasd --init posix-alias zsh-{hook,{c,w}comp{,-install}}
         '';
-        env = ''
-          export DOTFILES=$HOME/.dotfiles
-        '';
       };
     };
 
