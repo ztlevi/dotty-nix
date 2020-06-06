@@ -45,8 +45,9 @@
       siji
     ];
     fontconfig.defaultFonts = {
-      sansSerif = [ "Ubuntu" ];
-      monospace = [ "Fira Code" ];
+      sansSerif = [ "Ubuntu Nerd Font" "FZYouSongS" "DejaVu Sans" ];
+      serif = [ "DejaVu Serif" "FZYouSongS" ];
+      monospace = [ "Ubuntu Nerd Font Mono" "DejaVu Sans Mono" ];
     };
   };
 
