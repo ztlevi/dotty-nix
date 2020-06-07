@@ -52,7 +52,6 @@ with lib; {
         # Clairvoyance theme for sddm https://github.com/JorelAli/nixos/blob/master/README.md
         # displayManager.sddm.theme = "clairvoyance";
         displayManager.sessionCommands = ''
-          export GDK_SCALE=$SCREEN_SCALE
           export QT_AUTO_SCREEN_SCALE_FACTOR=0
           export QT_SCALE_FACTOR=$GDK_SCALE
 
