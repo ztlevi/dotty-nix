@@ -44,7 +44,7 @@ super + Return
     alacritty -e bash -c "(tmux ls | grep -qEv 'attached|scratch' && tmux at) || tmux"
 
 super + o
-    nautilus ~/Downloads
+    xdg-open ~/Downloads
 
 # program launcher
 # super + space

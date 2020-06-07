@@ -1,10 +1,7 @@
 { config, lib, pkgs, ... }: {
   my.packages = with pkgs; [
-    # I often need a thumbnail browser to show off, peruse or organize photos,
-    # design work, or digital art.
-    xfce.thunar
-    xfce.tumbler # for thumbnails
-
+    gnome3.nautilus # file manager
+    mimeo # mime type settings
     calibre # managing my ebooks
     evince # pdf reader
     feh # image viewer
@@ -116,5 +113,7 @@
     fi
 
     _call ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
+
+    _call ${pkgs.mimeo}/bin/mimeo --prefer eog.desktop mpv.desktop nautilus.desktop
   '';
 }
