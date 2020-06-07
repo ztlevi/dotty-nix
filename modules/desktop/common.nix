@@ -42,7 +42,7 @@
     fontconfig.defaultFonts = {
       sansSerif = [ "DejaVu Sans" "Noto Sans CJK SC" "Noto Color Emoji" ];
       serif = [ "DejaVu Serif" "Noto Sans CJK SC" "Noto Color Emoji" ];
-      monospace = [ "Ubuntu Nerd Font Mono" "DejaVu Sans Mono" ];
+      monospace = [ "UbuntuMono Nerd Font Mono" "DejaVu Sans Mono" ];
     };
   };
 
