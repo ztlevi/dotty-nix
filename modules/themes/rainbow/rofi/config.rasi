@@ -1,10 +1,9 @@
-
 /* -*- mode: css; -*- */
 configuration {
-  icon-theme:       "Flat-Remix-Blue";
-  cycle:            true;
-  disable-history:  false;
-  monitor:          "-4";
+  icon-theme: "Flat-Remix-Blue";
+  cycle: true;
+  disable-history: false;
+  monitor: "-4";
 
   /* Vim-esque C-j/C-k as up/down in rofi */
   kb-accept-entry: "Return,Control+m,KP_Enter";
@@ -14,22 +13,22 @@ configuration {
 }
 
 * {
-  accent:   #1564bf;
-  bg:       #f0f0f0FA;
+  accent: #1564bf;
+  bg: #f0f0f0fa;
   bg-light: #ffffff;
   bg-focus: #eeeeee;
-  bg-dark:  #dddddd;
-  fg:       #2c2c2c;
-  fg-list:  #2c2c2c;
-  on:       #558b2e;
-  off:      #c62727;
+  bg-dark: #dddddd;
+  fg: #2c2c2c;
+  fg-list: #2c2c2c;
+  on: #558b2e;
+  off: #c62727;
 
   magenta: #691e99;
-  blue:    #1564bf;
+  blue: #1564bf;
 
-  text-font:      "Ubuntu Nerd Font 22";
-  text-mono-font: "UbuntuMono Nerd Font Mono 22";
-  icon-font:      "UbuntuMono Nerd Font Mono 42";
+  text-font: "DejaVu Sans 22";
+  text-mono-font: "DejaVu Sans Mono 22";
+  icon-font: "UbuntuMono Nerd Font Mono 42";
 
   background-color: transparent;
   text-color: @fg-list;
@@ -37,17 +36,15 @@ configuration {
   border-color: @bg-dark;
 }
 
-
 /**** Layout ****/
 window {
-  width:    40%;
+  width: 40%;
   y-offset: -20%;
-  anchor:   north;
+  anchor: north;
   location: center;
   border: 2px;
   border-radius: 12px 12px 0 0;
   children: [ inputbar, listview ];
-
 }
 
 listview {
@@ -80,7 +77,8 @@ inputbar {
   children: [ textbox-icon, prompt, entry ];
   border: 0 0 0;
 }
-textbox-icon, prompt {
+textbox-icon,
+prompt {
   padding: 22px;
   expand: false;
   border: 0 2px 0 0;
@@ -89,7 +87,8 @@ textbox-icon, prompt {
 textbox-icon {
   padding: 4px -12px 0;
 }
-entry, element {
+entry,
+element {
   padding: 20px 26px;
 }
 textbox {
@@ -97,23 +96,27 @@ textbox {
   margin: 40px;
 }
 
-
 /**** Looks ****/
 scrollbar {
   background-color: @bg-dark;
   handle-color: @accent;
   border-color: @bg-dark;
 }
-listview, inputbar {
+listview,
+inputbar {
   background-color: @bg-dark;
 }
-textbox-icon, prompt, entry {
+textbox-icon,
+prompt,
+entry {
   text-color: @accent;
 }
-prompt, entry {
+prompt,
+entry {
   background-color: @bg-focus;
 }
-textbox-icon, prompt {
+textbox-icon,
+prompt {
   background-color: @bg;
 }
 prompt {

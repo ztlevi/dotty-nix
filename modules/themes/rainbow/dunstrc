@@ -5,7 +5,7 @@
     browser = launch-browser
     dmenu = /usr/bin/rofi -dmenu -p dunst:
     follow = keyboard
-    font = Ubuntu 24
+    font = DejaVu Sans 24
     format = "%s\n%b"
     # geometry [{width}]x{height}][+/-{x}+/-{y}]
     geometry = "1000x80-25+100"
