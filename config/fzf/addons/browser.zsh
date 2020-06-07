@@ -36,8 +36,10 @@ b() {
   fi
   if [ "$(uname)" = "Darwin" ]; then
     bookmarks_path="${HOME}/Library/Application Support/Google/Chrome/${chrome_user}/Bookmarks"
+    open=open
   else
     bookmarks_path=$XDG_CONFIG_HOME/google-chrome/${chrome_user}/Bookmarks
+    open=xdg-open
   fi
 
   jq_script='
@@ -48,5 +50,5 @@ b() {
     sed -E $'s/(.*)\t(.*)/\\1\t\x1b[36m\\2\x1b[m/g' |
     fzf --ansi |
     cut -d$'\t' -f2 |
-    xargs open
+    xargs $open
 }
