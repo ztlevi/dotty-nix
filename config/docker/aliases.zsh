@@ -12,3 +12,5 @@ dkclr() {
 dke() {
   dk exec -it "$1" "${@:1}"
 }
+
+alias dkprune="docker system prune -a --filter='until=24h'"
