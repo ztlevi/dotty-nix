@@ -112,7 +112,6 @@ bind-key -T prefix tab switch-client -l
 
 # Switch tmux window and session
 bind-key -T prefix C-t choose-tree -Zw
-bind / choose-session
 bind . choose-window
 bind -n M-H previous-window
 bind -n M-L next-window
