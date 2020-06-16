@@ -6,8 +6,8 @@ rofi_command="rofi -theme theme/powermenu.rasi"
 power_off="\tShutdown"
 reboot="\tReboot"
 lock="\tLock"
-suspend="鈴\tSleep"
-log_out="\tLogout"
+suspend="\tSleep"
+log_out="\tLogout"
 # Variable passed to rofi
 options="${power_off}\n${reboot}\n${lock}\n${suspend}\n${log_out}"
 
