@@ -114,6 +114,6 @@
 
     _call ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
 
-    _call ${pkgs.mimeo}/bin/mimeo --prefer eog.desktop mpv.desktop nautilus.desktop
+    _call ${pkgs.mimeo}/bin/mimeo --prefer io.github.celluloid_player.Celluloid.desktop eog.desktop nautilus.desktop
   '';
 }
