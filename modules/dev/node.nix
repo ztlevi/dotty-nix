@@ -14,7 +14,7 @@ with lib; {
 
   config = mkIf config.modules.dev.node.enable {
     my = {
-      packages = with pkgs; [ nodejs ];
+      packages = with pkgs; [ nodejs yarn ];
 
       zsh = {
         env = lib.readFile <config/npm/env.zsh>;
