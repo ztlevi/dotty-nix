@@ -1,4 +1,4 @@
-alias tmux='tmux -f "$TMUX_HOME/config"'
+unalias tmux
 alias ta='tmux attach -t'
 alias tl='tmux ls'
 alias tksv='tmux kill-server'
