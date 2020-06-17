@@ -74,7 +74,7 @@
 ! font rendering
 !Xft.hinting: 0
 !Xft.autohint: 1
-! Xfg.dpi: 144
+Xfg.dpi: 192
 Xft.antialias: 1
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
