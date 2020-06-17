@@ -1,7 +1,5 @@
 { config, lib, pkgs, ... }: {
   my.packages = with pkgs; [
-    gnome3.nautilus # file manager
-    mimeo # mime type settings
     calibre # managing my ebooks
     evince # pdf reader
     feh # image viewer
@@ -16,10 +14,6 @@
       exec = "scratch '${tmux}/bin/tmux new-session -s calc -n calc qalc'";
       categories = "Development";
     })
-
-    # Use gnome control center
-    dconf
-    polkit_gnome
   ];
 
   ## Sound
@@ -101,19 +95,5 @@
     export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
     source "$XDG_CONFIG_HOME"/xsession/*.sh
     xrdb -merge "$XDG_CONFIG_HOME"/xtheme/*
-
-    # xrandr --output DisplayPort-0 --primary --auto  --output DisplayPort-1 --auto --right-of DisplayPort-0 --dpi 144
-    RESOLUTION=$(xrandr -q | grep primary | grep ' connected' | cut -d' ' -f4 | cut -d 'x' -f1)
-    if [ -z $RESOLUTION ]; then RESOLUTION=1920; fi
-    export GDK_SCALE=$(($RESOLUTION / 1920))
-
-    if _is_callable gnome-keyring-daemon; then
-      eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
-      export SSH_AUTH_SOCK
-    fi
-
-    _call ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
-
-    _call ${pkgs.mimeo}/bin/mimeo --prefer io.github.celluloid_player.Celluloid.desktop eog.desktop nautilus.desktop
   '';
 }
