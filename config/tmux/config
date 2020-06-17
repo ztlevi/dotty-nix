@@ -81,7 +81,7 @@ bind Q kill-server
 unbind c
 bind n new-window
 bind-key C-[ copy-mode
-bind-key c kill-pane
+bind-key c confirm-before -p "kill-pane #P? (y/n)" kill-pane
 bind-key C-c confirm kill-session
 
 # bind key to swtich to emacs session
