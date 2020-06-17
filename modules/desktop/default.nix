@@ -3,7 +3,6 @@
 {
   imports = [
     ./bspwm.nix
-    # ./stumpwm.nix
 
     ./apps
     ./term
