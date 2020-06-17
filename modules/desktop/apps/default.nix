@@ -10,5 +10,6 @@
     ./rofi.nix
     ./skype.nix
     ./vm.nix
+    ./wpsoffice.nix
   ];
 }

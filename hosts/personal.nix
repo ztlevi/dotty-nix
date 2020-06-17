@@ -71,6 +71,7 @@
   system.userActivationScripts.cleanupHome = ''
     pushd /home/${config.my.username}
     rm -rf .compose-cache .nv .pki .dbus .fehbg
+    rm -f .config/Trolltech.conf
     [ -s .xsession-errors ] || rm -f .xsession-errors*
     popd
   '';

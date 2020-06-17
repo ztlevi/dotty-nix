@@ -18,6 +18,7 @@
       apps.graphics.enable = true; # raster/vector/sprites
       apps.recording.enable = true; # recording screen/audio
       apps.vm.enable = true; # virtualbox for testing
+      apps.wpsoffice.enable = true; # virtualbox for testing
 
       term.default = "alacritty";
       # term.st.enable = true;
