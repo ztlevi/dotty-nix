@@ -1,8 +1,6 @@
 /* -*- mode: css; -*- */
 
-@import "config.rasi"
-
-listview {
+@import "config.rasi" listview {
   columns: 1;
 }
 

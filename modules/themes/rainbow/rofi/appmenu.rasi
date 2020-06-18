@@ -1,7 +1,5 @@
 /* -*- mode: css; -*- */
-@import "config.rasi"
-
-textbox-icon {
+@import "config.rasi" textbox-icon {
   str: "  ";
 }
 

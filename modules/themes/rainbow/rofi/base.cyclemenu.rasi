@@ -1,7 +1,5 @@
 /* -*- mode: css; -*- */
-@import "config.rasi"
-
-window {
+@import "config.rasi" window {
   y-offset: 0;
   children: [ listview ];
   width: 500px;
