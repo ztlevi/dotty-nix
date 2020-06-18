@@ -41,6 +41,7 @@ with lib; {
 
     console.useXkbConfig = true;
     services = {
+      greenclip.enable = true;
       picom.enable = true;
       redshift.enable = true;
       xserver = {
@@ -69,14 +70,14 @@ with lib; {
           # revert gnome screen scale settings
           command -v gsettings >/dev/null && gsettings set org.gnome.desktop.interface scaling-factor 1
 
-          if _is_callable gnome-keyring-daemon; then
+          if command -v gnome-keyring-daemon >/dev/null; then
             eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
             export SSH_AUTH_SOCK
           fi
 
-          _call ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
+          ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
 
-          _call ${pkgs.mimeo}/bin/mimeo --prefer io.github.celluloid_player.Celluloid.desktop eog.desktop nautilus.desktop
+          ${pkgs.mimeo}/bin/mimeo --prefer io.github.celluloid_player.Celluloid.desktop eog.desktop nautilus.desktop
         '';
       };
     };

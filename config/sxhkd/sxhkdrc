@@ -39,6 +39,9 @@ super + backslash
 super + slash
     ~/.dotfiles/bin/rofi/filemenu -x
 
+alt + shift + v
+    ~/.dotfiles/bin/rofi/clipboardmenu
+
 
 super + Return
     alacritty -e bash -c "(tmux ls | grep -qEv 'attached|scratch' && tmux at) || tmux"

@@ -90,8 +90,6 @@
     platformTheme = "gtk2";
   };
   services.xserver.displayManager.sessionCommands = ''
-    source $XDG_CONFIG_HOME/zsh/env.zsh
-
     export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
     source "$XDG_CONFIG_HOME"/xsession/*.sh
     xrdb -merge "$XDG_CONFIG_HOME"/xtheme/*
