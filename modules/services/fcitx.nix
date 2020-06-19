@@ -15,13 +15,8 @@ with lib; {
       mkdir -p $XDG_CONFIG_HOME/fcitx/rime
       ln -s -f $DOTFILES/config/fcitx/config $XDG_CONFIG_HOME/fcitx/
       ln -s -f $DOTFILES/config/fcitx/profile $XDG_CONFIG_HOME/fcitx/
-      ln -s -f $DOTFILES/config/fcitx/rime/default.custom.yaml $XDG_CONFIG_HOME/fcitx/rime/
-      ln -s -f $DOTFILES/config/fcitx/rime/luna_pinyin.custom.yaml $XDG_CONFIG_HOME/fcitx/rime/
-
-      # Download sougou pinyin dictionary
-      if [[ ! -f $XDG_CONFIG_HOME/fcitx/rime/luna_pinyin.sogou.dict.yaml ]]; then
-        ${pkgs.wget}/bin/wget https://github.com/vgist/rime-files/raw/master/luna_pinyin.sogou.dict.yaml -O $XDG_CONFIG_HOME/fcitx/rime/luna_pinyin.sogou.dict.yaml
-      fi
+      ln -s -f $DOTFILES/config/fcitx/rime/*.custom.yaml $XDG_CONFIG_HOME/fcitx/rime/
+      ln -s -f $DOTFILES/assets/rime-dictionaries/*.dict.yaml $XDG_CONFIG_HOME/fcitx/rime/
     '';
 
   };
