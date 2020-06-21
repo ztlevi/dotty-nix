@@ -23,4 +23,5 @@ import_tables:
   - luna_pinyin.sogou.popular
   - luna_pinyin.sogou.social
   - zhwiki
+  - private
 ...
