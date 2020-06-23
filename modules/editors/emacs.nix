@@ -14,8 +14,13 @@ with lib; {
   config = mkIf config.modules.editors.emacs.enable {
     my = {
       packages = with pkgs; [
+        emacs
+        # emacsUnstable
+
+        # If you use vterm, build emacs with vterm support
+        # ((emacsPackagesNgGen emacs).emacsWithPackages (epkgs: [ epkgs.vterm ]))
         ## Doom dependencies
-        emacsUnstable
+        librime
         git
         (ripgrep.override { withPCRE2 = true; })
         gnutls # for TLS connectivity
