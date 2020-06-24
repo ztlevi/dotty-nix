@@ -84,7 +84,7 @@ in {
           # GTK
           "gtk-3.0/settings.ini".text = ''
             [Settings]
-            gtk-theme-name=Flat-Remix-GTK
+            gtk-theme-name=Flat-Remix-GTK-Blue
             gtk-icon-theme-name=Flat-Remix-Blue
             gtk-fallback-icon-theme=gnome
             gtk-application-prefer-dark-theme=false
@@ -94,14 +94,14 @@ in {
           '';
           # GTK2 global theme (widget and icon theme)
           "gtk-2.0/gtkrc".text = ''
-            gtk-theme-name="Flat-Remix-GTK"
+            gtk-theme-name="Flat-Remix-GTK-Blue"
             gtk-icon-theme-name="Flat-Remix-Blue"
             gtk-font-name="Sans 10"
           '';
           # QT4/5 global theme
           "Trolltech.conf".text = ''
             [Qt]
-            style=Flat-Remix-GTK
+            style=Flat-Remix-GTK-Blue
           '';
         })
         (mkIf cfg.desktop.bspwm.enable {

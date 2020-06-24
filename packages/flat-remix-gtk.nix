@@ -1,15 +1,34 @@
-{ stdenv, fetchFromGitHub, gtk-engine-murrine }:
+{ stdenv, fetchurl, gtk-engine-murrine }:
 
-stdenv.mkDerivation {
-  version = "1.0";
-  name = "Flat-Remix-GTK";
-  src = fetchFromGitHub {
-    owner = "daniruiz";
-    repo = "Flat-Remix-GTK";
-    rev = "39fec3cb2da83a7959e2637365c1e61643bf9ae9";
-    sha256 = "0rfv75w9yr8drc3x9g4iz2cb88ixy1lqbflvmb7farw4dz74fk5f";
-    fetchSubmodules = true;
+stdenv.mkDerivation rec {
+  pname = "Flat-Remix-GTK";
+  version = "20191224";
+
+  src = fetchurl {
+    url =
+      "https://github.com/daniruiz/flat-remix-gtk/archive/${version}.tar.gz";
+    sha256 = "14mqw4rnp5v2l7xrx736yvcqyvpkwg1h0hqw6k7rwlz51yr4sk8w";
   };
-  makeFlags = [ "PREFIX=$(out)" ];
   propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+
+  dontBuild = true;
+
+  installPhase = ''
+    runHook preInstall
+    mkdir -p $out/share/themes
+    cp -a ./Flat-Remix-GTK-Blue $out/share/themes
+    runHook postInstall
+  '';
+
+  outputHashAlgo = "sha256";
+  outputHashMode = "recursive";
+
+  meta = with stdenv.lib; {
+    description =
+      "Flat Remix is a GTK application theme inspired by material design.";
+    homepage = "https://github.com/daniruiz/flat-remix-gtk";
+    license = licenses.gpl3;
+    platforms = platforms.all;
+    maintainers = [ maintainers.pbogdan ];
+  };
 }
