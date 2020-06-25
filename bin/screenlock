@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+if command -v i3lock-color >/dev/null; then
+  i3lock-color --color=000000 -e
+fi

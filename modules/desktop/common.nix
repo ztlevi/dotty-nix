@@ -5,6 +5,7 @@
     feh # image viewer
     mpv # video player
     gnome3.nautilus # file manager
+    i3lock-color # screen lock
     xclip
     xdotool
     libqalculate # calculator cli w/ currency conversion
