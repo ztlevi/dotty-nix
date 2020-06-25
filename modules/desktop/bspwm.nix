@@ -49,14 +49,11 @@ with lib; {
         layout = "us";
         xkbOptions = "ctrl:swapcaps";
         displayManager.defaultSession = "none+bspwm";
-        displayManager.lightdm.enable = true;
-        # displayManager.lightdm.greeters.mini.enable = true;
-        displayManager.lightdm.greeters.enso.enable = true;
+        # sddm is a better alternative rather gdm
+        displayManager.sddm.enable = true;
         windowManager.bspwm.enable = true;
         desktopManager.gnome3.enable = true;
 
-        # sddm is a better alternative rather gdm
-        # displayManager.sddm.enable = true;
         # Clairvoyance theme for sddm https://github.com/JorelAli/nixos/blob/master/README.md
         # displayManager.sddm.theme = "clairvoyance";
         displayManager.sessionCommands = ''

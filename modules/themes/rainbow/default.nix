@@ -96,7 +96,7 @@ in {
           "gtk-2.0/gtkrc".text = ''
             gtk-theme-name="Flat-Remix-GTK-Blue"
             gtk-icon-theme-name="Flat-Remix-Blue"
-            gtk-font-name="Sans 10"
+            gtk-font-name="Noto Sans 10"
           '';
           # QT4/5 global theme
           "Trolltech.conf".text = ''
