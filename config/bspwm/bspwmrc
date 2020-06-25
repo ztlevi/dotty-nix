@@ -5,7 +5,7 @@ source $ZDOTDIR/env.zsh
 #
 # Essentials
 #
-_run sxhkd &# keyboard daemon
+_run sxhkd & # keyboard daemon
 
 {
   sleep 1
@@ -24,9 +24,11 @@ _run sxhkd &# keyboard daemon
 # Displays
 #
 
-export MONITOR=$(xrandr -q | grep primary | grep ' connected' | cut -d' ' -f1)
-export MONITORS=($(xrandr -q | grep ' connected' | cut -d' ' -f1))
-MONITOR=${MONITOR:-${MONITORS[0]}}
+# Calculate MONITOR and DPI
+MONITOR=$(xrandr -q | grep primary | grep ' connected' | cut -d' ' -f1)
+declare -xr MONITORS=($(xrandr -q | grep ' connected' | cut -d' ' -f1))
+declare -x MONITOR=${MONITOR:-${MONITORS[0]}}
+readonly MONITOR
 
 # Multiple workspaces for main monitor, but only one for others
 bspc monitor $MONITOR -d {1,2,3,4,5,6}
