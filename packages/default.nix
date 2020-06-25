@@ -6,7 +6,12 @@
         linode-cli = (callPackage ./linode-cli.nix { });
         ripcord = (callPackage ./ripcord.nix { });
         zunit = (callPackage ./zunit.nix { });
-        clairvoyance = (callPackage ./clairvoyance.nix { });
+        clairvoyance = (callPackage ./clairvoyance.nix {
+          autoFocusPassword = true;
+          enableHDPI = true;
+          backgroundURL =
+            "https://media.githubusercontent.com/media/ztlevi/personal-assets/master/wallpapers/pink-2.jpg";
+        });
         flat-remix-gtk = (callPackage ./flat-remix-gtk.nix { });
       };
 

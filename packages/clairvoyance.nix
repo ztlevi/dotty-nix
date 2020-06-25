@@ -19,8 +19,8 @@ in stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "eayus";
     repo = "sddm-theme-clairvoyance";
-    rev = "fb0210303f67325162a5f132b6a3f709dcd8e181";
-    sha256 = "17hwh0ixnn5d9dbl1gaygbhb1zv4aamqkqf70pcgq1h9124mjshj";
+    rev = "dfc5984ff8f4a0049190da8c6173ba5667904487";
+    sha256 = "13z78i6si799k3pdf2cvmplhv7n1wbpwlsp708nl6gmhdsj51i81";
   };
 
   installPhase = ''

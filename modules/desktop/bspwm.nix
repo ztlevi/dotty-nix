@@ -11,7 +11,6 @@ with lib; {
 
   config = mkIf config.modules.desktop.bspwm.enable {
     environment.systemPackages = with pkgs; [
-      lightdm
       dunst
       libnotify
       (polybar.override {
@@ -21,6 +20,8 @@ with lib; {
 
       gnome3.nautilus # file manager
       mimeo # mime type settings
+
+      my.clairvoyance # sddm theme
 
       # Use gnome control center
       dconf
@@ -48,14 +49,17 @@ with lib; {
         enable = true;
         layout = "us";
         xkbOptions = "ctrl:swapcaps";
-        displayManager.defaultSession = "none+bspwm";
+
         # sddm is a better alternative rather gdm
         displayManager.sddm.enable = true;
+        # Clairvoyance theme for sddm https://github.com/JorelAli/nixos/blob/master/README.md
+        displayManager.sddm.theme = "clairvoyance";
+
         windowManager.bspwm.enable = true;
+        displayManager.defaultSession = "none+bspwm";
+        # Use some gnome apps
         desktopManager.gnome3.enable = true;
 
-        # Clairvoyance theme for sddm https://github.com/JorelAli/nixos/blob/master/README.md
-        # displayManager.sddm.theme = "clairvoyance";
         displayManager.sessionCommands = ''
           # xrandr --output DisplayPort-0 --primary --auto  --output DisplayPort-1 --auto --right-of DisplayPort-0 --dpi 144
           RESOLUTION=$(xrandr -q | grep primary | grep ' connected' | cut -d' ' -f4 | cut -d 'x' -f1)
