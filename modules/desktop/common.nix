@@ -22,6 +22,7 @@
   my.home = {
     xdg.mimeApps.enable = true;
     # Use get_window_class (xprop) to get the application class name
+    # If not sure about the file type, right click and open with selected app, then check ~/.config/mimeapps.list
     xdg.mimeApps.defaultApplications = {
       "audio/mp3" = [ "io.github.celluloid_player.Celluloid.desktop" ];
       "audio/mp4" = [ "io.github.celluloid_player.Celluloid.desktop" ];
