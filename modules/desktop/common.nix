@@ -27,7 +27,9 @@
       "audio/mp4" = [ "io.github.celluloid_player.Celluloid.desktop" ];
       "video/x-avi" = [ "io.github.celluloid_player.Celluloid.desktop" ];
       "video/x-matroska" = [ "io.github.celluloid_player.Celluloid.desktop" ];
-      "video/x-mp4" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+      "video/mp4" =
+        [ "io.github.celluloid_player.Celluloid.desktop" "mpv.desktop" ];
+      "video/mpeg" = [ "io.github.celluloid_player.Celluloid.desktop" ];
       "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
       "application/x-gnome-saved-search" = [ "org.gnome.Nautilus.desktop" ];
       "image/jpeg" = [ "eog.desktop" ];
