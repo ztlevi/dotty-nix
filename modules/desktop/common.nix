@@ -4,6 +4,7 @@
     evince # pdf reader
     feh # image viewer
     mpv # video player
+    gnome3.nautilus # file manager
     xclip
     xdotool
     libqalculate # calculator cli w/ currency conversion
@@ -15,6 +16,26 @@
       categories = "Development";
     })
   ];
+
+  # ${pkgs.mimeo}/bin/mimeo --prefer org.gnome.Nautilus.desktop io.github.celluloid_player.Celluloid.desktop eog.desktop
+  # xdg-mime default nautilus.desktop inode/directory application/x-gnome-saved-search
+  my.home = {
+    xdg.mimeApps.enable = true;
+    # Use get_window_class (xprop) to get the application class name
+    xdg.mimeApps.defaultApplications = {
+      "audio/mp3" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+      "audio/mp4" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+      "video/x-avi" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+      "video/x-matroska" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+      "video/x-mp4" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+      "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+      "application/x-gnome-saved-search" = [ "org.gnome.Nautilus.desktop" ];
+      "image/jpeg" = [ "eog.desktop" ];
+      "image/jpg" = [ "eog.desktop" ];
+      "image/png" = [ "eog.desktop" ];
+      "application/pdf" = [ "org.gnome.Evince.desktop" ];
+    };
+  };
 
   ## Sound
   sound.enable = true;

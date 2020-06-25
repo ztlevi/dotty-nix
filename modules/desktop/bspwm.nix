@@ -18,9 +18,6 @@ with lib; {
         nlSupport = true;
       })
 
-      gnome3.nautilus # file manager
-      mimeo # mime type settings
-
       my.clairvoyance # sddm theme
 
       # Use gnome control center
@@ -77,8 +74,6 @@ with lib; {
           fi
 
           ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
-
-          ${pkgs.mimeo}/bin/mimeo --prefer io.github.celluloid_player.Celluloid.desktop eog.desktop nautilus.desktop
         '';
       };
     };
