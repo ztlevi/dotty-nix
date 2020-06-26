@@ -24,7 +24,7 @@ if [[ -n "${run_script_pids[@]/$$/}" ]]; then kill -9 ${run_script_pids[@]/$$/};
 # Calculate MONITOR and DPI
 MONITOR=$(xrandr -q | grep primary | grep ' connected' | cut -d' ' -f1)
 declare -xr MONITORS=($(xrandr -q | grep ' connected' | cut -d' ' -f1))
-declare -x MONITOR=${MONITOR:-${MONITORS[0]}}
+declare -x MONITOR=${MONITOR:-${MONITORS[1]}}
 readonly MONITOR
 
 declare -x DPI
