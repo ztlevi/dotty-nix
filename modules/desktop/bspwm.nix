@@ -12,6 +12,7 @@ with lib; {
   config = mkIf config.modules.desktop.bspwm.enable {
     environment.systemPackages = with pkgs; [
       dunst
+      arandr
       libnotify
       (polybar.override {
         pulseSupport = true;
@@ -39,6 +40,10 @@ with lib; {
 
     console.useXkbConfig = true;
     services = {
+      # https://github.com/phillipberndt/autorandr/blob/v1.0/README.md#how-to-use
+      # Modify monitor setup with arandr or xrandr
+      # autorandr --save --force default && autorandr --default default
+      autorandr.enable = true;
       greenclip.enable = true;
       picom.enable = true;
       redshift.enable = true;
@@ -58,6 +63,9 @@ with lib; {
         desktopManager.gnome3.enable = true;
 
         displayManager.sessionCommands = ''
+          # Trigger autorandr manually because the service does not work
+          ${pkgs.autorandr}/bin/autorandr --change || echo "No autorandr profile found!"
+
           # xrandr --output DisplayPort-0 --primary --auto  --output DisplayPort-1 --auto --right-of DisplayPort-0 --dpi 144
           RESOLUTION=$(xrandr -q | grep primary | grep ' connected' | cut -d' ' -f4 | cut -d 'x' -f1)
           if [ -z $RESOLUTION ]; then RESOLUTION=1920; fi

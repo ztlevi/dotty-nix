@@ -6,11 +6,6 @@
 {
   imports = [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix> ];
 
-  # My personal monitor setup
-  lib.config.xsession.initExtra = ''
-    xrandr --output DisplayPort-0 --primary --auto  --output DisplayPort-1 --auto --left-of DisplayPort-0 --dpi 192
-  '';
-
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
