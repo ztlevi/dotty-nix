@@ -27,6 +27,14 @@ declare -xr MONITORS=($(xrandr -q | grep ' connected' | cut -d' ' -f1))
 declare -x MONITOR=${MONITOR:-${MONITORS[1]}}
 readonly MONITOR
 
+# Reload bspwm monitor setting
+if _is_running bspwm; then
+  bspc monitor $MONITOR -d {1,2,3,4,5,6}
+  for mon in ${MONITORS[@]/${MONITOR}/}; do
+    bspc monitor $mon -d {1,2,3,4}
+  done
+fi
+
 declare -x DPI
 if [ "$GDK_SCALE" -eq 2 ]; then
   DPI=160
