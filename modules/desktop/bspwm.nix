@@ -42,7 +42,7 @@ with lib; {
     services = {
       # https://github.com/phillipberndt/autorandr/blob/v1.0/README.md#how-to-use
       # Modify monitor setup with arandr or xrandr
-      # autorandr --save --force default && autorandr --default default
+      # autorandr --force --save default && autorandr --default default
       autorandr.enable = true;
       greenclip.enable = true;
       picom.enable = true;
