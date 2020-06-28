@@ -109,13 +109,14 @@ bspc rule -a Firefox monitor=R desktop=^4
 bspc rule -a discord desktop=^5
 bspc rule -a slack desktop=^5
 
-_call alacritty --class Alacritty_2 -e bash -c "(tmux ls | grep -qEv 'attached|scratch' && tmux at) || tmux" &
-{
-  sleep 0.5
-  _run emacs --name Emacs_1 &
-} &
-_run google-chrome-stable &
-_run slack &
+# Auto start apps
+# _call alacritty --class Alacritty_2 -e bash -c "(tmux ls | grep -qEv 'attached|scratch' && tmux at) || tmux" &
+# {
+#   sleep 0.5
+#   _run emacs --name Emacs_1 &
+# } &
+# _run google-chrome-stable &
+# _run slack &
 
 # dunst need to use zsh to run, otherwise click function fails
 _run dunst &
