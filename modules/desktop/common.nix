@@ -4,6 +4,8 @@
     evince # pdf reader
     feh # image viewer
     mpv # video player
+    celluloid # nice GTK GUI for mpv
+    gnome3.eog # image viewer
     gnome3.nautilus # file manager
     i3lock-color # screen lock
     xclip
@@ -18,8 +20,6 @@
     })
   ];
 
-  # ${pkgs.mimeo}/bin/mimeo --prefer org.gnome.Nautilus.desktop io.github.celluloid_player.Celluloid.desktop eog.desktop
-  # xdg-mime default nautilus.desktop inode/directory application/x-gnome-saved-search
   my.home = {
     xdg.mimeApps.enable = true;
     # Use get_window_class (xprop) to get the application class name
