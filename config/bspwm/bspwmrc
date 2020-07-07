@@ -86,28 +86,28 @@ bspc rule -r '*'
 bspc rule -a mplayer2 state=floating
 bspc rule -a mpv state=floating center=on
 bspc rule -a Vlc state=floating monitor=C center=on
-bspc rule -a Gimp desktop=^6
+bspc rule -a Gimp desktop=6
 bspc rule -a feh state=fullscreen
 bspc rule -a Screenkey manage=off
-bspc rule -a Tilix desktop=^2
+bspc rule -a Tilix desktop=2
 bspc rule -a Gnome-control-center state=floating
 bspc rule -a Unity-control-center state=floating
 
-bspc rule -a Alacritty:Alacritty_2 desktop=^2
+bspc rule -a Alacritty:Alacritty_2 desktop=2
 bspc rule -a Alacritty-scratch state=floating sticky=on center=on
-bspc rule -a scratch state=floating desktop=^any
+bspc rule -a scratch state=floating desktop=any
 
 bspc rule -a Emacs state=tiled
-bspc rule -a "Emacs:Emacs_1" state=tiled desktop=^1
-bspc rule -a 'Emacs:org*' state=floating desktop=^any
-bspc rule -a 'Emacs:scratch' state=floating desktop=^any
+bspc rule -a "Emacs:Emacs_1" state=tiled desktop=1
+bspc rule -a 'Emacs:org*' state=floating desktop=any
+bspc rule -a 'Emacs:scratch' state=floating desktop=any
 
 bspc rule -a Chromium monitor=R
-bspc rule -a Google-chrome monitor=R desktop=^4
-bspc rule -a Firefox monitor=R desktop=^4
+bspc rule -a Google-chrome monitor=R desktop=4
+bspc rule -a Firefox monitor=R desktop=4
 
-bspc rule -a discord desktop=^5
-bspc rule -a slack desktop=^5
+bspc rule -a discord desktop=5
+bspc rule -a slack desktop=5
 
 # Auto start apps
 # _call alacritty --class Alacritty_2 -e bash -c "(tmux ls | grep -qEv 'attached|scratch' && tmux at) || tmux" &
