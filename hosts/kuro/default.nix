@@ -19,6 +19,7 @@
       apps.recording.enable = true; # recording screen/audio
       apps.vm.enable = true; # virtualbox for testing
       apps.wpsoffice.enable = true; # virtualbox for testing
+      apps.zoom.enable = true; # zoom meeting
 
       term.default = "alacritty";
       # term.st.enable = true;

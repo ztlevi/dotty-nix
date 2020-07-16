@@ -11,5 +11,6 @@
     ./skype.nix
     ./vm.nix
     ./wpsoffice.nix
+    ./zoom.nix
   ];
 }
