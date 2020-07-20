@@ -38,6 +38,7 @@
       "image/jpg" = [ "eog.desktop" ];
       "image/png" = [ "eog.desktop" ];
       "application/pdf" = [ "org.gnome.Evince.desktop" ];
+      "text/x-python" = [ "emacs.desktop" ];
     };
   };
 
