@@ -58,6 +58,7 @@ with lib; {
       zsh = {
         rc = ''
           alias e='emacsclient -n'
+          alias doom='doom -y'
           ediff() { e --eval "(ediff-files \"$1\" \"$2\")"; }
         '';
         env = ''export PATH="$HOME/.emacs.d/bin:$PATH"'';
