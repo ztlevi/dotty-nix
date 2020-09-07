@@ -20,8 +20,9 @@ antigen bundle docker-compose
 antigen bundle docker-machine
 
 # RUBY
-antigen bundle ruby
-antigen bundle rbenv
+# antigen bundle ruby
+# antigen bundle rbenv
+# antigen bundle gem
 
 # PYTHON
 antigen bundle python
@@ -36,7 +37,7 @@ antigen bundle golang
 antigen bundle node
 antigen bundle npm
 antigen bundle yarn
-antigen bundle react-native
+# antigen bundle react-native
 
 # ZSH
 antigen bundle zsh_reload
@@ -54,12 +55,13 @@ antigen bundle tmuxinator
 antigen bundle aws
 
 # MISC
+antigen bundle fzf
 antigen bundle jira
 antigen bundle history
 antigen bundle ripgrep
 antigen bundle web-search
 antigen bundle nmap
-antigen bundle heroku
+# antigen bundle heroku
 antigen bundle copydir
 antigen bundle common-aliases
 antigen bundle command-not-found

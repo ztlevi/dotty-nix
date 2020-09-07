@@ -20,7 +20,6 @@ with lib; {
         jetbrains.pycharm-professional
         pipenv
         python37Packages.pip
-        python37Packages.conda
         python37Packages.grip
         python37Packages.ipython
         python37Packages.black
