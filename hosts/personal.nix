@@ -8,7 +8,7 @@
   boot.tmpOnTmpfs = true;
   # Use simple bootloader; I prefer the on-demand BIOs boot menu
   boot.loader = {
-    timeout = 1;
+    timeout = 10;
     efi.canTouchEfiVariables = true;
     systemd-boot = {
       enable = true;
