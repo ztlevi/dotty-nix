@@ -49,6 +49,7 @@ set-environment -g TMUX_PLUGIN_MANAGER_PATH "$TMUX_PLUGINS_HOME"
 
 set -g @tpm_plugins '                     \
     ztlevi/maglev                         \
+    soyuka/tmux-current-pane-hostname     \
     tmux-plugins/tpm                      \
     tmux-plugins/tmux-sensible            \
     tmux-plugins/tmux-resurrect           \
