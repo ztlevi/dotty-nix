@@ -98,12 +98,14 @@
     ];
     shadowExclude = [
       # Put shadows on notifications, the scratch popup and rofi only
+      "name *= 'rect-overlay'" # microsoft teams screenshare
       "name ='scratch'"
       "name ='Dunst'"
       "class_g = 'Rofi'"
       "class_g = 'Polybar'"
     ];
     settings.blur-background-exclude = [
+      "name *= 'rect-overlay'" # microsoft teams screenshare
       "window_type = 'dock'"
       "window_type = 'desktop'"
       "class_g = 'Rofi'"
