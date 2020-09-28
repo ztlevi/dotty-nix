@@ -48,6 +48,7 @@ with lib; {
       alias.po = "poetry";
       alias.ipy = "ipython --no-banner";
       alias.ipylab = "ipython --pylab=qt5 --no-banner";
+      alias.pe="pipenv";
     };
   };
 }

@@ -27,7 +27,6 @@ antigen bundle docker-machine
 # PYTHON
 antigen bundle python
 antigen bundle pip
-antigen bundle pipenv
 antigen bundle django
 
 # GO
@@ -63,6 +62,7 @@ antigen bundle web-search
 antigen bundle nmap
 # antigen bundle heroku
 antigen bundle copydir
+antigen bundle copyfile
 antigen bundle common-aliases
 antigen bundle command-not-found
 antigen bundle colored-man-pages
