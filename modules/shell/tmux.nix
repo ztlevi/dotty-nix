@@ -21,7 +21,7 @@ with lib;
         ];
 
       env.TMUX_HOME = "$XDG_CONFIG_HOME/tmux";
-      env.TMUX_PLUGINS_HOME = "$XDG_DATA_HOME/tmux/plugins";
+      env.TMUX_PLUGIN_MANAGER_PATH = "$XDG_DATA_HOME/tmux/plugins";
       env.TMUXIFIER = "$XDG_DATA_HOME/tmuxifier";
       env.TMUXIFIER_LAYOUT_PATH = "$XDG_DATA_HOME/tmuxifier";
       env.PATH = [ "$XDG_DATA_HOME/tmuxifier/bin" "$XDG_CONFIG_HOME/tmux/bin" ];

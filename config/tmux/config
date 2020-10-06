@@ -45,8 +45,6 @@ set -g @continuum-restore 'on'
 # TPM plugins
 # #################################################################################################
 
-set-environment -g TMUX_PLUGIN_MANAGER_PATH "$TMUX_PLUGINS_HOME"
-
 set -g @tpm_plugins '                     \
     ztlevi/maglev                         \
     soyuka/tmux-current-pane-hostname     \
@@ -64,7 +62,7 @@ set -g @tpm_plugins '                     \
 '
 
 # Initialize TMUX plugin manager
-run '$TMUX_PLUGINS_HOME/tpm/tpm'
+run "$XDG_DATA_HOME/tmux/plugins/tpm/tpm"
 
 # #################################################################################################
 # Key Bindings
