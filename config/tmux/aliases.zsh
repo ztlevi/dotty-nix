@@ -2,6 +2,8 @@ unalias tmux
 alias ta='tmux attach -t'
 alias tl='tmux ls'
 alias tksv='tmux kill-server'
+alias trs='tmux rename-session'
+alias trw='tmux rename-window'
 
 function tkss() {
   if [[ -n $(tmux ls | rg $1) ]]; then
@@ -9,7 +11,8 @@ function tkss() {
   fi
 }
 
-alias tshow="tmux new-session 'nvim' \; split-window -h 'cmatrix -C red' \; split-window -v 'ranger $HOME' \; attach"
+alias tshow="tmux new-session 'nvim' \; split-window -h 'cmatrix -C red' \;
+  split-window -v 'ranger $HOME' \; attach"
 
 if [[ -n $TMUX ]]; then # From inside tmux
   # Detach all other clients to this session
