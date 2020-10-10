@@ -3,6 +3,7 @@
 source ${ZDOTDIR}/env.zsh
 
 source ${ZDOTDIR}/bundles.zsh
+source ${ZDOTDIR}/fasd.zsh
 
 source ${ZDOTDIR}/config.zsh
 source ${ZDOTDIR}/utils.zsh
