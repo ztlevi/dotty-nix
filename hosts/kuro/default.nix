@@ -14,10 +14,10 @@
       apps.discord.enable = true;
       apps.telegram.enable = true;
       # apps.skype.enable = true;
-      apps.daw.enable = true; # making music
-      apps.graphics.enable = true; # raster/vector/sprites
-      apps.recording.enable = true; # recording screen/audio
-      apps.vm.enable = true; # virtualbox for testing
+      # apps.daw.enable = true; # making music
+      apps.graphics.tools.enable = true; # raster/vector/sprites
+      apps.recording.video.enable = true; # recording screen/audio
+      # apps.vm.enable = true; # virtualbox for testing
       apps.wpsoffice.enable = true; # virtualbox for testing
       apps.zoom.enable = true; # zoom meeting
 
