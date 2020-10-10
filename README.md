@@ -11,18 +11,18 @@
 
 # My dotfiles
 
-+ **Operating System:** NixOS
-+ **Shell:** zsh + zgen
-+ **DM:** lightdm + lightdm-mini-greeter
-+ **WM:** bspwm + polybar
-+ **Editor:** [Doom Emacs][doom-emacs] (and occasionally [vim][vimrc])
-+ **Terminal:** st
-+ **Launcher:** rofi
-+ **Browser:** firefox
-+ **GTK Theme:** [Ant Dracula](https://github.com/EliverLara/Ant-Dracula)
-+ **Icon Theme:** [Paper Mono Dark](https://github.com/snwh/paper-icon-theme)
+- **Operating System:** NixOS
+- **Shell:** zsh + zgen
+- **DM:** lightdm + lightdm-mini-greeter
+- **WM:** bspwm + polybar
+- **Editor:** [Doom Emacs][doom-emacs] (and occasionally [vim][vimrc])
+- **Terminal:** st
+- **Launcher:** rofi
+- **Browser:** firefox
+- **GTK Theme:** [Ant Dracula](https://github.com/EliverLara/Ant-Dracula)
+- **Icon Theme:** [Paper Mono Dark](https://github.com/snwh/paper-icon-theme)
 
-*Works on my machine* ¯\\\_(ツ)_/¯
+_Works on my machine_ ¯\\\_(ツ)\_/¯
 
 ## Quick start
 

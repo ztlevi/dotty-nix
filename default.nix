@@ -20,12 +20,26 @@ device: username:
       [ ]);
 
   ### NixOS
-  nix.autoOptimiseStore = true;
-  nix.nixPath = options.nix.nixPath.default ++ [
-    # So we can use absolute import paths
-    "bin=/etc/dotfiles/bin/"
-    "config=/etc/dotfiles/config/"
-  ];
+  nix = {
+    # Automatically detects files in the store that have identical contents.
+    autoOptimiseStore = true;
+
+    gc = {
+      # Automatically run the Nix garbage collector daily.
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 10d";
+    };
+
+    # Users that have additional rights when connecting to the Nix daemon.
+    trustedUsers = [ "root" "@wheel" config.my.username ];
+
+    nixPath = options.nix.nixPath.default ++ [
+      # So we can use absolute import paths
+      "bin=/etc/dotfiles/bin/"
+      "config=/etc/dotfiles/config/"
+    ];
+  };
 
   # Add custom packages & unstable channel, so they can be accessed via pkgs.*
   nixpkgs.overlays = import ./packages;
