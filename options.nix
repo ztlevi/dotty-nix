@@ -16,8 +16,11 @@ in {
       ## Convenience aliases
       home =
         mkOption { type = options.home-manager.users.type.functor.wrapped; };
-      user = mkOption { type = types.submodule; };
-      packages = mkOption { type = with types; listOf package; };
+      user = mkOption { type = options.users.users.type.functor.wrapped; };
+      packages = mkOption {
+        type = with types; listOf package;
+        default = [ ];
+      };
 
       ## Environment
       env = mkOption {
@@ -32,6 +35,7 @@ in {
 
       alias = mkOption {
         type = with types; nullOr (attrsOf (nullOr (either str path)));
+        default = { };
       };
       zsh = {
         rc = mkOption {
@@ -54,6 +58,7 @@ in {
       # Darwin.
       casks = mkOption {
         type = with types; nullOr (listOf str);
+        default = [ ];
         description = ''
           Homebrew casks to install on the macOS/Darwin system.
         '';

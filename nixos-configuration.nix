@@ -42,6 +42,15 @@ device: username:
     '')
   ];
 
+  # Default settings for primary user account. `my` is defined in
+  # ./options.nix
+  my.user = {
+    isNormalUser = true;
+    uid = 1000;
+    extraGroups = [ "wheel" "video" "networkmanager" ];
+    shell = pkgs.zsh;
+  };
+
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you

@@ -27,6 +27,10 @@ _Works on my machine_ ¯\\\_(ツ)\_/¯
 ## Quick start
 
 ```sh
+# Set USER and HOST if needed, default is:
+# Linux: export USER=ztlevi; export HOST=kuro
+# MacOS: export USER=ztlevi; export HOST=shiro
+
 # Assumes your partitions are set up and root is mounted on /mnt
 git clone --recurse-submodules -j8 https://github.com/ztlevi/nix-dotfiles /etc/dotfiles
 make -C /etc/dotfiles install
@@ -68,6 +72,14 @@ nixos-install --root /mnt -I "my=/etc/dotfiles"
 ## Macos quickstart
 
 ```sh
+git clone --recurse-submodules -j8 https://github.com/ztlevi/nix-dotfiles ~/.dotfiles
+# Mac host is set to shiro
+make -C ~/.dotfiles install
+```
+
+This is equivalent to:
+
+```sh
 # For single user
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . $HOME/.nix-profile/etc/profile.d/nix.sh
@@ -82,14 +94,9 @@ nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 
-export HOST=shiro
-make -C ~/.dotfiles mac_install
-```
+echo 'import ~/.dotfiles "shiro" "ztlevi"' > ~/.nixpkgs/darwin-configuration.nix
 
-Run once
-
-```sh
-darwin-rebuild switch -I darwin-config=$HOME/.dotfiles/darwin-configuration.nix
+darwin-rebuild switch
 ```
 
 in .zshenv, put
@@ -100,8 +107,6 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc
 
 edit `~/.nixpkgs/darwin-configuration.nix`
 
-### BUILD
+### TODO
 
-```sh
-
-```
+MacOS defaults https://git.bytes.zone/brian/dotfiles.nix/src/branch/main/darwin/defaults.nix

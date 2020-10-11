@@ -56,14 +56,6 @@ in {
     nsh = "nix-shell";
     nen = "nix-env";
     dots = "make -C ~/.dotfiles";
-  };
-
-  # Default settings for primary user account. `my` is defined in
-  # ./options.nix
-  my.user = {
-    isNormalUser = true;
-    uid = 1000;
-    extraGroups = [ "wheel" "video" "networkmanager" ];
-    shell = pkgs.zsh;
+    nr = "nix repl '<nixpkgs>'";
   };
 }

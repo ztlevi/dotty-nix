@@ -3,10 +3,6 @@
 {
   imports = [ <home-manager/nix-darwin> ];
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [ ];
-
   nix = {
     package = pkgs.nix;
     # Automatically detects files in the store that have identical contents.
@@ -20,6 +16,12 @@
       options = "--delete-older-than 10d";
     };
   };
+
+  nixpkgs.overlays = import ./packages;
+
+  # List packages installed in system profile. To search by name, run:
+  # $ nix-env -qaP | grep wget
+  environment.systemPackages = with pkgs; [ ];
 
   # Auto-upgrade the daemon service.
   # services.nix-daemon.enable = true;
@@ -36,6 +38,13 @@
   # FIXME: remove when home-manager zsh is usable
   programs.zsh.enable = true; # default shell on catalina
   # programs.fish.enable = true;
+
+  # Default settings for primary user account. `my` is defined in
+  # ./options.nix
+  my.user = {
+    uid = 1000;
+    shell = pkgs.zsh;
+  };
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

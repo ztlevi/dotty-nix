@@ -1,5 +1,4 @@
 USER ?= ztlevi
-HOME ?= /home/$(USER)
 SYSTEM 		:=$(shell uname -s)
 CI 			?=$(GITHUB_ACTIONS)
 CI 			?=$(TRAVIS)
@@ -14,7 +13,8 @@ FLAGS         := -I "config=$$(pwd)/config" \
 				 $(FLAGS)
 
 ifeq ($(SYSTEM),Linux)
-HOST := kuro
+HOST ?= kuro
+HOME := /home/$(USER)
 # The real Labowski
 all: channels
 	@sudo nixos-rebuild $(FLAGS) $(COMMAND)
@@ -28,7 +28,7 @@ update: channels
 	@sudo nix-channel --update
 
 switch:
-	@sudo nixos-rebuild $(FLAGS) switch --show-trace
+	@sudo nixos-rebuild $(FLAGS) switch
 
 build:
 	@sudo nixos-rebuild $(FLAGS) build
@@ -76,17 +76,32 @@ $(HOME)/.dotfiles:
 endif
 
 ifeq ($(SYSTEM),Darwin)
-HOST := shiro
-switch:
-	@darwin-rebuild $(FLAGS) switch --show-trace
+HOST ?= shiro
+HOME := /Users/$(USER)
 
-install: channels $(DARWIN_PREFIX)/darwin-configuration.nix
+# @darwin-rebuild $(FLAGS) switch --show-trace
+switch:
+	@darwin-rebuild $(FLAGS) switch
+
+nix_install:
+	@bash -c "sh <(curl -L https://nixos.org/nix/install) --no-daemon"
+	@. $(HOME)/.nix-profile/etc/profile.d/nix.sh
+	@mkdir -p /tmp/nix-install && cd /tmp/nix-install; \
+		nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer; \
+		yes | ./result/bin/darwin-installer; \
+		rm -rf /tmp/nix-install
+
+install: nix_install channels $(DARWIN_PREFIX)/darwin-configuration.nix
 	@darwin-rebuild $(FLAGS) switch
 
 channels:
 	@nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 	@nix-channel --update
 
+gc:
+	@nix-collect-garbage -d
+
+config: $(DARWIN_PREFIX)/darwin-configuration.nix
 $(DARWIN_PREFIX)/darwin-configuration.nix:
 	@echo "import ~/.dotfiles \"$${HOST:-$$(hostname)}\" \"$$USER\"" > "$(DARWIN_PREFIX)/darwin-configuration.nix"
 endif
