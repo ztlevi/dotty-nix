@@ -59,12 +59,49 @@ nixos-install --root /mnt -I "my=/etc/dotfiles"
 
 ### Management
 
-+ `make` = `nixos-rebuild test`
-+ `make switch` = `nixos-rebuild switch`
-+ `make upgrade` = `nix-channel --update && nixos-rebuild switch`
-+ `make install` = `nixos-generate-config --root $PREFIX && nixos-install --root
-  $PREFIX`
-+ `make gc` = `nix-collect-garbage -d` (use sudo to clear system profile)
+- `make` = `nixos-rebuild test`
+- `make switch` = `nixos-rebuild switch`
+- `make upgrade` = `nix-channel --update && nixos-rebuild switch`
+- `make install` = `nixos-generate-config --root $PREFIX && nixos-install --root $PREFIX`
+- `make gc` = `nix-collect-garbage -d` (use sudo to clear system profile)
 
+## Macos quickstart
 
-[doom-emacs]: https://github.com/hlissner/doom-emacs
+```sh
+# For single user
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+. $HOME/.nix-profile/etc/profile.d/nix.sh
+
+# For multi-user install see https://nixos.org/manual/nix/stable/#sect-multi-user-installation
+# sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
+# sudo chown -R ztlevi /nix
+
+nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+./result/bin/darwin-installer
+
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+
+export HOST=shiro
+make -C ~/.dotfiles mac_install
+```
+
+Run once
+
+```sh
+darwin-rebuild switch -I darwin-config=$HOME/.dotfiles/darwin-configuration.nix
+```
+
+in .zshenv, put
+
+```sh
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+```
+
+edit `~/.nixpkgs/darwin-configuration.nix`
+
+### BUILD
+
+```sh
+
+```

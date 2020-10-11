@@ -9,31 +9,26 @@
 # aren't are configured from their hosts/*/default.nix).
 
 device: username:
-{ pkgs, options, lib, config, ... }: {
+{ pkgs, options, lib, config, ... }:
+let
+  inherit (lib) optional optionals flatten;
+  inherit (lib.systems.elaborate { system = builtins.currentSystem; })
+    isLinux isDarwin;
+  pwd = builtins.toPath ./.;
+in {
   networking.hostName = lib.mkDefault device;
   my.username = username;
 
-  imports = [ ./modules "${./hosts}/${device}" ]
-    ++ (if builtins.pathExists (/etc/nixos/cachix.nix) then
-      [ /etc/nixos/cachix.nix ]
-    else
-      [ ]);
+  imports = flatten [
+    ./options.nix
+    (optionals isDarwin [ ./darwin-configuration.nix ])
+    (optionals isLinux
+      [ (import ./nixos-configuration.nix "${device}" "${username}") ])
+    (optional (builtins.pathExists /etc/nixos/cachix.nix) /etc/nixos/cachix.nix)
+  ];
 
   ### NixOS
   nix = {
-    # Automatically detects files in the store that have identical contents.
-    autoOptimiseStore = true;
-
-    gc = {
-      # Automatically run the Nix garbage collector daily.
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 10d";
-    };
-
-    # Users that have additional rights when connecting to the Nix daemon.
-    trustedUsers = [ "root" "@wheel" config.my.username ];
-
     nixPath = options.nix.nixPath.default ++ [
       # So we can use absolute import paths
       "bin=/etc/dotfiles/bin/"
@@ -42,30 +37,19 @@ device: username:
   };
 
   # Add custom packages & unstable channel, so they can be accessed via pkgs.*
-  nixpkgs.overlays = import ./packages;
   nixpkgs.config.allowUnfree = true; # forgive me Stallman senpai
 
   # These are the things I want installed on all my systems
   environment.systemPackages = with pkgs; [
     # Just the bear necessities~
-    coreutils
     git
-    killall
-    unzip
     vim
     wget
     curl
-    sshfs
     nixfmt
     fd
-    unstable.cached-nix-shell
     gnumake # for our own makefile
     cachix # less time buildin' mo time nixin'
-    (writeScriptBin "nix-shell" ''
-      #!${stdenv.shell}
-      NIX_PATH="nixpkgs-overlays=/etc/dotfiles/packages/default.nix:$NIX_PATH" ${nix}/bin/nix-shell "$@"
-    '')
-
   ];
   environment.shellAliases = {
     nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
@@ -75,17 +59,11 @@ device: username:
   };
 
   # Default settings for primary user account. `my` is defined in
-  # modules/default.nix
+  # ./options.nix
   my.user = {
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "video" "networkmanager" ];
     shell = pkgs.zsh;
   };
-
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
-  system.stateVersion = "20.03"; # Did you read the comment?
 }
