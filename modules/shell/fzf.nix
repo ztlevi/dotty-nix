@@ -18,7 +18,10 @@ with lib; {
         };
       };
       zsh.rc = lib.readFile <config/fzf/aliases.zsh>;
-      zsh.env = lib.readFile <config/fzf/env.zsh>;
+      zsh.env = ''
+        export FZF_BASE=${pkgs.fzf}/share/fzf
+        ${lib.readFile <config/fzf/env.zsh>}
+      '';
     };
   };
 }
