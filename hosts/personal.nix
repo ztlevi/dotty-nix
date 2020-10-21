@@ -23,11 +23,8 @@
   ### Universal defaults
   networking.firewall.enable = true;
   networking.hosts = {
-    "192.168.1.2" = [ "ao" ];
-    "192.168.1.3" = [ "aka" ];
     "192.168.1.10" = [ "kuro" ];
     "192.168.1.11" = [ "shiro" ];
-    "192.168.1.12" = [ "midori" ];
   };
 
   ### A tidy $HOME is a tidy mind
