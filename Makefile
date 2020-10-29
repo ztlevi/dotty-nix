@@ -3,7 +3,7 @@ SYSTEM 		:=$(shell uname -s)
 CI 			?=$(GITHUB_ACTIONS)
 CI 			?=$(TRAVIS)
 
-NIXOS_VERSION := 20.03
+NIXOS_VERSION := 20.09
 NIXOS_PREFIX  := $(PREFIX)/etc/nixos
 DARWIN_PREFIX := $(HOME)/.nixpkgs
 COMMAND       := test

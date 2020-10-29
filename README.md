@@ -41,7 +41,7 @@ Which is equivalent to:
 ```sh
 USER=${USER:-ztlevi}
 HOST=${HOST:-kuro}
-NIXOS_VERSION=20.03
+NIXOS_VERSION=20.09
 DOTFILES=/home/$USER/.dotfiles
 
 git clone https://github.com/ztlevi/nix-dotfiles /etc/dotfiles

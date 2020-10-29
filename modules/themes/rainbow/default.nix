@@ -27,10 +27,10 @@ in {
     services.picom = {
       fade = true;
       fadeDelta = 5;
-      fadeSteps = [ "0.04" "0.08" ];
+      fadeSteps = [ 4.0e-2 8.0e-2 ];
       shadow = true;
       shadowOffsets = [ (-5) (-5) ];
-      shadowOpacity = "0.36";
+      shadowOpacity = 0.36;
       # activeOpacity = "1.00";
       # inactiveOpacity = "0.90";
       settings = {

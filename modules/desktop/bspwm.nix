@@ -1,5 +1,8 @@
 { config, options, lib, pkgs, ... }:
-with lib; {
+
+with lib;
+let cfg = config.modules.desktop.bspwm;
+in {
   imports = [ ./common.nix ];
 
   options.modules.desktop.bspwm = {
@@ -9,7 +12,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.desktop.bspwm.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       dunst
       arandr
