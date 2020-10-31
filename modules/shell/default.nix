@@ -5,6 +5,7 @@
     ./direnv.nix
     ./git.nix
     ./gnupg.nix
+    ./misc.nix
     ./ncmpcpp.nix
     ./fzf.nix
     ./pass.nix
