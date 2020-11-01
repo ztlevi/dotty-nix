@@ -5,7 +5,7 @@ source $ZDOTDIR/env.zsh
 #
 # Essentials
 #
-_run sxhkd &# keyboard daemon
+_run sxhkd & # keyboard daemon
 
 {
   sleep 1
@@ -83,6 +83,7 @@ bspc config remove_unplugged_monitors true
 bspc rule -r '*'
 
 # Floating fixes
+bspc rule -a Pinentry state=floating center=on
 bspc rule -a mplayer2 state=floating
 bspc rule -a mpv state=floating center=on
 bspc rule -a Vlc state=floating monitor=C center=on
