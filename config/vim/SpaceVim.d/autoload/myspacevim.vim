@@ -18,6 +18,9 @@ function! myspacevim#after() abort
     " Allow backspace and cursor keys to cross line boundaries
     set whichwrap+=<,>,h,l
 
+    " Smart search
+    set ignorecase
+
     " black hole register
     vmap <backspace> "_d
     vmap <del> "_d
