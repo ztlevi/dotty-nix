@@ -10,7 +10,7 @@
     ./rofi.nix
     ./skype.nix
     ./vm.nix
-    ./wpsoffice.nix
+    ./libreoffice.nix
     ./zoom.nix
   ];
 }

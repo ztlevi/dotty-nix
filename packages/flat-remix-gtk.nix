@@ -2,12 +2,12 @@
 
 stdenv.mkDerivation rec {
   pname = "Flat-Remix-GTK";
-  version = "20191224";
+  version = "20201106";
 
   src = fetchurl {
     url =
       "https://github.com/daniruiz/flat-remix-gtk/archive/${version}.tar.gz";
-    sha256 = "14mqw4rnp5v2l7xrx736yvcqyvpkwg1h0hqw6k7rwlz51yr4sk8w";
+    sha256 = "1z16i09pchs5a4sw9rvh169kjigbzw1sk8b65fdsrlpp57iwic3r";
   };
   propagatedUserEnvPkgs = [ gtk-engine-murrine ];
 

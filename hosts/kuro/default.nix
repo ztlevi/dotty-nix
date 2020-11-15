@@ -18,7 +18,7 @@
       apps.graphics.tools.enable = true; # raster/vector/sprites
       apps.recording.video.enable = true; # recording screen/audio
       # apps.vm.enable = true; # virtualbox for testing
-      apps.wpsoffice.enable = true; # virtualbox for testing
+      apps.libreoffice.enable = true; # virtualbox for testing
       apps.zoom.enable = true; # zoom meeting
 
       term.default = "alacritty";
