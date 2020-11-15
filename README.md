@@ -29,11 +29,13 @@ _Works on my machine_ ¯\\\_(ツ)\_/¯
 ```sh
 # Set USER and HOST if needed, default is:
 # Linux: export USER=ztlevi; export HOST=kuro
-# MacOS: export USER=ztlevi; export HOST=shiro
-
 # Assumes your partitions are set up and root is mounted on /mnt
 git clone --recurse-submodules -j8 https://github.com/ztlevi/nix-dotfiles /etc/dotfiles
 make -C /etc/dotfiles install
+
+# MacOS: export USER=ztlevi; export HOST=shiro
+git clone --recurse-submodules -j8 https://github.com/ztlevi/nix-dotfiles ~/.dotfiles
+make -C ~/.dotfiles install
 ```
 
 Which is equivalent to:
