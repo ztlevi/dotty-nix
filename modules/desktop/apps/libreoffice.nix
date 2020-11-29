@@ -1,14 +1,12 @@
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.desktop.apps.libreoffice = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.apps.libreoffice;
+in {
+  options.modules.desktop.apps.libreoffice = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.desktop.apps.libreoffice.enable {
-    my.packages = with pkgs;
+  config = mkIf cfg.enable {
+    user.packages = with pkgs;
       [
         libreoffice-fresh
         # wpsoffice

@@ -1,0 +1,15 @@
+/** Basic config file **/
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "Flat-Remix-Blue";
+}
+
+* {
+  font:               "UbuntuMono Nerd Font Mono 24";
+  bigger-font:        "UbuntuMono Nerd Font Mono 28";
+}
+
+prompt {
+  font:               @bigger-font;
+}

@@ -103,7 +103,7 @@ gc:
 
 config: $(DARWIN_PREFIX)/darwin-configuration.nix
 $(DARWIN_PREFIX)/darwin-configuration.nix:
-	@echo "import ~/.dotfiles \"$${HOST:-$$(hostname)}\" \"$$USER\"" > "$(DARWIN_PREFIX)/darwin-configuration.nix"
+	@echo "import ~/.config/dotfiles \"$${HOST:-$$(hostname)}\" \"$$USER\"" > "$(DARWIN_PREFIX)/darwin-configuration.nix"
 endif
 
 # Convenience aliases

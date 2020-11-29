@@ -6,15 +6,11 @@
 # they get shell programs.
 
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.dev.zsh = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.dev.zsh;
+in {
+  options.modules.dev.zsh = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.dev.zsh.enable {
-    my.packages = with pkgs; [ shellcheck my.zunit ];
-  };
+  config = mkIf cfg.enable { user.packages = with pkgs; [ shellcheck ]; };
 }

@@ -1,25 +1,24 @@
 # Kuro -- my desktop
 
-{ pkgs, options, config, ... }: {
-  imports = [
-    ../personal.nix # common settings
-    ./hardware-configuration.nix
-  ];
+{ ... }: {
+  imports = [ ../personal.nix ./hardware-configuration.nix ];
 
   modules = {
     desktop = {
       bspwm.enable = true;
 
-      apps.rofi.enable = true;
-      apps.discord.enable = true;
-      apps.telegram.enable = true;
-      # apps.skype.enable = true;
-      # apps.daw.enable = true; # making music
-      apps.graphics.tools.enable = true; # raster/vector/sprites
-      apps.recording.video.enable = true; # recording screen/audio
-      # apps.vm.enable = true; # virtualbox for testing
-      apps.libreoffice.enable = true; # virtualbox for testing
-      apps.zoom.enable = true; # zoom meeting
+      apps = {
+        rofi.enable = true;
+        discord.enable = true;
+        telegram.enable = true;
+        etcher.enable = true;
+        webtorrent.enable = true;
+        # skype.enable = true;
+        libreoffice.enable = true;
+        zoom.enable = true; # zoom meeting
+      };
+
+      vm.virtualbox.enable = true;
 
       term.default = "alacritty";
       # term.st.enable = true;
@@ -33,12 +32,19 @@
 
       # gaming.emulators.psx.enable = true;
       # gaming.steam.enable = true;
+      media = {
+        mpv.enable = true;
+        spotify.enable = true;
+        graphics.tools.enable = true; # raster/vector/sprites
+        recording.video.enable = true; # recording screen/audio
+      };
     };
 
     editors = {
       default = "nvim";
       emacs.enable = true;
       vim.enable = true;
+      vscode.enable = true;
     };
 
     dev = {
@@ -49,11 +55,6 @@
       python.enable = true;
       # lua.enable = true;
       # lua.love2d.enable = true;
-    };
-
-    media = {
-      mpv.enable = true;
-      spotify.enable = true;
     };
 
     shell = {
@@ -75,11 +76,21 @@
       fcitx.enable = true;
     };
 
-    # themes.aquanaut.enable = true;
-    themes.rainbow.enable = true;
+    theme.active = "rainbow";
+    # theme.active = "alucard";
   };
 
+  ## Local config
   programs.ssh.startAgent = true;
+  services.openssh.startWhenNeeded = true;
+
   networking.networkmanager.enable = true;
-  time.timeZone = "America/Los_Angeles";
+  # The global useDHCP flag is deprecated, therefore explicitly set to false
+  # here. Per-interface useDHCP will be mandatory in the future, so this
+  # generated config replicates the default behaviour.
+  networking.useDHCP = false;
+
+  # programs.ssh.startAgent = true;
+  # networking.networkmanager.enable = true;
+  # time.timeZone = "America/Los_Angeles";
 }

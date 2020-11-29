@@ -5,15 +5,13 @@
 # tell anyone pls.
 
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.dev.cc = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.dev.cc;
+in {
+  options.modules.dev.cc = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.dev.cc.enable {
-    my.packages = with pkgs; [ clang gcc bear gdb cmake llvmPackages.libcxx ];
+  config = mkIf cfg.enable {
+    user.packages = with pkgs; [ clang gcc bear gdb cmake llvmPackages.libcxx ];
   };
 }

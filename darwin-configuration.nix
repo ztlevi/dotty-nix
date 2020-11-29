@@ -7,12 +7,12 @@
     package = pkgs.nix;
     # Automatically detects files in the store that have identical contents.
     # Users that have additional rights when connecting to the Nix daemon.
-    trustedUsers = [ "root" "@wheel" config.my.username ];
+    trustedUsers = [ "root" "@wheel" config.user.name ];
     gc = {
       # Automatically run the Nix garbage collector daily.
       automatic = true;
       # Run the collector as the current user.
-      user = config.my.username;
+      user = config.user.name;
       options = "--delete-older-than 10d";
     };
   };

@@ -1,30 +1,22 @@
-{ config, pkgs, ... }:
+  { options, config, lib, ... }:
 
-{ config, options, pkgs, lib, ... }:
-with lib; {
-  options.modules.services.ssh = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
+  with lib;
+  with lib.my;
+  let cfg = config.modules.services.ssh;
+  in {
+    options.modules.services.ssh = { enable = mkBoolOpt false; };
+
+    config = mkIf cfg.enable {
+      services.openssh = {
+        enable = true;
+        # forwardX11 = true;
+        # permitRootLogin = "no";
+        challengeResponseAuthentication = false;
+        passwordAuthentication = false;
+      };
+
+      user.openssh.authorizedKeys.keys = [
+        # "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8Tl2pj6CPBV3V72cohPhn+k0a/Na3cOrbmUtFC7rR7icWocSs1S1cSrP3sPLwUqRh3+zfIuLXTrTv3gj8Xvg8WELOspzsiYeAtbcHrnWnx/a7xzYvFyT9/8hkiGM/F6w7IuKEk+AZW34vARSgRPJ1FdH8NbPKJ8ay9zW9XB9YJGnbzIRmsVVpQ8l6Fh8ZqRjZfC1ea7hns8+HgjPrIHFb+S3qZZiwU4Gc8aWJy9ziwwkllEsSchv3aigYA3eOeW0FUQFiKsLGxbX2b2b3d6jFO4Pu+dMSen0h5IzBo0nh7UADSfJPdwbZaMuJzviKe2y6zg6jaM9XRIhLBT6bftDr henrik@lissner.net"
+      ];
     };
-  };
-
-  config = mkIf config.modules.services.ssh.enable {
-    services.openssh = {
-      enable = true;
-      forwardX11 = true;
-      permitRootLogin = "no";
-      passwordAuthentication = false;
-
-      # Allow local LAN to connect with passwords
-      extraConfig = ''
-        Match address 192.168.0.0/24
-        PasswordAuthentication yes
-      '';
-    };
-
-    my.user.openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDDCnX7bBB/qLYetFyExpHL+IiuGw/VMXBVc4kNqabn9MDcAKGdklRmZKno8z7ADj1pZY3AfNv25jd4RQsxi2Moj0Pc4e0aESG3u4BlDt3vSOUscx1icrAFedpu2CELewZk92KxJtYZnmqDp27o2FrEo9f0o21Tstzy12dOE86uUVIqFMkBDGrJxcEDV1I5LTfbG1LKmeQNv+Gn5E197TYzgW6VIaYCwSoVWqc7C7h1/djVE7i/lnkHXdneZEiPqb+oXuU5Nxv8tVL+7QWfPtST54RxT1CvPRL9pBgShprDs74EJTEaulwCn0kn4fIsy20HGk2Wn5BTsRFoKvKbu77twa4NfGs6qYKLe3vFuXYtJIyPITTT0ClpHXoQ2yu+cbDlezVZkwnhnCNEo3HZHpYE/VJIgg5DznXEd8X1mbzA75fHrQaQG7BkuwzhgBRhA6JagW1A54Fy+ZDOINxRTaTLYVXRph6DPLB6wwkHu3Pn28i3FhkX3LVz9OoabqtSJI8= ztlevi.work@.gmail.com"
-    ];
-  };
-}
+  }

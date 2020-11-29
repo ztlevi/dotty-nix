@@ -3,15 +3,12 @@
 # I don't use clojure. Perhaps one day...
 
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.dev.clojure = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.dev.clojure;
+in {
+  options.modules.dev.clojure = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.dev.clojure.enable {
-    my.packages = with pkgs; [ clojure joker leiningen ];
-  };
+  config =
+    mkIf cfg.enable { user.packages = with pkgs; [ clojure joker leiningen ]; };
 }

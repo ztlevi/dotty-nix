@@ -1,20 +1,11 @@
 { config, lib, pkgs, ... }:
-with lib; {
-  imports = [
-    ./firefox.nix
-    ./chrome.nix
-    ./qutebrowser.nix
-    # ./vimb.nix ./vivaldi.nix
-  ];
-
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.browsers;
+in {
   options.modules.desktop.browsers = {
-    default = mkOption {
-      type = with types; nullOr str;
-      default = null;
-    };
+    default = mkOpt (with types; nullOr str) null;
   };
 
-  config = mkIf (config.modules.desktop.browsers.default != null) {
-    my.env.BROWSER = config.modules.desktop.browsers.default;
-  };
+  config = mkIf (cfg.default != null) { env.BROWSER = cfg.default; };
 }

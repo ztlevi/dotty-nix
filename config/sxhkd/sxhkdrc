@@ -28,19 +28,19 @@
 #     emacsclient -e '(open-scratch-frame)'
 
 super + space
-    ~/.dotfiles/bin/rofi/appmenu
+    appmenu
 
 alt + Tab
-    ~/.dotfiles/bin/rofi/windowmenu
+    windowmenu
 
 super + backslash
-    ~/.dotfiles/bin/rofi/passmenu
+    passmenu
 
 super + slash
-    ~/.dotfiles/bin/rofi/filemenu -x
+    filemenu -x
 
 alt + shift + v
-    ~/.dotfiles/bin/rofi/clipboardmenu
+    clipboardmenu
 
 
 super + Return
@@ -68,7 +68,7 @@ super + ctrl + shift + p
     ~/.config/polybar/run.sh
 
 ctrl + shift + .
-    dunstctl context
+    dunstctl history-pop
 
 # bspwm hotkeys
 #
@@ -198,7 +198,7 @@ super + alt + {Left,Down,Up,Right}
 # Media keys
 #
 
-alt + shift + {_,ctrl+} s
+alt + shift + {_,ctrl+} 4
     screenshot {clipboard,save}
 
 alt + shift + r

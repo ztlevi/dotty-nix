@@ -1,21 +1,14 @@
 # modules/browser/chrome.nix
 
 { config, options, lib, pkgs, ... }:
-with lib; {
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.browsers.chrome;
+in {
   options.modules.desktop.browsers.chrome = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-    profileName = mkOption {
-      type = types.str;
-      default = config.my.username;
-    };
+    enable = mkBoolOpt false;
+    profileName = mkOpt types.str config.user.name;
   };
 
-  config = mkIf config.modules.desktop.browsers.chrome.enable {
-    my.packages = with pkgs; [ google-chrome ];
-
-    my.env.XDG_DESKTOP_DIR = "$HOME"; # (try to) prevent ~/Desktop
-  };
+  config = mkIf cfg.enable { user.packages = with pkgs; [ google-chrome ]; };
 }

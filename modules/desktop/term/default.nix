@@ -1,22 +1,15 @@
-{ config, options, lib, pkgs, ... }:
-with lib; {
-  imports = [
-    ./alacritty.nix
-    # ./st.nix
-    # ./urxvt.nix
-  ];
+{ options, config, lib, pkgs, ... }:
 
-  options.modules.desktop.term = {
-    default = mkOption {
-      type = types.str;
-      default = "xterm";
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.term;
+in {
+  options.modules.desktop.term = { default = mkOpt types.str "xterm"; };
 
   config = {
     services.xserver.desktopManager.xterm.enable =
-      config.modules.desktop.term.default == "xterm";
+      mkDefault (cfg.default == "xterm");
 
-    my.env.TERMINAL = config.modules.desktop.term.default;
+    env.TERMINAL = cfg.default;
   };
 }

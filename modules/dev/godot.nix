@@ -4,7 +4,10 @@
 # but to prototype (for 3D, mainly) I'll occasionally reach for godot.
 
 { config, options, lib, pkgs, ... }:
-with lib; {
+with lib;
+with lib.my;
+let cfg = config.modules.dev.godot;
+in {
   options.modules.dev.godot = {
     enable = mkOption {
       type = types.bool;
@@ -13,6 +16,6 @@ with lib; {
   };
 
   config = mkIf config.modules.dev.godot.enable {
-    my.packages = with pkgs; [ godot ];
+    user.packages = with pkgs; [ godot ];
   };
 }

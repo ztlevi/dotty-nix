@@ -1,61 +1,75 @@
-# default.nix --- the heart of my dotfiles
-#
-# Author:  Henrik Lissner <henrik@lissner.net>
-# URL:     https://github.com/ztlevi/nix-dotfiles
-# License: MIT
-#
-# This is ground zero, where the absolute essentials go, to be present on all
-# systems I use nixos on. Most of which are single user systems (the ones that
-# aren't are configured from their hosts/*/default.nix).
+{ inputs, config, lib, pkgs, ... }:
 
-device: username:
-{ pkgs, options, lib, config, ... }:
-let
-  inherit (lib) optional optionals flatten;
-  inherit (lib.systems.elaborate { system = builtins.currentSystem; })
-    isLinux isDarwin;
-  pwd = builtins.toPath ./.;
-in {
-  networking.hostName = lib.mkDefault device;
-  my.username = username;
+with lib;
+with lib.my;
+with inputs; {
+  imports =
+    # I use home-manager to deploy files to $HOME; little else
+    [
+      home-manager.nixosModules.home-manager
+    ]
+    # All my personal modules
+    ++ (mapModulesRec' (toString ./modules) import);
 
-  imports = flatten [
-    ./options.nix
-    (optionals isDarwin [ ./darwin-configuration.nix ])
-    (optionals isLinux
-      [ (import ./nixos-configuration.nix "${device}" "${username}") ])
-    (optional (builtins.pathExists /etc/nixos/cachix.nix) /etc/nixos/cachix.nix)
-  ];
+  # Common config for all nixos machines; and to ensure the flake operates
+  # soundly
+  environment.variables.DOTFILES = dotFilesDir;
+  environment.variables.DOTFILES_ASSET = dotAssetDir;
 
-  ### NixOS
+  # Configure nix and nixpkgs
+  environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
   nix = {
-    nixPath = options.nix.nixPath.default ++ [
-      # So we can use absolute import paths
-      "bin=/etc/dotfiles/bin/"
-      "config=/etc/dotfiles/config/"
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
+    nixPath = [
+      "nixpkgs=${nixpkgs}"
+      "nixpkgs-unstable=${nixpkgs-unstable}"
+      "nixpkgs-overlays=${dotFilesDir}/overlays"
+      "home-manager=${home-manager}"
+      "dotfiles=${dotFilesDir}"
     ];
+    binaryCaches =
+      [ "https://cache.nixos.org/" "https://nix-community.cachix.org" ];
+    binaryCachePublicKeys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+    registry = {
+      nixos.flake = nixpkgs;
+      nixpkgs.flake = nixpkgs-unstable;
+    };
+    useSandbox = true;
+  };
+  system.configurationRevision = mkIf (self ? rev) self.rev;
+  system.stateVersion = "20.09";
+
+  ## Some reasonable, global defaults
+  # This is here to appease 'nix flake check' for generic hosts with no
+  # hardware-configuration.nix or fileSystem config.
+  fileSystems."/".device = "/dev/disk/by-label/nixos";
+
+  # TODO: Use the latest kernel
+  # boot.kernelPackages = pkgs.linuxPackages_5_9;
+
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.configurationLimit = 10;
+    systemd-boot.enable = mkDefault true;
   };
 
-  # Add custom packages & unstable channel, so they can be accessed via pkgs.*
-  nixpkgs.config.allowUnfree = true; # forgive me Stallman senpai
-
-  # These are the things I want installed on all my systems
+  # Just the bear necessities...
   environment.systemPackages = with pkgs; [
-    # Just the bear necessities~
+    cached-nix-shell
+    coreutils
     git
     vim
     wget
     curl
-    nixfmt
     fd
-    gnumake # for our own makefile
-    cachix # less time buildin' mo time nixin'
+    gnumake
+    nixfmt
+
+    killall
+    unzip
+    sshfs
   ];
-  environment.shellAliases = {
-    nix-env = "NIXPKGS_ALLOW_UNFREE=1 nix-env";
-    nsh = "nix-shell";
-    nen = "nix-env";
-    dots = "make -C ~/.dotfiles";
-    nr = "nix repl '<nixpkgs>'";
-  };
 }

@@ -1,13 +1,12 @@
-{ config, options, pkgs, lib, ... }:
-with lib; {
-  options.modules.services.nginx = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+{ config, options, lib, pkgs, ... }:
 
-  config = mkIf config.modules.services.nginx.enable {
+with lib;
+with lib.my;
+let cfg = config.modules.services.nginx;
+in {
+  options.modules.services.nginx = { enable = mkBoolOpt false; };
+
+  config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [ 80 443 ];
 
     services.nginx = {

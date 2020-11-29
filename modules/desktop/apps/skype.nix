@@ -1,13 +1,11 @@
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.desktop.apps.skype = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.apps.skype;
+in {
+  options.modules.desktop.apps.skype = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.desktop.apps.skype.enable {
-    my.packages = with pkgs; [ skypeforlinux skype_call_recorder ];
+  config = mkIf cfg.enable {
+    user.packages = with pkgs; [ skypeforlinux skype_call_recorder ];
   };
 }

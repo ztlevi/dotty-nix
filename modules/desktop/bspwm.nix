@@ -1,18 +1,17 @@
 { config, options, lib, pkgs, ... }:
 
 with lib;
+with lib.my;
 let cfg = config.modules.desktop.bspwm;
 in {
-  imports = [ ./common.nix ];
-
-  options.modules.desktop.bspwm = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+  options.modules.desktop.bspwm = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
+    modules.theme.onReload.bspwm = ''
+      ${pkgs.bspwm}/bin/bspc wm -r
+      source $XDG_CONFIG_HOME/bspwm/bspwmrc
+    '';
+
     environment.systemPackages = with pkgs; [
       dunst
       arandr
@@ -21,25 +20,28 @@ in {
         pulseSupport = true;
         nlSupport = true;
       })
-
-      my.clairvoyance # sddm theme
-
+      # sddm theme
+      (my.clairvoyance.override {
+        autoFocusPassword = true;
+        enableHDPI = true;
+        backgroundURL =
+          "https://media.githubusercontent.com/media/ztlevi/personal-assets/master/wallpapers/red-1.jpg";
+        sha256 =
+          "1y1yiq8f1mf4xa4m5ry26np5gpza8yp3jqc215rj7dnhrdf1p4b5";
+      })
       # Use gnome control center
       dconf
       polkit_gnome
     ];
-
     # link recursively so other modules can link files in their folders
-    my = {
-      home.xdg.configFile = {
-        "sxhkd".source = <config/sxhkd>;
-        "bspwm" = {
-          source = <config/bspwm>;
-          recursive = true;
-        };
+    home.configFile = {
+      "sxhkd".source = "${configDir}/sxhkd";
+      "bspwm" = {
+        source = "${configDir}/bspwm";
+        recursive = true;
       };
-      env.PATH = [ "$DOTFILES/bin/bspwm" ];
     };
+    env.PATH = [ "$DOTFILES/bin/bspwm" ];
 
     console.useXkbConfig = true;
     services = {
@@ -47,7 +49,7 @@ in {
       # Modify monitor setup with arandr or xrandr
       # autorandr --force --save default && autorandr --default default
       autorandr.enable = true;
-      greenclip.enable = true;
+      clipmenu.enable = true;
       picom.enable = true;
       redshift.enable = true;
       xserver = {

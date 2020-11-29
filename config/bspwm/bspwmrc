@@ -36,7 +36,7 @@ for mon in ${MONITORS[@]/${MONITOR}/}; do
   bspc monitor $mon -d {1,2,3,4}
 done
 
-if ! pgrep polybar >/dev/null; then
+if command -v polybar >/dev/null; then
   $XDG_CONFIG_HOME/polybar/run.sh &
 fi
 
@@ -93,6 +93,7 @@ bspc rule -a Screenkey manage=off
 bspc rule -a Tilix
 bspc rule -a Gnome-control-center state=floating
 bspc rule -a Unity-control-center state=floating
+bspc rule -a Gnome-screenshot state=floating
 
 bspc rule -a Alacritty:Alacritty_2
 bspc rule -a Alacritty-scratch state=floating sticky=on center=on

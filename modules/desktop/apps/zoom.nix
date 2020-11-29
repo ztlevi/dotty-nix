@@ -1,13 +1,9 @@
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.desktop.apps.zoom = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.apps.zoom;
+in {
+  options.modules.desktop.apps.zoom = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.desktop.apps.zoom.enable {
-    my.packages = with pkgs; [ zoom-us ];
-  };
+  config = mkIf cfg.enable { user.packages = with pkgs; [ zoom-us ]; };
 }

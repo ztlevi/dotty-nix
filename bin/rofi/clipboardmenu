@@ -1,3 +1,0 @@
-rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -theme theme/clipboardmenu.rasi
-sleep 0.2
-xdotool key shift+Insert

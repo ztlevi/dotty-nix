@@ -1,27 +1,21 @@
 { config, options, lib, pkgs, ... }:
 
-with lib; {
-  options.modules.shell.fzf = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.shell.fzf;
+in {
+  options.modules.shell.fzf = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.shell.fzf.enable {
-    my = {
-      packages = with pkgs; [ fzf ];
-      home.xdg.configFile = {
-        "fzf" = {
-          source = <config/fzf>;
-          recursive = true;
-        };
+  config = mkIf cfg.enable {
+    user.packages = with pkgs; [ fzf ];
+    home.configFile = {
+      "fzf" = {
+        source = "${configDir}/fzf";
+        recursive = true;
       };
-      zsh.rc = lib.readFile <config/fzf/aliases.zsh>;
-      zsh.env = ''
-        export FZF_BASE=${pkgs.fzf}/share/fzf
-        ${lib.readFile <config/fzf/env.zsh>}
-      '';
     };
+    env.FZF_BASE = "${pkgs.fzf}/share/fzf";
+    modules.shell.zsh.rcFiles =
+      [ "${configDir}/fzf/aliases.zsh" "${configDir}/fzf/env.zsh" ];
   };
 }

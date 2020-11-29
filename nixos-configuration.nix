@@ -8,7 +8,6 @@
 # systems I use nixos on. Most of which are single user systems (the ones that
 # aren't are configured from their hosts/*/default.nix).
 
-device: username:
 { pkgs, options, lib, config, ... }: {
   # These are the things I want installed on all my systems
   imports = [ <home-manager/nixos> ./modules "${./hosts}/${device}" ];
@@ -17,7 +16,7 @@ device: username:
     autoOptimiseStore = true;
     # Automatically detects files in the store that have identical contents.
     # Users that have additional rights when connecting to the Nix daemon.
-    trustedUsers = [ "root" "@wheel" config.my.username ];
+    trustedUsers = [ "root" "@wheel" config.user.name ];
 
     gc = {
       # Automatically run the Nix garbage collector daily.

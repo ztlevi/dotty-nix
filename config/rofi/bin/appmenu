@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+launchers=($(fd "launcher_.*" "${0:A:h}"))
+selected_launcher="${launchers[$(($RANDOM % $((${#launchers} - 1)) + 1))]}"
+
+$selected_launcher

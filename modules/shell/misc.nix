@@ -1,22 +1,18 @@
 { config, options, lib, pkgs, ... }:
 
-with lib; {
-  options.modules.shell.misc = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.shell.misc;
+in {
+  options.modules.shell.misc = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.shell.misc.enable {
-    my = {
-      packages = with pkgs; [ nodePackages.prettier ];
-      home.home.file.".cspell.json".source = <config/cspell/.cspell.json>;
-      home.home.file.".prettierrc".source = <config/home/.prettierrc>;
-      home.home.file.".eslintrc".source = <config/home/.eslintrc>;
-      home.home.file.".p4ignore".source = <config/home/.p4ignore>;
-      home.home.file.".pylintrc".source = <config/home/.pylintrc>;
-    };
+  config = mkIf cfg.enable {
+    user.packages = with pkgs; [ nodePackages.prettier ];
+    home.file.".cspell.json".source = "${configDir}/cspell/.cspell.json";
+    home.file.".prettierrc".source = "${configDir}/home/.prettierrc";
+    home.file.".eslintrc".source = "${configDir}/home/.eslintrc";
+    home.file.".p4ignore".source = "${configDir}/home/.p4ignore";
+    home.file.".pylintrc".source = "${configDir}/home/.pylintrc";
   };
 
 }

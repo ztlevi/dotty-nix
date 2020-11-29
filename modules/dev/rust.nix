@@ -8,25 +8,23 @@
 # all the world's problems to be wonderful?
 
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.dev.rust = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.dev.rust;
+in {
+  options.modules.dev.rust = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.dev.rust.enable {
-    my = {
-      packages = with pkgs; [ rustup ];
+  config = mkIf cfg.enable {
+    user.packages = with pkgs; [ rustup ];
 
-      env.RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
-      env.CARGO_HOME = "$XDG_DATA_HOME/cargo";
-      env.PATH = [ "$CARGO_HOME/bin" ];
+    env.RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
+    env.CARGO_HOME = "$XDG_DATA_HOME/cargo";
+    env.PATH = [ "$CARGO_HOME/bin" ];
 
-      alias.rs = "rustc";
-      alias.rsp = "rustup";
-      alias.ca = "cargo";
+    environment.shellAliases = {
+      rs = "rustc";
+      rsp = "rustup";
+      ca = "cargo";
     };
   };
 }

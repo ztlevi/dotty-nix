@@ -14,9 +14,9 @@
 #      curl $url | dd of=/dev/sda
 #
 # 4. Install these dotfiles with
-#      git clone https://github.com/hlissner/dotfiles ~/.dotfiles
-#      ln -s ~/.dotfiles /etc/dotfiles
-#      cd ~/.dotfiles
+#      git clone https://github.com/ztlevi/dotfiles ~/.config/dotfiles
+#      ln -s ~/.config/dotfiles /etc/dotfiles
+#      cd ~/.config/dotfiles
 #      mk install-linode
 #
 # 4. Create a configuration profile:
@@ -30,12 +30,12 @@
 { config, lib, pkgs, ... }: {
   environment.systemPackages = with pkgs; [ inetutils mtr sysstat git ];
 
-  imports = [
-    <modules/editors/vim.nix>
-    <modules/shell/git.nix>
-    <modules/shell/zsh.nix>
-    <modules/services/ssh.nix>
-  ];
+  # imports = [
+  #   <modules/editors/vim.nix>
+  #   <modules/shell/git.nix>
+  #   <modules/shell/zsh.nix>
+  #   <modules/services/ssh.nix>
+  # ];
 
   # GRUB
   boot = {

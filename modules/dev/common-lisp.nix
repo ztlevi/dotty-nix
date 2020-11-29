@@ -3,15 +3,14 @@
 # Mostly for my stumpwm config, and the occasional dip into lisp gamedev.
 
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.dev.common-lisp = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
 
-  config = mkIf config.modules.dev.common-lisp.enable {
-    my.packages = with pkgs; [ sbcl lispPackages.quicklisp ];
+let cfg = config.modules.dev.common-lisp;
+in {
+  options.modules.dev.common-lisp = { enable = mkBoolOpt false; };
+
+  config = mkIf cfg.enable {
+    user.packages = with pkgs; [ sbcl lispPackages.quicklisp ];
   };
 }

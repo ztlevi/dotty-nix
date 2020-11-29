@@ -1,28 +1,13 @@
 { config, options, lib, pkgs, ... }:
-with lib; {
-  imports = [ ./common.nix ];
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.kde;
 
-  options.modules.desktop.kde = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+in {
+  options.modules.desktop.kde = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.desktop.kde.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ libnotify ];
-
-    # link recursively so other modules can link files in their folders
-    # my = {
-    #   home.xdg.configFile = {
-    #     "sxhkd".source = <config/sxhkd>;
-    #     "bspwm" = {
-    #       source = <config/bspwm>;
-    #       recursive = true;
-    #     };
-    #   };
-    #   env.PATH = [ "$DOTFILES/bin/bspwm" ];
-    # };
 
     console.useXkbConfig = true;
     services = {
@@ -42,6 +27,5 @@ with lib; {
     };
     # programs.ssh.askPassword =
     #   pkgs.lib.mkForce "${pkgs.plasma5.ksshaskpass.out}/bin/ksshaskpass";
-
   };
 }

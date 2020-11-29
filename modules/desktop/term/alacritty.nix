@@ -1,33 +1,29 @@
 { config, lib, pkgs, ... }:
 
-with lib; {
-  options.modules.desktop.term.alacritty = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.term.alacritty;
+in {
+  options.modules.desktop.term.alacritty = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.desktop.term.alacritty.enable {
+  config = mkIf cfg.enable {
     # xst-256color isn't supported over ssh, so revert to a known one
-    my = {
-      zsh.rc = ''
-        export TERM=xterm-256color
-        ${lib.readFile <config/alacritty/aliases.zsh>}
-      '';
+    modules.shell.zsh.rcInit =
+      ''[ "$TERM" = xst-256color ] && export TERM=xterm-256color'';
 
-      packages = with pkgs; [
-        alacritty
-        (makeDesktopItem {
-          name = "alacritty";
-          desktopName = "Alacritty Terminal";
-          genericName = "Default terminal";
-          icon = "utilities-terminal";
-          exec = "${alacritty}/bin/alacritty";
-          categories = "Development;System;Utility";
-        })
-      ];
-      home.xdg.configFile = { "alacritty" = { source = <config/alacritty>; }; };
-    };
+    modules.shell.zsh.rcFiles = [ "${configDir}/alacritty/aliases.zsh" ];
+
+    user.packages = with pkgs; [
+      alacritty
+      (makeDesktopItem {
+        name = "alacritty";
+        desktopName = "Alacritty Terminal";
+        genericName = "Default terminal";
+        icon = "utilities-terminal";
+        exec = "${alacritty}/bin/alacritty";
+        categories = "Development;System;Utility";
+      })
+    ];
+    home.configFile = { "alacritty" = { source = "${configDir}/alacritty"; }; };
   };
 }

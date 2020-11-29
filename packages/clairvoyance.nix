@@ -1,6 +1,6 @@
 # SDDM theme package
 { stdenv, fetchFromGitHub, autoFocusPassword ? false, backgroundURL ? null
-, enableHDPI ? false, fileType ? "jpg" }:
+, sha256 ? null, enableHDPI ? false, fileType ? "jpg" }:
 
 let
   boolToStr = b: if b then "true" else "false";
@@ -31,7 +31,10 @@ in stdenv.mkDerivation rec {
       ""
     else
       "cp ${
-        builtins.fetchurl backgroundURL
+        builtins.fetchurl {
+          url = backgroundURL;
+          sha256 = sha256;
+        }
       } $out/share/sddm/themes/clairvoyance/${background}"}
   '';
 

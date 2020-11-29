@@ -2,34 +2,32 @@
 # go-to. I am a vimmer at heart, after all.
 
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.editors.vim = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
+with lib;
+with lib.my;
+let cfg = config.modules.editors.vim;
+in {
+
+  options.modules.editors.vim = { enable = mkBoolOpt false; };
+
+  config = mkIf cfg.enable {
+    user.packages = with pkgs; [ editorconfig-core-c neovim ];
+
+    environment.shellAliases = {
+      vim = "nvim";
+      v = "nvim";
+      sv = "sudo ${pkgs.neovim}/bin/nvim";
     };
-  };
+    env.EDITOR = "nvim";
+    env.VISUAL = "nvim";
 
-  config = mkIf config.modules.editors.vim.enable {
-    my = {
-      packages = with pkgs; [ editorconfig-core-c neovim vimPlugins.spacevim ];
+    home.file.".SpaceVim.d".source = "${configDir}/vim/SpaceVim.d";
+    home.file.".ideavimrc".source = "${configDir}/vim/ideavimrc";
 
-      alias.vim = "nvim";
-      alias.v = "nvim";
-      alias.sv = "sudo ${pkgs.neovim}/bin/nvim";
-      env.EDITOR = "nvim";
-      env.VISUAL = "nvim";
-
-      home.home.file.".SpaceVim.d".source = <config/vim/SpaceVim.d>;
-      home.home.file.".ideavimrc".source = <config/vim/ideavimrc>;
-
-      # Install spacevim
-      zsh.rc = ''
-        if [ ! -d "$HOME/.SpaceVim" ]; then
-          curl -sLf https://spacevim.org/install.sh | bash
-        fi
-      '';
-    };
-
+    # Install spacevim
+    system.userActivationScripts.InstallSpaceVim = ''
+      if [ ! -d "$HOME/.SpaceVim" ]; then
+        curl -sLf https://spacevim.org/install.sh | bash
+      fi
+    '';
   };
 }

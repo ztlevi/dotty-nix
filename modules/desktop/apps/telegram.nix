@@ -1,13 +1,9 @@
 { config, options, lib, pkgs, ... }:
-with lib; {
-  options.modules.desktop.apps.telegram = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-  };
+with lib;
+with lib.my;
+let cfg = config.modules.desktop.apps.telegram;
+in {
+  options.modules.desktop.apps.telegram = { enable = mkBoolOpt false; };
 
-  config = mkIf config.modules.desktop.apps.telegram.enable {
-    my.packages = with pkgs; [ tdesktop ];
-  };
+  config = mkIf cfg.enable { user.packages = with pkgs; [ tdesktop ]; };
 }

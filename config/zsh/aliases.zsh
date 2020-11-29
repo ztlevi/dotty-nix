@@ -19,15 +19,22 @@ k9() {
   else
     process_ids=("${(@f)$(pgrep $1)}")
   fi
-  kill -9 ${process_ids[@]} || "no process found"
+  kill -9 ${process_ids[@]} || "no process found by searching $@"
 }
 alias ka=killall
 
 alias du=dust
 alias dud="dust -d 1"
 
-_is_callable exa && alias ls="exa"
+if _is_callable exa; then
+  alias ls="exa"
+  alias l="exa -1"
+  alias ll="exa -lg"
+  alias la="LC_COLLATE=C exa -la"
+fi
 alias ls="${aliases[ls]:-ls} --color=auto --group-directories-first"
+alias sc="systemctl";
+alias ssc="sudo systemctl";
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -46,6 +53,13 @@ alias rg='noglob rg'
 alias prg="ps aux | rg -i"
 function grep_search() { echo $2 | grep -qiP $1; }
 function rg_search() { echo $2 | rg -qS $1; }
+function vread() {
+  (
+    $@ > /tmp/dummy_vread_file
+    nvim /tmp/dummy_vread_file
+    rm -f /tmp/dummy_vread_file
+  )
+}
 
 # For example, to list all directories that contain a certain file: find . -name
 # .gitattributes | map dirname
@@ -66,4 +80,3 @@ _is_callable antigen && alias ar="antigen reset"
 alias get_window_class="xprop | grep WM_CLASS"
 
 alias nr="nix repl '<nixpkgs/nixos>'"
-alias nx="sudo nixos-rebuild -I 'config=~/.dotfiles/config' -I 'modules=~/.dotfiles/modules' -I 'bin=~/.dotfiles/bin'"
