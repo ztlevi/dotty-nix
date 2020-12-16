@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1607264811,
+        "narHash": "sha256-h7Oo41U+8jdo02cT3oHBYiD7tdZMSqPYRm0p29wx47E=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "465539ad1d1ad458bd2179e5b10ad1d487f92e0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "locked": {
         "lastModified": 1607574544,
@@ -83,6 +103,7 @@
     },
     "root": {
       "inputs": {
+        "darwin": "darwin",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",

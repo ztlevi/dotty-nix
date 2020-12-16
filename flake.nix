@@ -16,6 +16,10 @@
     nixpkgs.url = "nixpkgs/master";
     nixpkgs-unstable.url = "nixpkgs/master";
 
+    # darwin channels
+    darwin.url = "github:lnl7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:rycee/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -24,7 +28,8 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs =
+    inputs@{ self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
     let
       inherit (lib) attrValues;
       inherit (lib.my) mapModules mapModulesRec mapHosts;
@@ -63,5 +68,14 @@
       } // mapModulesRec ./modules import;
 
       nixosConfigurations = mapHosts ./hosts { inherit system; };
+
+      darwinConfigurations."shiro" = darwin.lib.darwinSystem {
+        specialArgs = { inherit lib inputs; };
+        modules = [
+          ./darwin-configuration.nix
+          # darwin.darwinModules.simple
+        ];
+      };
+      darwinPackages = self.darwinConfigurations."shiro".pkgs;
     };
 }
