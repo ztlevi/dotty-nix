@@ -23,9 +23,8 @@ in {
         # shell.zsh.rcFiles  = [ ./config/zsh/prompt.zsh ];
         # shell.tmux.rcFiles = [ ./config/tmux.conf ];
         desktop.browsers = {
-          firefox.userChrome = concatMapStringsSep "\n" readFile [
-            ./config/firefox/userChrome.css
-          ];
+          firefox.userChrome = concatMapStringsSep "\n" readFile
+            [ ./config/firefox/userChrome.css ];
           qutebrowser.userStyles = concatMapStringsSep "\n" toCSSFile [
             ./config/qutebrowser/github.scss
             ./config/qutebrowser/monospace-textareas.scss
@@ -53,8 +52,8 @@ in {
           font-awesome-ttf
         ];
         fontconfig.defaultFonts = {
-          sansSerif = ["Fira Sans"];
-          monospace = ["Fira Code"];
+          sansSerif = [ "Fira Sans" ];
+          monospace = [ "Fira Code" ];
         };
       };
 
@@ -62,7 +61,7 @@ in {
       services.picom = {
         fade = true;
         fadeDelta = 1;
-        fadeSteps = [ 0.01 0.012 ];
+        fadeSteps = [ 1.0e-2 1.2e-2 ];
         shadow = true;
         shadowOffsets = [ (-10) (-10) ];
         shadowOpacity = 0.22;
@@ -87,26 +86,34 @@ in {
       '';
 
       # Other dotfiles
-      home.configFile = with config.modules; mkMerge [
-        {
-          # Sourced from sessionCommands in modules/themes/default.nix
-          "xtheme/90-theme".source = ./config/Xresources;
-        }
-        (mkIf desktop.bspwm.enable {
-          "bspwm/rc.d/polybar".source = ./config/polybar/run.sh;
-          "bspwm/rc.d/theme".source = ./config/bspwmrc;
-        })
-        (mkIf desktop.apps.rofi.enable {
-          "rofi/theme" = { source = ./config/rofi; recursive = true; };
-        })
-        (mkIf (desktop.bspwm.enable || desktop.stumpwm.enable) {
-          "polybar" = { source = ./config/polybar; recursive = true; };
-          "dunst/dunstrc".source = ./config/dunstrc;
-        })
-        (mkIf desktop.media.graphics.vector.enable {
-          "inkscape/templates/default.svg".source = ./config/inkscape/default-template.svg;
-        })
-      ];
+      home.configFile = with config.modules;
+        mkMerge [
+          {
+            # Sourced from sessionCommands in modules/themes/default.nix
+            "xtheme/90-theme".source = ./config/Xresources;
+          }
+          (mkIf desktop.bspwm.enable {
+            "bspwm/rc.d/polybar".source = ./config/polybar/run.sh;
+            "bspwm/rc.d/theme".source = ./config/bspwmrc;
+          })
+          (mkIf desktop.apps.rofi.enable {
+            "rofi/theme" = {
+              source = ./config/rofi;
+              recursive = true;
+            };
+          })
+          (mkIf (desktop.bspwm.enable || desktop.stumpwm.enable) {
+            "polybar" = {
+              source = ./config/polybar;
+              recursive = true;
+            };
+            "dunst/dunstrc".source = ./config/dunstrc;
+          })
+          (mkIf desktop.media.graphics.vector.enable {
+            "inkscape/templates/default.svg".source =
+              ./config/inkscape/default-template.svg;
+          })
+        ];
     })
   ]);
 }

@@ -70,19 +70,12 @@ in {
         '';
       };
 
-      home = with config.modules; {
-        file = mkMerge [
-          (mkIf desktop.browsers.firefox.enable {
-            ".mozilla/firefox/${desktop.browsers.firefox.profileName}.default/chrome/userChrome.css" =
-              {
-                source = ./firefox/userChrome.css;
-              };
-          })
-        ];
-        configFile = mkMerge [
-          (mkIf config.services.xserver.enable {
+      home.configFile = with config.modules;
+        mkMerge [
+          {
+            # Sourced from sessionCommands in modules/themes/default.nix
             "xtheme/90-theme".source = ./config/Xresources;
-          })
+          }
           (mkIf desktop.bspwm.enable {
             "bspwm/rc.d/polybar".source = ./config/polybar/run.sh;
             "bspwm/rc.d/theme".source = ./config/bspwmrc;
@@ -94,30 +87,7 @@ in {
             };
             "dunst/dunstrc".source = ./config/dunstrc;
           })
-          # (mkIf cfg.shell.tmux.enable {
-          #   "tmux/theme".source = ./config/tmux.conf;
-          # })
         ];
-
-        dataFile = mkMerge [
-          (mkIf desktop.browsers.qutebrowser.enable {
-            "qutebrowser/userstyles.css".source = let
-              compiledStyles = with pkgs;
-                runCommand "compileUserStyles" { buildInputs = [ sass ]; } ''
-                  mkdir "$out"
-                  for file in ${./userstyles/qutebrowser}/*.scss; do
-                    scss --sourcemap=none \
-                         --no-cache \
-                         --style compressed \
-                         --default-encoding utf-8 \
-                         "$file" \
-                         >>"$out/userstyles.css"
-                  done
-                '';
-            in "${compiledStyles}/userstyles.css";
-          })
-        ];
-      };
     })
   ]);
 }
