@@ -24,4 +24,11 @@ jobs:
         with:
           name: ztlevi
           signingKey: "${{ secrets.CACHIX_SIGNING_KEY }}"
+      - name: free disk space
+        run: |
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+          df -h
       - run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel -L
