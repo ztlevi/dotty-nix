@@ -4,21 +4,19 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.media.documents;
+let cfg = config.modules.desktop.media.docs;
 in {
-  options.modules.desktop.media.documents = {
-    enable = mkBoolOpt false;
+  options.modules.desktop.media.docs = {
     pdf.enable = mkBoolOpt false;
     ebook.enable = mkBoolOpt false;
+    libreoffice.enable = mkBoolOpt false;
   };
 
-  config = mkIf cfg.enable {
+  config = {
     user.packages = with pkgs; [
       (mkIf cfg.ebook.enable calibre)
-      (mkIf cfg.pdf.enable   evince)
-      # zathura
+      (mkIf cfg.pdf.enable evince)
+      (mkIf cfg.libreoffice.enable libreoffice-fresh)
     ];
-
-    # TODO calibre/evince/zathura dotfiles
   };
 }

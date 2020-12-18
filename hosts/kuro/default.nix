@@ -9,13 +9,8 @@
 
       apps = {
         rofi.enable = true;
-        discord.enable = true;
-        telegram.enable = true;
         etcher.enable = true;
         webtorrent.enable = true;
-        # skype.enable = true;
-        libreoffice.enable = true;
-        zoom.enable = true; # zoom meeting
       };
 
       vm.virtualbox.enable = true;
@@ -34,9 +29,15 @@
       # gaming.steam.enable = true;
       media = {
         mpv.enable = true;
-        spotify.enable = true;
+        # spotify.enable = true;
         graphics.tools.enable = true; # raster/vector/sprites
         recording.video.enable = true; # recording screen/audio
+        docs.pdf.enable = true;
+        docs.libreoffice.enable = true;
+        chat.telegram.enable = true;
+        chat.discord.enable = true;
+        # chat.skype.enable = true;
+        chat.zoom.enable = true;
       };
     };
 
