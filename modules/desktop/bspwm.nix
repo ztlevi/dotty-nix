@@ -26,8 +26,7 @@ in {
         enableHDPI = true;
         backgroundURL =
           "https://media.githubusercontent.com/media/ztlevi/personal-assets/master/wallpapers/red-1.jpg";
-        sha256 =
-          "1y1yiq8f1mf4xa4m5ry26np5gpza8yp3jqc215rj7dnhrdf1p4b5";
+        sha256 = "1y1yiq8f1mf4xa4m5ry26np5gpza8yp3jqc215rj7dnhrdf1p4b5";
       })
       # Use gnome control center
       dconf
@@ -51,7 +50,6 @@ in {
       autorandr.enable = true;
       clipmenu.enable = true;
       picom.enable = true;
-      redshift.enable = true;
       xserver = {
         enable = true;
         layout = "us";

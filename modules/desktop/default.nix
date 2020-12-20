@@ -83,6 +83,11 @@ in {
       };
     };
 
+    services.redshift = {
+      enable = true;
+      extraOptions = [ "-m randr" ];
+    };
+
     services.xserver = {
       displayManager.lightdm.greeters.mini.user = config.user.name;
     };
