@@ -16,7 +16,10 @@
   ];
   # I have a different wifi card in my PC
   # use `sudo lshw -C network` and check driver attribute, it's kernel module.
-  boot.blacklistedKernelModules = [ "iwlwifi" ];
+  boot.blacklistedKernelModules = [
+    "iwlwifi"
+    # "bcma-pci-bridge"
+  ];
   environment.variables.WIRELESS_DEVICE = "wlp6s0";
   services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.opengl.enable = true;
