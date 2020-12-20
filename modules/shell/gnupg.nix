@@ -29,5 +29,9 @@ in {
         max-cache-ttl ${toString cfg.cacheTTL}
       '';
     };
+    # `gpgconf --kill gpg-agent` to restart the agent
+    system.userActivationScripts.changeGnupgPermission = ''
+      chmod 700 ${homeDir}/.gnupg
+    '';
   };
 }
