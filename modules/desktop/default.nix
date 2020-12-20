@@ -19,14 +19,6 @@ in {
     ];
 
     user.packages = with pkgs; [
-      calibre # managing my ebooks
-      evince # pdf reader
-      feh # image viewer
-      mpv # video player
-      celluloid # nice GTK GUI for mpv
-      gnome3.eog # image viewer
-      gnome3.nautilus # file manager
-      i3lock-color # screen lock
       xclip
       xdotool
       libqalculate # calculator cli w/ currency conversion
@@ -38,29 +30,6 @@ in {
         categories = "Development";
       })
     ];
-
-    home-manager.users.${config.user.name} = {
-      xdg.mimeApps.enable = true;
-      # Use get_window_class (xprop) to get the application class name
-      # If not sure about the file type, right click and open with selected app, then check ~/.config/mimeapps.list
-      xdg.mimeApps.defaultApplications = {
-        "audio/mp3" = [ "io.github.celluloid_player.Celluloid.desktop" ];
-        "audio/mp4" = [ "io.github.celluloid_player.Celluloid.desktop" ];
-        "video/x-avi" = [ "io.github.celluloid_player.Celluloid.desktop" ];
-        "video/x-matroska" = [ "io.github.celluloid_player.Celluloid.desktop" ];
-        "video/mp4" =
-          [ "io.github.celluloid_player.Celluloid.desktop" "mpv.desktop" ];
-        "video/mpeg" = [ "io.github.celluloid_player.Celluloid.desktop" ];
-        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
-        "application/x-gnome-saved-search" = [ "org.gnome.Nautilus.desktop" ];
-        "image/jpeg" = [ "eog.desktop" ];
-        "image/jpg" = [ "eog.desktop" ];
-        "image/png" = [ "eog.desktop" ];
-        "application/pdf" = [ "org.gnome.Evince.desktop" ];
-        "text/x-python" = [ "emacs.desktop" ];
-        "torrent" = [ "webtorrent" ];
-      };
-    };
 
     ## Sound
     sound.enable = true;

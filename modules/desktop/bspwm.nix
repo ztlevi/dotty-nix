@@ -28,10 +28,45 @@ in {
           "https://media.githubusercontent.com/media/ztlevi/personal-assets/master/wallpapers/red-1.jpg";
         sha256 = "1y1yiq8f1mf4xa4m5ry26np5gpza8yp3jqc215rj7dnhrdf1p4b5";
       })
-      # Use gnome control center
+      # apps
+      calibre # managing my ebooks
+      evince # pdf reader
+      feh # image viewer
+      mpv # video player
+      celluloid # nice GTK GUI for mpv
+      gnome3.eog # image viewer
+      gnome3.nautilus # file manager
+      gnome3.gnome-screenshot # screenshot
+      polkit_gnome # polkit
+      # for gnome control center
       dconf
-      polkit_gnome
+      gnome3.gnome-control-center
+      i3lock-color # screen lock
     ];
+
+    home-manager.users.${config.user.name} = {
+      xdg.mimeApps.enable = true;
+      # Use get_window_class (xprop) to get the application class name
+      # If not sure about the file type, right click and open with selected app, then check ~/.config/mimeapps.list
+      xdg.mimeApps.defaultApplications = {
+        "audio/mp3" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+        "audio/mp4" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+        "video/x-avi" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+        "video/x-matroska" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+        "video/mp4" =
+          [ "io.github.celluloid_player.Celluloid.desktop" "mpv.desktop" ];
+        "video/mpeg" = [ "io.github.celluloid_player.Celluloid.desktop" ];
+        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+        "application/x-gnome-saved-search" = [ "org.gnome.Nautilus.desktop" ];
+        "image/jpeg" = [ "eog.desktop" ];
+        "image/jpg" = [ "eog.desktop" ];
+        "image/png" = [ "eog.desktop" ];
+        "application/pdf" = [ "org.gnome.Evince.desktop" ];
+        "text/x-python" = [ "emacs.desktop" ];
+        "torrent" = [ "webtorrent" ];
+      };
+    };
+
     # link recursively so other modules can link files in their folders
     home.configFile = {
       "sxhkd".source = "${configDir}/sxhkd";
@@ -63,7 +98,7 @@ in {
         windowManager.bspwm.enable = true;
         displayManager.defaultSession = "none+bspwm";
         # Use some gnome apps
-        desktopManager.gnome3.enable = true;
+        # desktopManager.gnome3.enable = true;
 
         displayManager.sessionCommands = ''
           # Trigger autorandr manually because the service does not work
