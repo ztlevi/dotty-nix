@@ -19,9 +19,14 @@ in {
 
     user.packages = [ pkgs.tomb ];
 
-    home.file."gnupg/gpg-agent.conf" = {
+    # HACK Without this config file you get "No pinentry program" on 20.03.
+    #      programs.gnupg.agent.pinentryFlavor doesn't appear to work, and this
+    #      is cleaner than overriding the systemd unit.
+    # pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry
+    home.file.".gnupg/gpg-agent.conf" = {
       text = ''
         default-cache-ttl ${toString cfg.cacheTTL}
+        max-cache-ttl ${toString cfg.cacheTTL}
       '';
     };
   };
