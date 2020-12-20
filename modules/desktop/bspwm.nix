@@ -9,7 +9,7 @@ in {
   config = mkIf cfg.enable {
     modules.theme.onReload.bspwm = ''
       ${pkgs.bspwm}/bin/bspc wm -r
-      source $XDG_CONFIG_HOME/bspwm/bspwmrc
+      source $XDG_CONFIG_HOME/bspwm/bspwmrc || echo "reload bspwm failed"
     '';
 
     environment.systemPackages = with pkgs; [
@@ -38,16 +38,9 @@ in {
       gnome3.nautilus # file manager
       gnome3.gnome-screenshot # screenshot
       polkit_gnome # polkit
-
       # gnome control center
       dconf
       gnome3.gnome-control-center
-
-      # pass and certificate manager
-      gnome3.libgnome-keyring
-      gnome3.gnome-keyring
-      gnome3.seahorse
-
       i3lock-color # screen lock
     ];
 
@@ -105,7 +98,7 @@ in {
         windowManager.bspwm.enable = true;
         displayManager.defaultSession = "none+bspwm";
         # I'm a window manager user but still lives in Gnome world...
-        # desktopManager.gnome3.enable = true;
+        desktopManager.gnome3.enable = true;
 
         displayManager.sessionCommands = ''
           # Trigger autorandr manually because the service does not work

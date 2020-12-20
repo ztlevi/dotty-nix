@@ -38,6 +38,9 @@ _Works on my machine_ ¯\\\_(ツ)\_/¯
 6. OPTIONAL: Create a sub-directory in `hosts/` for your device. See [host/kuro] as an example.
 7. Reboot!
 
+Note: `hey re` equals `sudo nixos-rebuild --flake .#kuro switch`. You can also add
+`-p <profile-name>` to assign a profile name.
+
 ### Non NixOS Linux
 
 ```sh
