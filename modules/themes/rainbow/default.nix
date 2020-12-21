@@ -17,6 +17,23 @@ in {
             dark = false;
           };
         };
+
+        # Theme specific zsh and tmux config
+        # shell.zsh.rcFiles  = [ ./config/zsh/prompt.zsh ];
+        # shell.tmux.rcFiles = [ ./config/tmux.conf ];
+
+        desktop.browsers = {
+          firefox.userChrome = concatMapStringsSep "\n" readFile
+            [ ./config/firefox/userChrome.css ];
+          qutebrowser.userStyles = concatMapStringsSep "\n" toCSSFile [
+            ./config/userstyles/qutebrowser/github.scss
+            ./config/userstyles/qutebrowser/monospace-textareas.scss
+            ./config/userstyles/qutebrowser/quora.scss
+            ./config/userstyles/qutebrowser/stackoverflow.scss
+            ./config/userstyles/qutebrowser/xkcd.scss
+            ./config/userstyles/qutebrowser/youtube.scss
+          ];
+        };
       };
     }
 
