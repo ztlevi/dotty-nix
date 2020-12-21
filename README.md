@@ -19,7 +19,7 @@
 - **Editor:** [Doom Emacs][doom-emacs] (and occasionally [vim][vimrc])
 - **Terminal:** alacritty
 - **Launcher:** rofi
-- **Browser:** chrome
+- **Browser:** firefox
 - **GTK Theme:** [flat-remix-gtk](https://github.com/daniruiz/flat-remix-gtk)
 - **Icon Theme:** [flat-remix-icon](https://github.com/daniruiz/flat-remix)
 

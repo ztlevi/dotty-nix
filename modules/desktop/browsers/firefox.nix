@@ -43,6 +43,9 @@ in {
 
     modules.desktop.browsers.firefox.settings = {
       "devtools.theme" = "light";
+      # AMD card on Linux with Firefox acceleration will potentially freeze the PC
+      "browser.preferences.defaultPerformanceSettings.enabled" = false;
+      "layers.acceleration.disabled" = true;
       # Enable userContent.css and userChrome.css for our theme modules
       # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       #   # Don't use the built-in password manager; a nixos user is more likely
