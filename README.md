@@ -118,98 +118,28 @@ And I say, `bin/hey`. [What's going on?](http://hemansings.com/)
   My main host [has a README](hosts/kuro/README.org) you can use as a reference. I set up an EFI+GPT
   system and partitions with `parted` and `zfs`.
 
+- **Why did you write bin/hey?**
+
+  I'm nonplussed by the user story for nix's CLI tools and thought fixing it would be more
+  productive than complaining about it on the internet. Then I thought,
+  [why not do both](https://youtube.com/watch?v=vgk-lA12FBk)?
+
 - **How 2 flakes?**
 
-  It wouldn't be the NixOS experience if I gave you all the answers in one, convenient place.
+  Would it be the NixOS experience if I gave you all the answers in one, convenient place?
 
-[nixos]: https://releases.nixos.org/?prefix=nixos/20.09-small/
-[flake]: https://www.tweag.io/blog/2020-05-25-flakes/
+  No, but here are some resources that helped me:
 
-## (Deprecated on Flake) Quick start
-
-```sh
-# Set USER and HOST if needed, default is:
-# Linux: export USER=ztlevi; export HOST=kuro
-# Assumes your partitions are set up and root is mounted on /mnt
-git clone --recurse-submodules -j8 https://github.com/ztlevi/nix-dotfiles /etc/dotfiles
-make -C /etc/dotfiles install
-
-# MacOS: export USER=ztlevi; export HOST=shiro
-git clone --recurse-submodules -j8 https://github.com/ztlevi/nix-dotfiles ~/.config/dotfiles
-make -C ~/.config/dotfiles install
-```
-
-Which is equivalent to:
-
-```sh
-USER=${USER:-ztlevi}
-HOST=${HOST:-kuro}
-NIXOS_VERSION=20.09
-DOTFILES=/home/$USER/.dotfiles
-
-git clone https://github.com/ztlevi/nix-dotfiles /etc/dotfiles
-ln -s /etc/dotfiles $DOTFILES
-chown -R $USER:users $DOTFILES
-
-# make channels
-nix-channel --add "https://nixos.org/channels/nixos-${NIXOS_VERSION}" nixos
-nix-channel --add "https://github.com/rycee/home-manager/archive/release-${NIXOS_VERSION}.tar.gz" home-manager
-nix-channel --add "https://nixos.org/channels/nixpkgs-unstable" nixpkgs-unstable
-
-# make /etc/nixos/configuration.nix
-nixos-generate-config --root /mnt
-echo "import /etc/dotfiles \"$$HOST\" \"$$USER\"" >/mnt/etc/nixos/configuration.nix
-
-# make install
-nixos-install --root /mnt -I "my=/etc/dotfiles"
-```
-
-### Management
-
-- `make` = `nixos-rebuild test`
-- `make switch` = `nixos-rebuild switch`
-- `make upgrade` = `nix-channel --update && nixos-rebuild switch`
-- `make install` = `nixos-generate-config --root $PREFIX && nixos-install --root $PREFIX`
-- `make gc` = `nix-collect-garbage -d` (use sudo to clear system profile)
-
-## Macos quickstart
-
-```sh
-git clone --recurse-submodules -j8 https://github.com/ztlevi/nix-dotfiles ~/.config/dotfiles
-# Mac host is set to shiro
-make -C ~/.config/dotfiles install
-```
-
-This is equivalent to:
-
-```sh
-# For single user
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-. $HOME/.nix-profile/etc/profile.d/nix.sh
-
-# For multi-user install see https://nixos.org/manual/nix/stable/#sect-multi-user-installation
-# sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
-# sudo chown -R ztlevi /nix
-
-nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-./result/bin/darwin-installer
-
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-
-echo 'import ~/.config/dotfiles "shiro" "ztlevi"' > ~/.nixpkgs/darwin-configuration.nix
-
-darwin-rebuild switch
-```
-
-in .zshenv, put
-
-```sh
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-```
-
-edit `~/.nixpkgs/darwin-configuration.nix`
-
-### TODO
-
-MacOS defaults https://git.bytes.zone/brian/dotfiles.nix/src/branch/main/darwin/defaults.nix
+  - [A three-part tweag article that everyone's read.](https://www.tweag.io/blog/2020-05-25-flakes/)
+  - [An overengineered config to scare off beginners.](https://github.com/nrdxp/nixflk)
+  - [A minimalistic config for scared beginners.](https://github.com/colemickens/nixos-flake-example)
+  - [A nixos wiki page that spells out the format of flake.nix.](https://nixos.wiki/wiki/Flakes)
+  - [Official documentation that nobody reads.](https://nixos.org/learn.html)
+  - [Some great videos on general nixOS tooling and hackery.](https://www.youtube.com/channel/UC-cY3DcYladGdFQWIKL90SQ)
+  - A couple flake configs that I [may](https://github.com/LEXUGE/nixos)
+    [have](https://github.com/bqv/nixrc)
+    [shamelessly](https://git.sr.ht/~dunklecat/nixos-config/tree)
+    [rummaged](https://github.com/utdemir/dotfiles) [through](https://github.com/purcell/dotfiles).
+  - [Some notes about using Nix](https://github.com/justinwoo/nix-shorts)
+  - [What helped me figure out generators (for npm, yarn, python and haskell)](https://myme.no/posts/2020-01-26-nixos-for-development.html)
+  - [What y'all will need when Nix drives you to drink.](https://www.youtube.com/watch?v=Eni9PPPPBpg)
