@@ -57,54 +57,26 @@ options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 chosen="$(echo -e "$options" | $rofi_command -p "$uptime" -dmenu -selected-row 2)"
 case $chosen in
 $shutdown)
-  ans=$(confirm_exit &)
-  if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-    systemctl poweroff
-  elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-    exit 0
-  else
-    msg
-  fi
+  systemctl poweroff
   ;;
 $reboot)
-  ans=$(confirm_exit &)
-  if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-    systemctl reboot
-  elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-    exit 0
-  else
-    msg
-  fi
+  systemctl reboot
   ;;
 $lock)
   screenlock
   ;;
 $suspend)
-  ans=$(confirm_exit &)
-  if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-    mpc -q pause
-    amixer set Master mute
-    systemctl suspend
-  elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-    exit 0
-  else
-    msg
-  fi
+  mpc -q pause
+  amixer set Master mute
+  systemctl suspend
   ;;
 $logout)
-  ans=$(confirm_exit &)
-  if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-    if echo ${XDG_SESSION_DESKTOP} | grep -qi "Openbox"; then
-      openbox --exit
-    elif echo ${XDG_SESSION_DESKTOP} | grep -qi "bspwm"; then
-      bspc quit
-    elif echo ${XDG_SESSION_DESKTOP} | grep -qi "i3"; then
-      i3-msg exit
-    fi
-  elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-    exit 0
-  else
-    msg
+  if echo ${XDG_SESSION_DESKTOP} | grep -qi "Openbox"; then
+    openbox --exit
+  elif echo ${XDG_SESSION_DESKTOP} | grep -qi "bspwm"; then
+    bspc quit
+  elif echo ${XDG_SESSION_DESKTOP} | grep -qi "i3"; then
+    i3-msg exit
   fi
   ;;
 esac
