@@ -90,6 +90,8 @@ in {
         layout = "us";
         xkbOptions = "ctrl:swapcaps";
 
+        # I'm a window manager user but still lives in Gnome world...
+        desktopManager.gnome3.enable = true;
         # sddm is a better alternative rather gdm
         displayManager.sddm.enable = true;
         # Clairvoyance theme for sddm https://github.com/JorelAli/nixos/blob/master/README.md
@@ -97,8 +99,6 @@ in {
 
         windowManager.bspwm.enable = true;
         displayManager.defaultSession = "none+bspwm";
-        # I'm a window manager user but still lives in Gnome world...
-        desktopManager.gnome3.enable = true;
 
         displayManager.sessionCommands = ''
           # Trigger autorandr manually because the service does not work
