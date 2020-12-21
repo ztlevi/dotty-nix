@@ -4,34 +4,21 @@ with lib;
 with lib.my;
 let cfg = config.modules.shell.gnupg;
 in {
-  options.modules.shell.gnupg = with types; {
-    enable = mkBoolOpt false;
-    cacheTTL = mkOpt int 604800; # 1 week
-  };
+  options.modules.shell.gnupg = with types; { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    # environment.variables.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
-
-    programs.gnupg.agent = {
+    home-manager.users.${config.user.name}.services.gpg-agent = {
       enable = true;
       pinentryFlavor = "gnome3";
+      defaultCacheTtl = 604800;
+      maxCacheTtl = 604800;
     };
 
-    user.packages = [ pkgs.tomb ];
+    user.packages = [ pkgs.tomb pkgs.gnupg ];
 
-    # HACK Without this config file you get "No pinentry program" on 20.03.
-    #      programs.gnupg.agent.pinentryFlavor doesn't appear to work, and this
-    #      is cleaner than overriding the systemd unit.
-    # Add this to `~/.gnupg/gpg-agent.conf`: pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry
-    home.file.".gnupg/gpg-agent.conf" = {
-      text = ''
-        default-cache-ttl ${toString cfg.cacheTTL}
-        max-cache-ttl ${toString cfg.cacheTTL}
-      '';
-    };
-    # `gpgconf --kill gpg-agent` to restart the agent
     system.userActivationScripts.changeGnupgPermission = ''
-      chmod 700 ${homeDir}/.gnupg
+      mkdir -p ${homeDir}/.gnupg && chmod 700 ${homeDir}/.gnupg
+      ${pkgs.gnupg}/bin/gpgconf --reload gpg-agent
     '';
   };
 }
