@@ -27,7 +27,8 @@ in {
 
     system.userActivationScripts.changeGnupgPermission = ''
       mkdir -p ${homeDir}/.gnupg && chmod 700 ${homeDir}/.gnupg
-      ${pkgs.gnupg}/bin/gpgconf --kill gpg-agent
+      # Restart gpg-agent
+      # ${pkgs.gnupg}/bin/gpgconf --kill gpg-agent
     '';
   };
 }
