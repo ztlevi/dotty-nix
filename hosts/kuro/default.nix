@@ -75,6 +75,7 @@
       # syncthing.enable = true;
       docker.enable = true;
       fcitx.enable = true;
+      ssh.enable = true;
     };
 
     theme.active = "rainbow";

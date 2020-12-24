@@ -12,7 +12,7 @@
         # forwardX11 = true;
         # permitRootLogin = "no";
         challengeResponseAuthentication = false;
-        passwordAuthentication = false;
+        passwordAuthentication = true;
       };
 
       user.openssh.authorizedKeys.keys = [
