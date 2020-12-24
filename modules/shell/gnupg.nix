@@ -17,9 +17,9 @@ in {
     user.packages = [ pkgs.tomb pkgs.gnupg ];
     modules.shell.zsh = {
       rcInit = ''
+        export GPG_TTY="$(tty)"
         # Fallback to pinentry-curses if in ssh terminal
         if [[ -n "$SSH_CONNECTION" ]]; then
-          export GPG_TTY="$(tty)"
           export PINENTRY_USER_DATA="USER_CURSES=1"
         fi
       '';
