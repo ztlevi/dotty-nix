@@ -16,6 +16,7 @@
   ];
   # I have a different wifi card in my PC
   # use `sudo lshw -C network` and check driver attribute, it's kernel module.
+  # To restart wifi module, `sudo modprobe -r iwlwifi && sudo modprobe iwlwifi`
   boot.blacklistedKernelModules = [
     "iwlwifi"
     # "bcma-pci-bridge"
