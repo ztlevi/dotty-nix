@@ -4,7 +4,11 @@ with lib;
 with lib.my;
 let cfg = config.modules.shell.git;
 in {
-  options.modules.shell.git = { enable = mkBoolOpt false; };
+  options.modules.shell.git = {
+    enable = mkBoolOpt false;
+    # TODO: move gpg sign here
+    enableGpgSign = mkBoolOpt true;
+  };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
