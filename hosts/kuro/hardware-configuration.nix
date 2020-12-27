@@ -12,16 +12,16 @@
   boot.kernelModules = [ "kvm-intel" "wl" ];
   boot.extraModulePackages = [
     # FIXME: Watch this thread for fix https://github.com/NixOS/nixpkgs/issues/101040
-    config.boot.kernelPackages.broadcom_sta
+    # config.boot.kernelPackages.broadcom_sta
   ];
   # I have a different wifi card in my PC
   # use `sudo lshw -C network` and check driver attribute, it's kernel module.
   # To restart wifi module, `sudo modprobe -r iwlwifi && sudo modprobe iwlwifi`
   boot.blacklistedKernelModules = [
-    "iwlwifi"
-    # "bcma-pci-bridge"
+    # "iwlwifi"
+    "bcma-pci-bridge"
   ];
-  environment.variables.WIRELESS_DEVICE = "wlp6s0";
+  environment.variables.WIRELESS_DEVICE = "wlo1";
   services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.opengl.enable = true;
 
