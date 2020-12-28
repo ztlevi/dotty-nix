@@ -13,6 +13,10 @@
         # permitRootLogin = "no";
         challengeResponseAuthentication = false;
         passwordAuthentication = true;
+        # Need this for GPG forwarding
+        extraConfig = ''
+          StreamLocalBindUnlink yes
+        '';
       };
 
       user.openssh.authorizedKeys.keys = [

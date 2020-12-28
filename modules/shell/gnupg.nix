@@ -12,6 +12,7 @@ in {
       pinentryFlavor = "gnome3";
       defaultCacheTtl = 604800;
       maxCacheTtl = 604800;
+      enableExtraSocket = true; # For GPG forwarding
     };
 
     user.packages = [ pkgs.tomb pkgs.gnupg ];
