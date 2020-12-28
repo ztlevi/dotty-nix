@@ -16,11 +16,6 @@ in {
     };
 
     user.packages = [ pkgs.tomb pkgs.gnupg ];
-
-    system.userActivationScripts.changeGnupgPermission = ''
-      mkdir -p ${homeDir}/.gnupg && chmod 700 ${homeDir}/.gnupg
-      # Restart gpg-agent
-      # ${pkgs.gnupg}/bin/gpgconf --kill gpg-agent
-    '';
+    modules.shell.zsh.rcFiles = [ "${confgDir}/gpg/aliases.zsh" ];
   };
 }
