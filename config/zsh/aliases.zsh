@@ -29,7 +29,7 @@ alias dud="dust -d 1"
 if _is_callable exa; then
   alias ls="exa"
   alias l="exa -1"
-  alias ll="exa -lg"
+  alias ll="exa -lgf"
   alias la="LC_COLLATE=C exa -la"
 fi
 alias ls="${aliases[ls]:-ls} --color=auto --group-directories-first"
