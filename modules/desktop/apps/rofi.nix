@@ -7,12 +7,6 @@ in {
   options.modules.desktop.apps.rofi = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    # link recursively so other modules can link files in its folder
-    # home.xdg.configFile."rofi" = {
-    #   source = <config/rofi>;
-    #   recursive = true;
-    # };
-
     env.PATH = [ "${configDir}/rofi/bin" "$PATH" ];
     home.configFile."rofi" = {
       source = "${configDir}/rofi";

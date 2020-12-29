@@ -16,6 +16,6 @@ in {
     };
 
     user.packages = [ pkgs.tomb pkgs.gnupg ];
-    modules.shell.zsh.rcFiles = [ "${confgDir}/gpg/aliases.zsh" ];
+    modules.shell.zsh.rcFiles = [ "${configDir}/gpg/aliases.zsh" ];
   };
 }

@@ -1,8 +1,0 @@
-/* -*- mode: css; -*- */
-@import "config.rasi" textbox-icon {
-  str: "  ";
-}
-
-listview {
-  columns: 1;
-}
