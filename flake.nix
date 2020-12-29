@@ -72,7 +72,7 @@
       darwinConfigurations."shiro" = darwin.lib.darwinSystem {
         specialArgs = { inherit lib inputs; };
         modules = [
-          ./darwin-configuration.nix
+          ./default-darwin.nix
           # darwin.darwinModules.simple
         ];
       };
