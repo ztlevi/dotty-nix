@@ -32,6 +32,7 @@ in {
       gnutls # for TLS connectivity
 
       ## Optional dependencies
+      vmtouch # cache in memory
       fd # faster projectile indexing
       imagemagick # for image-dired
       (mkIf (config.programs.gnupg.agent.enable)
@@ -88,6 +89,12 @@ in {
         ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs -b develop $XDG_CONFIG_HOME/emacs
         ''${XDG_CONFIG_HOME}/emacs/bin/doom install
       fi
+    '';
+
+    system.userActivationScripts.cacheEmacsInMemory = ''
+      ${pkgs.vmtouch}/bin/vmtouch $HOME/config/emacs
+      ${pkgs.vmtouch}/bin/vmtouch $HOME/config/doom
+      notify-send "Emacs config has been cached in memory!"
     '';
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
