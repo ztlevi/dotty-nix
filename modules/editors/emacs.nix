@@ -84,17 +84,17 @@ in {
 
     # TODO:
     system.userActivationScripts.InstallDoomEmacs = ''
-      if [ ! -d ''${XDG_CONFIG_HOME}/doom ]; then ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config $XDG_CONFIG_HOME/doom; fi
-      if [ ! -d ''${XDG_CONFIG_HOME}/emacs ];then
+      if [[ ! -d ''${XDG_CONFIG_HOME}/doom ]]; then ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config $XDG_CONFIG_HOME/doom; fi
+      if [[ ! -d ''${XDG_CONFIG_HOME}/emacs ]];then
         ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs -b develop $XDG_CONFIG_HOME/emacs
         ''${XDG_CONFIG_HOME}/emacs/bin/doom install
       fi
     '';
 
     system.userActivationScripts.cacheEmacsInMemory = ''
-      ${pkgs.vmtouch}/bin/vmtouch $HOME/config/emacs
-      ${pkgs.vmtouch}/bin/vmtouch $HOME/config/doom
-      notify-send "Emacs config has been cached in memory!"
+      [[ -d ''${XDG_CONFIG_HOME}/doom ]] && ${pkgs.vmtouch}/bin/vmtouch -vt ''${XDG_CONFIG_HOME}/doom
+      [[ -d ''${XDG_CONFIG_HOME}/emacs ]] && ${pkgs.vmtouch}/bin/vmtouch -vt ''${XDG_CONFIG_HOME}/emacs
+      ${pkgs.libnotify}/bin/notify-send --urgency=low "Emacs config has been cached in memory!"
     '';
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
