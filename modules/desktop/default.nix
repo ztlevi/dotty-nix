@@ -21,6 +21,7 @@ in {
     user.packages = with pkgs; [
       xclip
       xdotool
+      wmctrl
       libqalculate # calculator cli w/ currency conversion
       (makeDesktopItem {
         name = "scratch-calc";
