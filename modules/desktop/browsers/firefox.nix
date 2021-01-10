@@ -47,7 +47,7 @@ in {
       "browser.preferences.defaultPerformanceSettings.enabled" = false;
       "layers.acceleration.disabled" = true;
       # Enable userContent.css and userChrome.css for our theme modules
-      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      # "toolkit.legacyUserProfileCustomizations.stylesheets" = false;
       #   # Don't use the built-in password manager; a nixos user is more likely
       #   # using an external one (you are using one, right?).
       #   "signon.rememberSignons" = false;
