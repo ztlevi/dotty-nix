@@ -47,8 +47,7 @@ with inputs; {
   # hardware-configuration.nix or fileSystem config.
   fileSystems."/".device = "/dev/disk/by-label/nixos";
 
-  # TODO: Use the latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_5_8;
+  boot.kernelPackages = pkgs.linuxPackages_5_4;
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.loader = {

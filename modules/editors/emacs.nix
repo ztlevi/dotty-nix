@@ -19,9 +19,9 @@ in {
   config = mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
     user.packages = with pkgs; [
-      # unstable.emacs
+      unstable.emacs
       binutils
-      emacsPgtkGcc
+      # emacsPgtkGcc
 
       # If you use vterm, build emacs with vterm support
       # ((emacsPackagesNgGen emacs).emacsWithPackages (epkgs: [ epkgs.vterm ]))
