@@ -2,7 +2,7 @@
     alignment = left
     markup = full
     bounce_freq = 0
-    browser = firefox
+    browser = google-chrome-stable
     dmenu = dunst-dmenu
     follow = keyboard
     font = DejaVu Sans 24

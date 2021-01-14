@@ -19,9 +19,9 @@
       # term.st.enable = true;
       term.alacritty.enable = true;
 
-      browsers.default = "firefox";
-      # browsers.chrome.enable = true;
-      browsers.firefox.enable = true;
+      browsers.default = "google-chrome-stable";
+      browsers.chrome.enable = true;
+      # browsers.firefox.enable = true;
       # browsers.qutebrowser.enable = true;
       # browsers.vimb.enable = true;
 
