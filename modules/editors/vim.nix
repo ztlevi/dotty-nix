@@ -10,7 +10,7 @@ in {
   options.modules.editors.vim = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [ editorconfig-core-c neovim ];
+    user.packages = with pkgs; [ neovim ];
 
     environment.shellAliases = {
       vim = "nvim";

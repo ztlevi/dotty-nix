@@ -46,6 +46,7 @@
       emacs.enable = true;
       vim.enable = true;
       vscode.enable = true;
+      editorconfig.enable = true;
     };
 
     dev = {
