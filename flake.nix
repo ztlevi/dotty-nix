@@ -77,5 +77,7 @@
         ];
       };
       darwinPackages = self.darwinConfigurations."shiro".pkgs;
+
+      devShell."${system}" = import ./shell.nix { inherit pkgs; };
     };
 }
