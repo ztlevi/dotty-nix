@@ -55,6 +55,7 @@ in {
       bat
       du-dust
       ripgrep
+      procs
       shellcheck
       shfmt
       trash-cli
