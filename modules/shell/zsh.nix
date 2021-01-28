@@ -52,6 +52,7 @@ in {
       direnv
       bashdb
       exa
+      bat
       du-dust
       ripgrep
       shellcheck
