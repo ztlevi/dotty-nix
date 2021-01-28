@@ -1,8 +1,6 @@
 * Inbox
-** TODO programs.starship
 ** TODO Personal packages https://git.ophanim.de/derped/nixos/src/commit/bb62fe82b496e863aa05efce00b6403a87c7ca4a/pkgs
 ** picom hlissner setting with nvidia
 ** Doom clone options, and spacevim
 ** hlissner's kuro hardware conifguration nvidia select screen
-** clairvoyance package
-
+** TODO Reviewed hlissner's 25f0d8044a0e90fecf3da126fb2c3643c6d3dc32
