@@ -1,12 +1,12 @@
-if _is_callable fzf-share; then
-  source "$(fzf-share)/key-bindings.zsh"
-  source "$(fzf-share)/completion.zsh"
-fi
-bindkey -M viins '^[x' fzf-history-widget
-bindkey -M viins '^[p' fzf-file-widget
-bindkey -M viins "^r" fzf-history-widget
-bindkey "^I" fzf-completion
+# Define an init function and append to zvm_after_init_commands
+function personal_fzf_bind_keys() {
+  bindkey '^[x' fzf-history-widget
+  bindkey '^[p' fzf-file-widget
+  bindkey '^r' fzf-history-widget
+  bindkey "^I" fzf-completion
+}
+zvm_after_init_commands+=(personal_fzf_bind_keys)
 
-for file in ${XDG_CONFIG_HOME}/fzf/addons/*.zsh; do
+for file in ${0:A:h}/addons/*.zsh; do
   source ${file}
 done

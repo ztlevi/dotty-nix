@@ -80,6 +80,7 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
 # Install nixUnstable
 nix-env -f https://github.com/nixos/nixpkgs/archive/nixpkgs-20.09-darwin.tar.gz -iA nixUnstable
+nix-env -f https://github.com/nixos/nixpkgs/archive/nixpkgs-unstable.tar.gz -iA nixUnstable
 
 # Build the system
 nix --experimental-features 'flakes nix-command' build $HOME/.config/dotfiles#darwinConfigurations.shiro.system

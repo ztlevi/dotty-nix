@@ -21,15 +21,14 @@ with inputs; {
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
-    nixPath = [
+    nixPath = (mapAttrsToList (n: v: "${n}=${v}") inputs) ++ [
       "nixpkgs=${nixpkgs}"
       "nixpkgs-unstable=${nixpkgs-unstable}"
       "nixpkgs-overlays=${dotFilesDir}/overlays"
       "home-manager=${home-manager}"
       "dotfiles=${dotFilesDir}"
     ];
-    binaryCaches =
-      [ "https://cache.nixos.org/" "https://nix-community.cachix.org" ];
+    binaryCaches = [ "https://nix-community.cachix.org" ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
@@ -45,7 +44,7 @@ with inputs; {
   ## Some reasonable, global defaults
   # This is here to appease 'nix flake check' for generic hosts with no
   # hardware-configuration.nix or fileSystem config.
-  fileSystems."/".device = "/dev/disk/by-label/nixos";
+  fileSystems."/".device = mkDefault "/dev/disk/by-label/nixos";
 
   boot.kernelPackages = pkgs.linuxPackages_5_4;
   # boot.kernelPackages = pkgs.linuxPackages_latest;

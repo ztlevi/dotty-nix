@@ -63,8 +63,8 @@ function main {
     # Move to $DOTFILES to prevent polluting the system with result links
     pushd $DOTFILES >/dev/null
     case $OSTYPE in
-      linux*) _do sudo nixos-rebuild --flake ".#$HOST" ${@:-build} ;;
-      darwin*) _do darwin-rebuild --flake ".#$HOST" ${@:-build} ;;
+      linux*) _do sudo nixos-rebuild --flake ".#${HOSTNAME:-$HOST}" ${@:-build} ;;
+      darwin*) _do darwin-rebuild --flake ".#${HOSTNAME:-$HOST}" ${@:-build} ;;
     esac
     popd >/dev/null
   }
@@ -133,9 +133,8 @@ function main {
   cmd="$1"
   [[ $# > 0 ]] && shift
   case "$cmd" in
-    # TODO Repl/shell for nixos+dotfiles
-    # sh|shell)    _do nix-shell "$@"             ;;
-    # repl)        _do nix develop "$@"           ;;
+    sh|shell)    _do nix develop "$DOTFILES" "$@"             ;;
+    repl)        _do nix repl "$DOTFILES/flake.nix" "<nixpkgs>" "$@"           ;;
 
     ch|check)    _do nix flake check "$@" "$DOTFILES";;
     sh|show)     _do nix flake show "$@" "$DOTFILES" ;;
