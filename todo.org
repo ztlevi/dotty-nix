@@ -4,3 +4,4 @@
 ** Doom clone options, and spacevim
 ** hlissner's kuro hardware conifguration nvidia select screen
 ** TODO Reviewed hlissner's 25f0d8044a0e90fecf3da126fb2c3643c6d3dc32
+** TODO Use fcitx 5
