@@ -9,6 +9,7 @@ compdef r=sched
 
 # aliases common to all shells
 alias q=exit
+alias pv=printenv
 alias open=open_command
 alias clr=clear
 alias sudo='sudo '
