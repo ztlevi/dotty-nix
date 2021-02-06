@@ -87,6 +87,19 @@ nix --experimental-features 'flakes nix-command' build $HOME/.config/dotfiles#da
 ./result/sw/bin/darwin-rebuild switch --flake $HOME/.config/dotfiles#shiro
 ```
 
+## Uninstall
+
+``` sh
+rm -rf $HOME/{.nix-channels,.nix-defexpr,.nix-profile,.config/nixpkgs}
+sudo rm -rf /nix
+
+if [[ $(_os) == "macos" ]]; then
+  # Delete Users in macos
+  for num in {1..32}; do sudo dscl . -delete /Users/nixbld$num; done
+  sudo dscl . -delete /Groups/nixbld
+fi
+```
+
 ## Management
 
 And I say, `bin/hey`. [What's going on?](http://hemansings.com/)
