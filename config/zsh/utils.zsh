@@ -54,6 +54,10 @@ function update_topics {
   declare -a topics
   topics=( "$DOTFILES_DATA"/*.topic(N) )
   for topic in ${${${topics[@]#$DOTFILES_DATA/}%.topic}/.//}; do
+    # Skip update shell/git
+    # if [[ ${topic} == "shell/git" ]]; then
+    #   continue
+    # fi
     ${DOTFILES}/deploy -l ${topic}
   done
 }
@@ -88,22 +92,21 @@ function update_my_repos() {
     )
   } &
   PID1=$!
-  update_git_repo ${HOME}/.doom.d &
+  local last_doom_rev=$(git -C ${XDG_CONFIG_HOME}/doom rev-parse HEAD)
+  update_git_repo ${XDG_CONFIG_HOME}/doom &
   PID2=$!
-  update_git_repo ${ZSH} &
-  PID3=$!
   antigen update >${ANTIGEN_SUMMARY_FILE} &
-  PID4=$!
+  PID3=$!
 
   wait ${PID1}
   wait ${PID2}
   wait ${PID3}
-  wait ${PID4}
 
   _cache_clear
 
   echo ${fg_bold[white]}${bg[blue]}"$(center_text 'Doom Sync Summary' '>')"${reset_color}
-  doom sync
+  local cur_doom_rev=$(git -C ${XDG_CONFIG_HOME}/doom rev-parse HEAD)
+  [[ $cur_doom_rev != $last_doom_rev ]] && doom sync
 
   echo ${fg_bold[white]}${bg[blue]}"$(center_text 'Antigen Summary' '>')"${reset_color}
   cat ${ANTIGEN_SUMMARY_FILE}
