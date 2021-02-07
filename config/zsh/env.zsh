@@ -64,7 +64,9 @@ function _ensure_repo() {
       url=git@github.com:$USER/$target.git
     fi
     [[ -n ${dest%/*} ]] && mkdir -p ${dest%/*}
-    git clone --recursive "$url" "$dest" || return 1
+    git clone --recursive --depth 1 "$url" "$dest" || return 1
+  else
+    git -C $dest pull
   fi
 }
 
