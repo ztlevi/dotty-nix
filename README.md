@@ -10,6 +10,7 @@
 <span><img src="/../screenshots/fluorescence/tiling.png?raw=true" height="188" /></span>
 </p>
 
+
 # My dotfiles
 
 - **Operating System:** NixOS
@@ -26,6 +27,8 @@
 _Works on my machine_ ¯\\\_(ツ)\_/¯
 
 ## Quick start
+
+> Note: if you're in China, use the mirror instead https://mirrors.tuna.tsinghua.edu.cn/help/nix/
 
 ### NixOS
 
