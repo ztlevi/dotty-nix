@@ -5,6 +5,7 @@ with lib; rec {
   # ...
   dotFilesDir = toString ../.;
   modulesDir = "${dotFilesDir}/modules";
+  configDirBackup = "${dotFilesDir}/config-backup";
   configDir = "${dotFilesDir}/config";
   binDir = "${dotFilesDir}/bin";
   dotAssetDir = "$XDG_CONFIG_HOME/dotfiles/assets";

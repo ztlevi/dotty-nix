@@ -25,7 +25,7 @@ in {
         autoFocusPassword = true;
         enableHDPI = true;
         backgroundURL = "https://i.imgur.com/zt68gmt.jpeg";
-        sha256 = "1y1yiq8f1mf4xa4m5ry26np5gpza8yp3jqc215rj7dnhrdf1p4b5";
+        sha256 = "0gq2vqgwqnndwkr75b9zfn3hphrp2fdlsxxc6g94n4kkg68ibrbh";
       })
       # apps
       calibre # managing my ebooks
@@ -68,9 +68,9 @@ in {
 
     # link recursively so other modules can link files in their folders
     home.configFile = {
-      "sxhkd".source = "${configDir}/sxhkd";
+      "sxhkd".source = "${configDirBackup}/sxhkd";
       "bspwm" = {
-        source = "${configDir}/bspwm";
+        source = "${configDirBackup}/bspwm";
         recursive = true;
       };
     };

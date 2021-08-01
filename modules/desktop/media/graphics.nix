@@ -42,7 +42,7 @@ in {
 
     home.configFile = mkIf cfg.raster.enable {
       "GIMP/2.10" = {
-        source = "${configDir}/gimp";
+        source = "${configDirBackup}/gimp";
         recursive = true;
       };
     };

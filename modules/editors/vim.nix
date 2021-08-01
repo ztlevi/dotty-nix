@@ -20,8 +20,8 @@ in {
     env.EDITOR = "nvim";
     env.VISUAL = "nvim";
 
-    home.file.".SpaceVim.d".source = "${configDir}/vim/SpaceVim.d";
-    home.file.".ideavimrc".source = "${configDir}/vim/ideavimrc";
+    home.file.".SpaceVim.d".source = "${configDirBackup}/vim/SpaceVim.d";
+    home.file.".ideavimrc".source = "${configDirBackup}/vim/ideavimrc";
 
     # Install spacevim
     system.userActivationScripts.InstallSpaceVim = ''

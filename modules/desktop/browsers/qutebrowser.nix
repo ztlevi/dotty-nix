@@ -29,7 +29,7 @@ in {
 
     home = {
       configFile."qutebrowser" = {
-        source = "${configDir}/qutebrowser";
+        source = "${configDirBackup}/qutebrowser";
         recursive = true;
       };
       dataFile."qutebrowser/userstyles.css".text = cfg.userStyles;

@@ -8,11 +8,11 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ nodePackages.prettier ];
-    home.file.".cspell.json".source = "${configDir}/cspell/.cspell.json";
-    home.file.".prettierrc".source = "${configDir}/home/.prettierrc";
-    home.file.".eslintrc".source = "${configDir}/home/.eslintrc";
-    home.file.".p4ignore".source = "${configDir}/home/.p4ignore";
-    home.file.".pylintrc".source = "${configDir}/home/.pylintrc";
+    home.file.".cspell.json".source = "${configDirBackup}/cspell/.cspell.json";
+    home.file.".prettierrc".source = "${configDirBackup}/home/.prettierrc";
+    home.file.".eslintrc".source = "${configDirBackup}/home/.eslintrc";
+    home.file.".p4ignore".source = "${configDirBackup}/home/.p4ignore";
+    home.file.".pylintrc".source = "${configDirBackup}/home/.pylintrc";
   };
 
 }
