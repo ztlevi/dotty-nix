@@ -9,7 +9,7 @@
         clairvoyance = (callPackage ./clairvoyance.nix {
           autoFocusPassword = true;
           enableHDPI = true;
-          backgroundURL = "https://imgur.com/zt68gmt";
+          backgroundURL = "https://i.imgur.com/zt68gmt.jpeg";
         });
         flat-remix-gtk = (callPackage ./flat-remix-gtk.nix { });
       };

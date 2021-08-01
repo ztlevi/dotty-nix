@@ -24,7 +24,7 @@ in {
       (my.clairvoyance.override {
         autoFocusPassword = true;
         enableHDPI = true;
-        backgroundURL = "https://imgur.com/zt68gmt";
+        backgroundURL = "https://i.imgur.com/zt68gmt.jpeg";
         sha256 = "1y1yiq8f1mf4xa4m5ry26np5gpza8yp3jqc215rj7dnhrdf1p4b5";
       })
       # apps
