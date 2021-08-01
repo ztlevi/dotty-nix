@@ -9,8 +9,7 @@
         clairvoyance = (callPackage ./clairvoyance.nix {
           autoFocusPassword = true;
           enableHDPI = true;
-          backgroundURL =
-            "https://media.githubusercontent.com/media/ztlevi/personal-assets/master/wallpapers/pink-2.jpg";
+          backgroundURL = "https://imgur.com/zt68gmt";
         });
         flat-remix-gtk = (callPackage ./flat-remix-gtk.nix { });
       };
