@@ -46,6 +46,11 @@ in {
       # AMD card on Linux with Firefox acceleration will potentially freeze the PC
       "browser.preferences.defaultPerformanceSettings.enabled" = false;
       "layers.acceleration.disabled" = true;
+      # Disable media autoplay https://support.mozilla.org/en-US/questions/1278114
+      "media.autoplay.block-event.enabled" = true;
+      "media.autoplay.blocking_policy" = 2;
+      "media.autoplay.default" = 5;
+      "media.block-autoplay-until-in-foreground" = false;
       # Enable userContent.css and userChrome.css for our theme modules
       # "toolkit.legacyUserProfileCustomizations.stylesheets" = false;
       #   # Don't use the built-in password manager; a nixos user is more likely
