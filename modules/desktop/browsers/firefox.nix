@@ -43,6 +43,7 @@ in {
 
     modules.desktop.browsers.firefox.settings = {
       "devtools.theme" = "light";
+      # If firefox crashes system, try firefox-safe-mode https://support.mozilla.org/en-US/questions/1275189
       # AMD card on Linux with Firefox acceleration will potentially freeze the PC
       "browser.preferences.defaultPerformanceSettings.enabled" = false;
       "layers.acceleration.disabled" = true;
