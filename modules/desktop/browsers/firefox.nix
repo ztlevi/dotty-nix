@@ -26,13 +26,13 @@ in {
 
   config = mkIf cfg.enable (mkMerge [{
     user.packages = with pkgs; [
-      firefox-bin
+      firefox
       (makeDesktopItem {
         name = "firefox-private";
         desktopName = "Firefox (Private)";
         genericName = "Open a private Firefox window";
         icon = "firefox";
-        exec = "${firefox-bin}/bin/firefox --private-window";
+        exec = "${firefox}/bin/firefox --private-window";
         categories = "Network";
       })
     ];
@@ -130,36 +130,5 @@ in {
       #   "datareporting.policy.dataSubmissionEnabled" = false;
     };
 
-    # Use a stable profile name so we can target it in themes
-    home.file = let cfgPath = ".mozilla/firefox";
-    in {
-      "${cfgPath}/profiles.ini".text = ''
-        [Profile0]
-        Name=default
-        IsRelative=1
-        Path=${cfg.profileName}.default
-        Default=1
-
-        [General]
-        StartWithLastProfile=1
-        Version=2
-      '';
-
-      "${cfgPath}/${cfg.profileName}.default/user.js" =
-        mkIf (cfg.settings != { } || cfg.extraConfig != "") {
-          text = ''
-            ${concatStrings (mapAttrsToList (name: value: ''
-              user_pref("${name}", ${builtins.toJSON value});
-            '') cfg.settings)}
-            ${cfg.extraConfig}
-          '';
-        };
-
-      "${cfgPath}/${cfg.profileName}.default/chrome/userChrome.css" =
-        mkIf (cfg.userChrome != "") { text = cfg.userChrome; };
-
-      "${cfgPath}/${cfg.profileName}.default/chrome/userContent.css" =
-        mkIf (cfg.userContent != "") { text = cfg.userContent; };
-    };
   }]);
 }

@@ -33,13 +33,13 @@ in {
       feh # image viewer
       mpv # video player
       celluloid # nice GTK GUI for mpv
-      gnome3.eog # image viewer
-      gnome3.nautilus # file manager
-      gnome3.gnome-screenshot # screenshot
+      gnome.eog # image viewer
+      gnome.nautilus # file manager
+      gnome.gnome-screenshot # screenshot
       polkit_gnome # polkit
       # gnome control center
       dconf
-      gnome3.gnome-control-center
+      gnome.gnome-control-center
       i3lock-color # screen lock
     ];
 
@@ -90,7 +90,7 @@ in {
         xkbOptions = "ctrl:swapcaps";
 
         # I'm a window manager user but still lives in Gnome world...
-        desktopManager.gnome3.enable = true;
+        desktopManager.gnome.enable = true;
         # sddm is a better alternative rather gdm
         displayManager.sddm.enable = true;
         # Clairvoyance theme for sddm https://github.com/JorelAli/nixos/blob/master/README.md

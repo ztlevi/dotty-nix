@@ -13,16 +13,16 @@ in {
 
   config = mkIf config.modules.dev.python.enable {
     user.packages = with pkgs; [
-      python37
+      python38
       # jetbrains.pycharm-professional
       pipenv
-      python37Packages.pip
-      python37Packages.grip
-      python37Packages.ipython
-      python37Packages.black
-      python37Packages.setuptools
-      python37Packages.gnureadline
-      python37Packages.pylint
+      python38Packages.pip
+      python38Packages.grip
+      python38Packages.ipython
+      python38Packages.black
+      python38Packages.setuptools
+      python38Packages.gnureadline
+      python38Packages.pylint
     ];
 
     modules.shell.zsh.rcFiles =

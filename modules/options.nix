@@ -70,7 +70,8 @@ with lib.my; {
           file = mkAliasDefinitions options.home.file;
           # Necessary for home-manager to work with flakes, otherwise it will
           # look for a nixpkgs channel.
-          stateVersion = config.system.stateVersion;
+          # XXX: home-manager stateVersion doesn't have 21.05
+          # stateVersion = config.system.stateVersion;
         };
         xdg = {
           configFile = mkAliasDefinitions options.home.configFile;

@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, gtk-engine-murrine }:
+{ lib, stdenv, fetchurl, gtk-engine-murrine }:
 
 stdenv.mkDerivation rec {
   pname = "flat-remix-gtk";
@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
   outputHashAlgo = "sha256";
   outputHashMode = "recursive";
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description =
       "Flat Remix is a GTK application theme inspired by material design.";
     homepage = "https://github.com/daniruiz/flat-remix-gtk";
