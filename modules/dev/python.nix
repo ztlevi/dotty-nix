@@ -25,7 +25,9 @@ in {
       python37Packages.pylint
     ];
 
-    modules.shell.zsh.rcFiles = [ "${configDirBackup}/python/aliases.zsh" ];
-    modules.shell.zsh.envFiles = [ "${configDir}/dev/python/env.zsh" ];
+    modules.shell.zsh.rcFiles =
+      [ "${config.dotfiles.configDirBackupDir}/python/aliases.zsh" ];
+    modules.shell.zsh.envFiles =
+      [ "${config.dotfiles.configDir}/dev/python/env.zsh" ];
   };
 }

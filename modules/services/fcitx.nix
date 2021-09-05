@@ -15,7 +15,7 @@ in {
       ln -s -f $DOTFILES/config/fcitx/config $XDG_CONFIG_HOME/fcitx/
       ln -s -f $DOTFILES/config/fcitx/profile $XDG_CONFIG_HOME/fcitx/
       ln -s -f $DOTFILES/config/fcitx/rime/*.yaml $XDG_CONFIG_HOME/fcitx/rime/
-      ln -s -f ${dotAssetDir}/rime-dictionaries/*.dict.yaml $XDG_CONFIG_HOME/fcitx/rime/
+      ln -s -f ${config.dotfiles.assetsDir}/rime-dictionaries/*.dict.yaml $XDG_CONFIG_HOME/fcitx/rime/
 
       # Download zhwiki pinyin dictionary
       if [[ ! -f $XDG_CONFIG_HOME/fcitx/rime/zhwiki.dict.yaml ]]; then

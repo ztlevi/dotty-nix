@@ -59,7 +59,7 @@ in {
       unstable.rust-analyzer
     ];
 
-    modules.shell.zsh.rcFiles = [ "${configDirBackup}/emacs/aliases.zsh" ];
+    modules.shell.zsh.rcFiles = [ "${config.dotfiles.configDirBackupDir}/emacs/aliases.zsh" ];
 
     env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 

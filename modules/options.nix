@@ -5,6 +5,21 @@ with lib.my; {
   options = with types; {
     user = mkOpt attrs { };
 
+    dotfiles = {
+      dir = mkOpt path (findFirst pathExists (toString ../.) [
+        "${config.user.home}/.config/dotty-nix"
+        "/etc/dotty-nix"
+      ]);
+      # FIXUP: path
+      binDir = mkOpt path "${config.dotfiles.dir}/bin";
+      configDir = mkOpt path "${config.dotfiles.dir}/config";
+      modulesDir = mkOpt path "${config.dotfiles.dir}/modules";
+      themesDir = mkOpt path "${config.dotfiles.modulesDir}/themes";
+      assetsDir = mkOpt path "${config.dotfiles.dir}/assets";
+      # FIXUP: path
+      configDirBackupDir = mkOpt path "${config.dotfiles.dir}/config-backup";
+    };
+
     home = {
       file = mkOpt' attrs { } "Files to place directly in $HOME";
       configFile = mkOpt' attrs { } "Files to place in $XDG_CONFIG_HOME";
@@ -24,12 +39,16 @@ with lib.my; {
   };
 
   config = {
-    user = {
+    user = let
+      user = builtins.getEnv "USER";
+      name = if elem user [ "" "root" ] then "ztlevi" else user;
+    in {
+      inherit name;
       description = "The primary user account";
       extraGroups = [ "wheel" ];
       isNormalUser = true;
-      name = let name = builtins.getEnv "USER";
-      in if elem name [ "" "root" ] then "ztlevi" else name;
+      home = "/home/${name}";
+      group = "users";
       uid = 1000;
     };
 
@@ -70,7 +89,7 @@ with lib.my; {
 
     # must already begin with pre-existing PATH. Also, can't use binDir here,
     # because it contains a nix store path.
-    env.PATH = [ "$XDG_CONFIG_HOME/dotfiles/bin" "$PATH" ];
+    env.PATH = [ "$DOTFILES_BIN" "$XDG_BIN_HOME" "$PATH" ];
 
     environment.extraInit = concatStringsSep "\n"
       (mapAttrsToList (n: v: ''export ${n}="${v}"'') config.env);

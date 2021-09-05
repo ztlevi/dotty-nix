@@ -1,5 +1,5 @@
 # SDDM theme package
-{ stdenv, fetchFromGitHub, autoFocusPassword ? false, backgroundURL ? null
+{ stdenv, lib, fetchFromGitHub, autoFocusPassword ? false, backgroundURL ? null
 , sha256 ? null, enableHDPI ? false, fileType ? "jpg" }:
 
 let
@@ -38,7 +38,7 @@ in stdenv.mkDerivation rec {
       } $out/share/sddm/themes/clairvoyance/${background}"}
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "eayus' sddm theme";
     homepage = "https://github.com/eayus/sddm-theme-clairvoyance";
     platforms = platforms.linux;

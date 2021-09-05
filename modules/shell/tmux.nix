@@ -20,7 +20,7 @@ in {
 
     modules.shell.zsh = {
       rcInit = "_cache tmuxifier init -";
-      rcFiles = [ "${configDirBackup}/tmux/aliases.zsh" ];
+      rcFiles = [ "${config.dotfiles.configDirBackupDir}/tmux/aliases.zsh" ];
     };
 
     home.dataFile = {
@@ -44,7 +44,7 @@ in {
 
     home.configFile = {
       "tmux" = {
-        source = "${configDirBackup}/tmux";
+        source = "${config.dotfiles.configDirBackupDir}/tmux";
         recursive = true;
       };
       "tmux/extraInit".text = ''

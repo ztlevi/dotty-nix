@@ -1,45 +1,43 @@
 { inputs, config, lib, pkgs, ... }:
 
 with lib;
-with lib.my;
-with inputs; {
+with lib.my; {
   imports =
     # I use home-manager to deploy files to $HOME; little else
     [
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
     ]
     # All my personal modules
     ++ (mapModulesRec' (toString ./modules) import);
 
   # Common config for all nixos machines; and to ensure the flake operates
   # soundly
-  environment.variables.DOTFILES = dotFilesDir;
-  environment.variables.DOTFILES_ASSET = dotAssetDir;
+  environment.variables.DOTFILES = config.dotfiles.dir;
+  environment.variables.DOTFILES_BIN = config.dotfiles.binDir;
+  environment.variables.DOTFILES_ASSET = config.dotfiles.assetsDir;
 
   # Configure nix and nixpkgs
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
-  nix = {
+  nix = let
+    filteredInputs = filterAttrs (n: _: n != "self") inputs;
+    nixPathInputs = mapAttrsToList (n: v: "${n}=${v}") filteredInputs;
+    registryInputs = mapAttrs (_: v: { flake = v; }) filteredInputs;
+  in {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
-    nixPath = (mapAttrsToList (n: v: "${n}=${v}") inputs) ++ [
-      "nixpkgs=${nixpkgs}"
-      "nixpkgs-unstable=${nixpkgs-unstable}"
-      "nixpkgs-overlays=${dotFilesDir}/overlays"
-      "home-manager=${home-manager}"
-      "dotfiles=${dotFilesDir}"
+    nixPath = nixPathInputs ++ [
+      "nixpkgs-overlays=${config.dotfiles.dir}/overlays"
+      "dotfiles=${config.dotfiles.dir}"
     ];
     binaryCaches = [ "https://nix-community.cachix.org" ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-    registry = {
-      nixos.flake = nixpkgs;
-      nixpkgs.flake = nixpkgs-unstable;
-    };
-    useSandbox = true;
+    registry = registryInputs // { dotfiles.flake = inputs.self; };
+    autoOptimiseStore = true;
   };
-  system.configurationRevision = mkIf (self ? rev) self.rev;
-  system.stateVersion = "20.09";
+  system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
+  system.stateVersion = "21.03";
 
   ## Some reasonable, global defaults
   # This is here to appease 'nix flake check' for generic hosts with no

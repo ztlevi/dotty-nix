@@ -24,9 +24,9 @@ with inputs; {
     extraOptions = "experimental-features = nix-command flakes";
     nixPath = [
       "nixpkgs=${nixpkgs}"
-      "nixpkgs-overlays=${dotFilesDir}/overlays"
+      "nixpkgs-overlays=${config.dotfiles.dir}/overlays"
       "home-manager=${home-manager}"
-      "dotfiles=${dotFilesDir}"
+      "dotfiles=${config.dotfiles.dir}"
     ];
     binaryCaches =
       [ "https://cache.nixos.org/" "https://nix-community.cachix.org" ];
@@ -38,7 +38,7 @@ with inputs; {
   };
   # Common config for all nixos machines; and to ensure the flake operates
   # soundly
-  environment.variables.DOTFILES = dotFilesDir;
+  environment.variables.DOTFILES = config.dotfiles.dir;
   environment.variables.DOTFILES_ASSET = dotAssetDir;
 
   # Configure nix and nixpkgs

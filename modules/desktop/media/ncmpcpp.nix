@@ -19,8 +19,8 @@ in {
     # Symlink these one at a time because ncmpcpp writes other files to
     # ~/.config/ncmpcpp, so it needs to be writeable.
     home.configFile = {
-      "ncmpcpp/config".source   = "${configDirBackup}/ncmpcpp/config";
-      "ncmpcpp/bindings".source = "${configDirBackup}/ncmpcpp/bindings";
+      "ncmpcpp/config".source   = "${config.dotfiles.configDirBackupDir}/ncmpcpp/config";
+      "ncmpcpp/bindings".source = "${config.dotfiles.configDirBackupDir}/ncmpcpp/bindings";
     };
   };
 }

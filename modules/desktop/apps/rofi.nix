@@ -7,9 +7,9 @@ in {
   options.modules.desktop.apps.rofi = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    env.PATH = [ "${configDirBackup}/rofi/bin" "$PATH" ];
+    env.PATH = [ "${config.dotfiles.configDirBackupDir}/rofi/bin" "$PATH" ];
     home.configFile."rofi" = {
-      source = "${configDirBackup}/rofi";
+      source = "${config.dotfiles.configDirBackupDir}/rofi";
       recursive = true;
     };
 
@@ -35,26 +35,26 @@ in {
         name = "rofi-bookmarkmenu";
         desktopName = "Open Bookmark in Browser";
         icon = "bookmark-new-symbolic";
-        exec = "${configDirBackup}/rofi/bin/bookmarkmenu";
+        exec = "${config.dotfiles.configDirBackupDir}/rofi/bin/bookmarkmenu";
       })
       (makeDesktopItem {
         name = "rofi-filemenu";
         desktopName = "Open Directory in Terminal";
         icon = "folder";
-        exec = "${configDirBackup}/rofi/bin/filemenu";
+        exec = "${config.dotfiles.configDirBackupDir}/rofi/bin/filemenu";
       })
       (makeDesktopItem {
         name = "rofi-filemenu-scratch";
         desktopName = "Open Directory in Scratch Terminal";
         icon = "folder";
-        exec = "${configDirBackup}/rofi/bin/filemenu -x";
+        exec = "${config.dotfiles.configDirBackupDir}/rofi/bin/filemenu -x";
       })
 
       (makeDesktopItem {
         name = "lock-display";
         desktopName = "Lock screen";
         icon = "system-lock-screen";
-        exec = "${binDir}/zzz";
+        exec = "${config.dotfiles.binDir}/zzz";
       })
     ];
   };

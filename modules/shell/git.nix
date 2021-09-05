@@ -18,9 +18,9 @@ in {
       (mkIf config.modules.shell.gnupg.enable gitAndTools.git-crypt)
     ];
     home.configFile = {
-      "git/config".source = "${configDirBackup}/git/config";
-      "git/ignore".source = "${configDirBackup}/git/ignore";
+      "git/config".source = "${config.dotfiles.configDirBackupDir}/git/config";
+      "git/ignore".source = "${config.dotfiles.configDirBackupDir}/git/ignore";
     };
-    modules.shell.zsh.rcFiles = [ "${configDirBackup}/git/aliases.zsh" ];
+    modules.shell.zsh.rcFiles = [ "${config.dotfiles.configDirBackupDir}/git/aliases.zsh" ];
   };
 }

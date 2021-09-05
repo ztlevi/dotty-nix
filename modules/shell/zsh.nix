@@ -71,10 +71,10 @@ in {
     # Write it recursively so other modules can write files to it
     home.configFile = {
       "zsh" = {
-        source = "${configDirBackup}/zsh";
+        source = "${config.dotfiles.configDirBackupDir}/zsh";
         recursive = true;
       };
-      "starship.toml" = { source = "${configDirBackup}/zsh/starship.toml"; };
+      "starship.toml" = { source = "${config.dotfiles.configDirBackupDir}/zsh/starship.toml"; };
 
       # Why am I creating extra.zsh{rc,env} when I could be using extraInit?
       # Because extraInit generates those files in /etc/profile, and mine just

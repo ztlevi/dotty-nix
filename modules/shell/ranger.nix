@@ -12,9 +12,9 @@ in {
       (lib.mkIf config.services.xserver.enable w3m)
     ];
     home.configFile."ranger" = {
-      source = "${configDirBackup}/ranger";
+      source = "${config.dotfiles.configDirBackupDir}/ranger";
       recursive = true;
     };
-    modules.shell.zsh.rcFiles = [ "${configDirBackup}/ranger/aliases.zsh" ];
+    modules.shell.zsh.rcFiles = [ "${config.dotfiles.configDirBackupDir}/ranger/aliases.zsh" ];
   };
 }

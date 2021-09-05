@@ -11,7 +11,7 @@ in {
     modules.shell.zsh.rcInit =
       ''[ "$TERM" = xst-256color ] && export TERM=xterm-256color'';
 
-    modules.shell.zsh.rcFiles = [ "${configDirBackup}/alacritty/aliases.zsh" ];
+    modules.shell.zsh.rcFiles = [ "${config.dotfiles.configDirBackupDir}/alacritty/aliases.zsh" ];
 
     user.packages = with pkgs; [
       alacritty
@@ -24,6 +24,6 @@ in {
         categories = "Development;System;Utility";
       })
     ];
-    home.configFile = { "alacritty" = { source = "${configDirBackup}/alacritty"; }; };
+    home.configFile = { "alacritty" = { source = "${config.dotfiles.configDirBackupDir}/alacritty"; }; };
   };
 }
