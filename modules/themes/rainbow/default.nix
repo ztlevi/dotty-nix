@@ -17,10 +17,6 @@ in {
             dark = false;
           };
         };
-
-        # Theme specific zsh and tmux config
-        # shell.zsh.rcFiles  = [ ./config/zsh/prompt.zsh ];
-        # shell.tmux.rcFiles = [ ./config/tmux.conf ];
       };
     }
 
