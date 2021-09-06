@@ -8,6 +8,6 @@
 ** TODO Use fcitx 5
 ** TODO Use git-credential-manager-core
 ** TODO _call $DOTTY_CONFIG_HOME/bin/ding startup
-** TODO compare bspwm, dunst, polybar, rofi, sxhkd
+** TODO compare bspwm, sxhkd
 ** TODO compare ~/.config/dotty-nix/config-backup/zsh/aliases.zsh
 ** TODO agenix
