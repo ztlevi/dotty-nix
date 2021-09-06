@@ -12,9 +12,9 @@ in {
     # home.activation.setupRimeConfig = ''
     system.userActivationScripts.setupRimeConfig = ''
       mkdir -p $XDG_CONFIG_HOME/fcitx/rime
-      ln -s -f $DOTFILES/config/fcitx/config $XDG_CONFIG_HOME/fcitx/
-      ln -s -f $DOTFILES/config/fcitx/profile $XDG_CONFIG_HOME/fcitx/
-      ln -s -f $DOTFILES/config/fcitx/rime/*.yaml $XDG_CONFIG_HOME/fcitx/rime/
+      ln -s -f $DOTTY_HOME/config/fcitx/config $XDG_CONFIG_HOME/fcitx/
+      ln -s -f $DOTTY_HOME/config/fcitx/profile $XDG_CONFIG_HOME/fcitx/
+      ln -s -f $DOTTY_HOME/config/fcitx/rime/*.yaml $XDG_CONFIG_HOME/fcitx/rime/
       ln -s -f ${config.dotfiles.assetsDir}/rime-dictionaries/*.dict.yaml $XDG_CONFIG_HOME/fcitx/rime/
 
       # Download zhwiki pinyin dictionary

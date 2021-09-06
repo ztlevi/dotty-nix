@@ -12,9 +12,10 @@ with lib.my; {
 
   # Common config for all nixos machines; and to ensure the flake operates
   # soundly
-  environment.variables.DOTFILES = config.dotfiles.dir;
-  environment.variables.DOTFILES_BIN = config.dotfiles.binDir;
-  environment.variables.DOTFILES_ASSET = config.dotfiles.assetsDir;
+  environment.variables.DOTTY_HOME = config.dotfiles.dir;
+  environment.variables.DOTTY_CONFIG_HOME = config.dotfiles.configDir;
+  environment.variables.DOTTY_BIN_HOME = config.dotfiles.binDir;
+  environment.variables.DOTTY_ASSETS_HOME = config.dotfiles.assetsDir;
 
   # Configure nix and nixpkgs
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";

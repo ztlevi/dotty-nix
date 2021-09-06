@@ -34,10 +34,6 @@ in {
       # completion, and running compinit twice is slow.
       enableGlobalCompInit = false;
       promptInit = "";
-
-      interactiveShellInit = ''
-        source ${pkgs.antigen}/share/antigen/antigen.zsh
-      '';
     };
 
     user.packages = with pkgs; [
@@ -71,10 +67,12 @@ in {
     # Write it recursively so other modules can write files to it
     home.configFile = {
       "zsh" = {
-        source = "${config.dotfiles.configDirBackupDir}/zsh";
+        source = "${config.dotfiles.configDir}/shell/zsh";
         recursive = true;
       };
-      "starship.toml" = { source = "${config.dotfiles.configDirBackupDir}/zsh/starship.toml"; };
+      "starship.toml" = {
+        source = "${config.dotfiles.configDir}/shell/zsh/config/starship.toml";
+      };
 
       # Why am I creating extra.zsh{rc,env} when I could be using extraInit?
       # Because extraInit generates those files in /etc/profile, and mine just
@@ -99,11 +97,15 @@ in {
         ${cfg.envInit}
       '';
     };
-    system.userActivationScripts.cleanupInitCache = ''
+    system.userActivationScripts.zshCleanupInitCache = ''
       rm -rf $HOME/.cache/zsh
       rm -f $HOME/.config/zsh/*.zwc
       rm -f $HOME/.config/zsh/.zshrc.zwc
       rm -f $HOME/.config/zsh/.zshenv.zwc
+    '';
+
+    system.userActivationScripts.zshInitTerminfo = ''
+      ${pkgs.ncurses}/bin/tic -x -o ~/.terminfo ${config.dotfiles.configDir}/shell/zsh/xterm-24bit.terminfo
     '';
   };
 }

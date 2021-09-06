@@ -38,8 +38,8 @@ with inputs; {
   };
   # Common config for all nixos machines; and to ensure the flake operates
   # soundly
-  environment.variables.DOTFILES = config.dotfiles.dir;
-  environment.variables.DOTFILES_ASSET = dotAssetDir;
+  environment.variables.DOTTY_HOME = config.dotfiles.dir;
+  environment.variables.DOTTY_ASSETS_HOME = dotAssetDir;
 
   # Configure nix and nixpkgs
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";

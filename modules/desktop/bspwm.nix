@@ -74,7 +74,7 @@ in {
         recursive = true;
       };
     };
-    env.PATH = [ "$DOTFILES/bin/bspwm" ];
+    env.PATH = [ "$DOTTY_HOME/bin/bspwm" ];
 
     console.useXkbConfig = true;
     services = {

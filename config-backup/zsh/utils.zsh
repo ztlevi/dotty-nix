@@ -58,7 +58,7 @@ function update_topics {
     # if [[ ${topic} == "shell/git" ]]; then
     #   continue
     # fi
-    ${DOTFILES}/deploy -l ${topic}
+    ${DOTTY_HOME}/deploy -l ${topic}
   done
 }
 

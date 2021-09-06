@@ -128,7 +128,7 @@ in {
 
     ({
       system.userActivationScripts.copyFonts = with pkgs; ''
-        ${fd}/bin/fd ".*\.(ttf|otf)" "$DOTFILES_ASSET/fonts/general" --print0 | \
+        ${fd}/bin/fd ".*\.(ttf|otf)" "$DOTTY_ASSETS_HOME/fonts/general" --print0 | \
         xargs -0 -n 1 -I{} rsync -a --ignore-existing {} $HOME/.local/share/fonts/
       '';
     })

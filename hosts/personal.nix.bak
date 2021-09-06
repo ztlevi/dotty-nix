@@ -37,7 +37,7 @@
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_BIN_HOME = "$HOME/.local/bin";
-    DOTFILES = "$HOME/.dotfiles";
+    DOTTY_HOME = "$HOME/.dotfiles";
   };
 
   # Conform more programs to XDG conventions. The rest are handled by their
