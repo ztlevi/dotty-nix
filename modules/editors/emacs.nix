@@ -93,8 +93,8 @@ in {
     '';
 
     system.userActivationScripts.cacheEmacsInMemory = ''
-      [[ -d ''${XDG_CONFIG_HOME}/doom ]] && ${pkgs.vmtouch}/bin/vmtouch -vt ''${XDG_CONFIG_HOME}/doom
-      [[ -d ''${XDG_CONFIG_HOME}/emacs ]] && ${pkgs.vmtouch}/bin/vmtouch -vt ''${XDG_CONFIG_HOME}/emacs
+      [[ -d ''${XDG_CONFIG_HOME}/doom ]] && ${pkgs.vmtouch}/bin/vmtouch -t ''${XDG_CONFIG_HOME}/doom &>/dev/null
+      [[ -d ''${XDG_CONFIG_HOME}/emacs ]] && ${pkgs.vmtouch}/bin/vmtouch -t ''${XDG_CONFIG_HOME}/emacs &>/dev/null
       ${pkgs.libnotify}/bin/notify-send --urgency=low "Emacs config has been cached in memory!"
     '';
 

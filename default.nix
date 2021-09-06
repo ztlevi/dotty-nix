@@ -13,8 +13,8 @@ with lib.my; {
   # Common config for all nixos machines; and to ensure the flake operates
   # soundly
   environment.variables.DOTTY_HOME = config.dotfiles.dir;
-  environment.variables.DOTTY_CONFIG_HOME = config.dotfiles.configDir;
   environment.variables.DOTTY_BIN_HOME = config.dotfiles.binDir;
+  environment.variables.DOTTY_CONFIG_HOME = config.dotfiles.configDir;
   environment.variables.DOTTY_ASSETS_HOME = config.dotfiles.assetsDir;
 
   # Configure nix and nixpkgs

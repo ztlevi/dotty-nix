@@ -9,7 +9,7 @@
 #   It will randomly select color and powerline separator. Based on the selected color, it will set the background
 #     wallpaper.
 
-source $ZDOTDIR/env.zsh
+source $DOTTY_CONFIG_HOME/env
 
 WALLPAPERS_DIR=$DOTTY_ASSETS_HOME/wallpapers
 CYCLE_TIME=${1:-3600}

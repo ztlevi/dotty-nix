@@ -9,4 +9,4 @@
 ** TODO Use fcitx 5
 ** TODO firefox use safe mode
 ** TODO Use git-credential-manager-core
-** TODO fix error when evaluate ~/.config/dotty-nix/config/desktop/bspwm/config/bspwm/bspwmrc
+** TODO _call $DOTTY_CONFIG_HOME/bin/ding startup

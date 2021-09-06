@@ -9,8 +9,7 @@ in {
   config = mkIf cfg.enable {
     modules.theme.onReload.bspwm = ''
       ${pkgs.bspwm}/bin/bspc wm -r
-      pkill -USR1 -x sxhkd
-      source $XDG_CONFIG_HOME/bspwm/bspwmrc || echo "reload bspwm failed"
+      ${pkgs.procps}/bin/pkill -USR1 -x sxhkd
     '';
 
     environment.systemPackages = with pkgs; [
