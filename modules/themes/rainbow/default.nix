@@ -28,7 +28,7 @@ in {
     (mkIf config.services.xserver.enable {
       # icons are dumped to /etc/profiles/per-user/$USER/share
       user.packages = with pkgs; [
-        my.flat-remix-gtk
+        flat-remix-gtk
         flat-remix-icon-theme
         # papirus-icon-theme
         # my.ant-dracula
