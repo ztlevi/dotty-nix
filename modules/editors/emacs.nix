@@ -60,7 +60,7 @@ in {
     ];
 
     modules.shell.zsh.rcFiles =
-      [ "${config.dotfiles.configDirBackupDir}/emacs/aliases.zsh" ];
+      [ "${config.dotfiles.configDir}/editor/emacs/rc.zsh" ];
 
     env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 

@@ -69,12 +69,13 @@ in {
     # link recursively so other modules can link files in their folders
     home.configFile = {
       "sxhkd".source = "${config.dotfiles.configDir}/desktop/sxhkd";
-      "bspwm" = {
-        source = "${config.dotfiles.configDir}/desktop/bspwm";
-        recursive = true;
-      };
+      "bspwm/bspwmrc".source = "${config.dotfiles.configDir}/wm/bspwm/bspwmrc";
     };
-    env.PATH = [ "$DOTTY_HOME/bin/bspwm" ];
+    env.PATH = [ "$DOTTY_CONFIG_HOME/wm/bspwm/bin" ];
+    modules.shell.zsh.rcFiles =
+      [ "${config.dotfiles.configDir}/wm/bspwm/rc.zsh" ];
+    modules.shell.zsh.envFiles =
+      [ "${config.dotfiles.configDir}/wm/bspwm/env.zsh" ];
 
     console.useXkbConfig = true;
     services = {
