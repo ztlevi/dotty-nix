@@ -22,9 +22,9 @@ in {
       unstable.emacs
       binutils
       # emacsPgtkGcc
+      # ((emacsPackagesNgGen emacsPgtkGcc).emacsWithPackages
+      #   (epkgs: [ epkgs.vterm ]))
 
-      # If you use vterm, build emacs with vterm support
-      # ((emacsPackagesNgGen emacs).emacsWithPackages (epkgs: [ epkgs.vterm ]))
       ## Doom dependencies
       librime
       git
@@ -59,7 +59,8 @@ in {
       unstable.rust-analyzer
     ];
 
-    modules.shell.zsh.rcFiles = [ "${config.dotfiles.configDirBackupDir}/emacs/aliases.zsh" ];
+    modules.shell.zsh.rcFiles =
+      [ "${config.dotfiles.configDirBackupDir}/emacs/aliases.zsh" ];
 
     env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
 
@@ -82,7 +83,9 @@ in {
 
     # TODO:
     system.userActivationScripts.InstallDoomEmacs = ''
-      if [[ ! -d ''${XDG_CONFIG_HOME}/doom ]]; then ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config $XDG_CONFIG_HOME/doom; fi
+      if [[ ! -d ''${XDG_CONFIG_HOME}/doom ]]; then
+        ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config $XDG_CONFIG_HOME/doom
+      fi
       if [[ ! -d ''${XDG_CONFIG_HOME}/emacs ]];then
         ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs -b develop $XDG_CONFIG_HOME/emacs
         ''${XDG_CONFIG_HOME}/emacs/bin/doom install
