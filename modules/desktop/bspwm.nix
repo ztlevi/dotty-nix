@@ -68,10 +68,9 @@ in {
 
     # link recursively so other modules can link files in their folders
     home.configFile = {
-      "sxhkd".source =
-        "${config.dotfiles.configDir}/desktop/bspwm/config/sxhkd";
+      "sxhkd".source = "${config.dotfiles.configDir}/desktop/sxhkd";
       "bspwm" = {
-        source = "${config.dotfiles.configDir}/desktop/bspwm/config/bspwm";
+        source = "${config.dotfiles.configDir}/desktop/bspwm";
         recursive = true;
       };
     };

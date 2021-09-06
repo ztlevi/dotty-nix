@@ -1,12 +1,11 @@
 * Inbox
 ** TODO For Gnome desktop, try https://github.com/vinceliuice/WhiteSur-gtk-theme
-** TODO merge config and dotty-config
 ** TODO Personal packages https://git.ophanim.de/derped/nixos/src/commit/bb62fe82b496e863aa05efce00b6403a87c7ca4a/pkgs
 ** picom hlissner setting with nvidia
 ** Doom clone options, and spacevim
 ** hlissner's kuro hardware conifguration nvidia select screen
 ** TODO Reviewed hlissner's 25f0d8044a0e90fecf3da126fb2c3643c6d3dc32
 ** TODO Use fcitx 5
-** TODO firefox use safe mode
 ** TODO Use git-credential-manager-core
 ** TODO _call $DOTTY_CONFIG_HOME/bin/ding startup
+** TODO compare bspwm, dunst, polybar, rofi, sxhkd

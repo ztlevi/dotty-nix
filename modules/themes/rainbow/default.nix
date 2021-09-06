@@ -78,18 +78,16 @@ in {
         mkMerge [
           {
             # Sourced from sessionCommands in modules/themes/default.nix
-            "xtheme/90-theme".source = ./config/Xresources;
+            "xtheme/90-theme".source =
+              "${config.dotfiles.configDir}/wm/general/Xresources";
           }
-          (mkIf desktop.bspwm.enable {
-            "bspwm/rc.d/polybar".source = ./config/polybar/run.sh;
-            "bspwm/rc.d/theme".source = ./config/bspwmrc;
-          })
           (mkIf (desktop.bspwm.enable) {
             "polybar" = {
-              source = ./config/polybar;
+              source = "${config.dotfiles.configDir}/desktop/polybar";
               recursive = true;
             };
-            "dunst/dunstrc".source = ./config/dunstrc;
+            "dunst/dunstrc".source =
+              "${config.dotfiles.configDir}/desktop/dunst/dunstrc";
           })
         ];
     })
