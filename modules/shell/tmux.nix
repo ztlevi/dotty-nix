@@ -1,15 +1,7 @@
 { config, options, pkgs, lib, ... }:
 with lib;
 with lib.my;
-let
-  cfg = config.modules.shell.tmux;
-  # Despite tmux/tmux#142, tmux will support XDG in 3.2. Sadly, only 3.0 is
-  # available on nixpkgs, and 3.1b on master (tmux/tmux@15d7e56), so I
-  # implement it myself:
-  # tmux = (pkgs.writeScriptBin "tmux" ''
-  #   #!${pkgs.stdenv.shell}
-  #   exec ${pkgs.tmux}/bin/tmux -f "$TMUX_HOME/config" "$@"
-  # '');
+let cfg = config.modules.shell.tmux;
 in {
   options.modules.shell.tmux = with types; {
     enable = mkBoolOpt false;
