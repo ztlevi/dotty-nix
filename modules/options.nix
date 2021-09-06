@@ -10,7 +10,6 @@ with lib.my; {
         "${config.user.home}/.config/dotty-nix"
         "/etc/dotty-nix"
       ]);
-      # FIXUP: path
       binDir = mkOpt path "${config.dotfiles.dir}/bin";
       configDir = mkOpt path "${config.dotfiles.dir}/config";
       modulesDir = mkOpt path "${config.dotfiles.dir}/modules";
