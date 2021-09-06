@@ -2,7 +2,7 @@
 
 { pkgs, ... }: {
   imports = [
-    # ../personal.nix # common settings
+    # ../home.nix # common settings
     # ./hardware-configuration.nix
   ];
 
