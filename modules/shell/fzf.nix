@@ -10,12 +10,13 @@ in {
     user.packages = with pkgs; [ fzf ];
     home.configFile = {
       "fzf" = {
-        source = "${config.dotfiles.configDirBackupDir}/fzf";
+        source = "${config.dotfiles.configDir}/shell/fzf";
         recursive = true;
       };
     };
-    env.FZF_BASE = "${pkgs.fzf}/share/fzf";
     modules.shell.zsh.rcFiles =
-      [ "${config.dotfiles.configDirBackupDir}/fzf/aliases.zsh" "${config.dotfiles.configDirBackupDir}/fzf/env.zsh" ];
+      [ "${config.dotfiles.configDir}/shell/fzf/rc.zsh" ];
+    modules.shell.zsh.envFiles =
+      [ "${config.dotfiles.configDir}/shell/fzf/env.zsh" ];
   };
 }

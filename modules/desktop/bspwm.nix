@@ -9,6 +9,7 @@ in {
   config = mkIf cfg.enable {
     modules.theme.onReload.bspwm = ''
       ${pkgs.bspwm}/bin/bspc wm -r
+      pkill -USR1 -x sxhkd
       source $XDG_CONFIG_HOME/bspwm/bspwmrc || echo "reload bspwm failed"
     '';
 
@@ -68,9 +69,10 @@ in {
 
     # link recursively so other modules can link files in their folders
     home.configFile = {
-      "sxhkd".source = "${config.dotfiles.configDirBackupDir}/sxhkd";
+      "sxhkd".source =
+        "${config.dotfiles.configDir}/desktop/bspwm/config/sxhkd";
       "bspwm" = {
-        source = "${config.dotfiles.configDirBackupDir}/bspwm";
+        source = "${config.dotfiles.configDir}/desktop/bspwm/config/bspwm";
         recursive = true;
       };
     };

@@ -26,7 +26,7 @@ in {
     ];
 
     modules.shell.zsh.rcFiles =
-      [ "${config.dotfiles.configDirBackupDir}/python/aliases.zsh" ];
+      [ "${config.dotfiles.configDir}/dev/python/rc.zsh" ];
     modules.shell.zsh.envFiles =
       [ "${config.dotfiles.configDir}/dev/python/env.zsh" ];
   };

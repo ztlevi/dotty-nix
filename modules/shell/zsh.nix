@@ -64,6 +64,9 @@ in {
     env.ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
     env.ZSH_CACHE_DIR = "$XDG_CACHE_HOME/zsh";
 
+    modules.shell.zsh.rcFiles =
+      [ "${config.dotfiles.configDir}/shell/zsh/rc.zsh" ];
+
     # Write it recursively so other modules can write files to it
     home.configFile = {
       "zsh" = {
@@ -102,6 +105,8 @@ in {
       rm -f $HOME/.config/zsh/*.zwc
       rm -f $HOME/.config/zsh/.zshrc.zwc
       rm -f $HOME/.config/zsh/.zshenv.zwc
+
+      rm -rf ~/.zinit/snippets/*.config--*--config--shell--zsh
     '';
 
     system.userActivationScripts.zshInitTerminfo = ''
