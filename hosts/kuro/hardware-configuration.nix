@@ -21,9 +21,16 @@
     # "iwlwifi"
     "bcma-pci-bridge"
   ];
+  modules.hardware = {
+    audio.enable = true;
+    fs = {
+      enable = true;
+      ssd.enable = true;
+    };
+    amd.enable = true;
+  };
+
   environment.variables.WIRELESS_DEVICE = "wlo1";
-  services.xserver.videoDrivers = [ "amdgpu" ];
-  hardware.opengl.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
