@@ -46,9 +46,9 @@ Note: `hey re` equals `sudo nixos-rebuild --flake .#kuro switch`. You can also a
 
 #### Post-Installation
 
-- for fcitx, run the following script
+- for fcitx, run the following script to install config and dict.
 ``` sh
-${DOTTY_CONFIG_HOME}/misc/chinese/install_fcitx_config.sh
+${DOTTY_CONFIG_HOME}/misc/chinese/install_fcitx5_config.sh
 ```
 
 ### Non NixOS Linux

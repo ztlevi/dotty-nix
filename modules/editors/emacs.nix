@@ -9,11 +9,7 @@ let cfg = config.modules.editors.emacs;
 in {
   options.modules.editors.emacs = {
     enable = mkBoolOpt false;
-    doom = {
-      enable = mkBoolOpt true;
-      fromSSH = mkBoolOpt false;
-    };
-
+    doom = { enable = mkBoolOpt true; };
   };
 
   config = mkIf cfg.enable {
@@ -64,25 +60,8 @@ in {
 
     env.PATH = [ "${config.dotfiles.configDir}/editor/emacs/bin" ];
 
-    # init.doomEmacs = mkIf cfg.doom.enable ''
-    #   if [ -d $HOME/.config/emacs ]; then
-    #      ${
-    #        optionalString cfg.doom.fromSSH ''
-    #          git clone git@github.com:hlissner/doom-emacs.git $HOME/.config/emacs
-    #          git clone git@github.com:hlissner/doom-emacs-private.git $HOME/.config/doom
-    #        ''
-    #      }
-    #      ${
-    #        optionalString (cfg.doom.fromSSH == false) ''
-    #          git clone https://github.com/hlissner/doom-emacs $HOME/.config/emacs
-    #          git clone https://github.com/ztlevi/doom-config $HOME/.config/doom
-    #        ''
-    #      }
-    #   fi
-    # '';
-
     # TODO:
-    system.userActivationScripts.InstallDoomEmacs = ''
+    system.userActivationScripts.installDoomEmacs = ''
       if [[ ! -d ''${XDG_CONFIG_HOME}/doom ]]; then
         ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config $XDG_CONFIG_HOME/doom
       fi

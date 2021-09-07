@@ -5,12 +5,11 @@
 ** picom hlissner setting with nvidia
 ** Doom clone options, and spacevim
 ** hlissner's kuro hardware conifguration nvidia select screen
-** TODO Use fcitx 5
 ** TODO Use git-credential-manager-core
 ** TODO _call $DOTTY_CONFIG_HOME/bin/ding startup
 ** TODO compare with hlissner's modules
-** TODO compare ~/.config/dotty-nix/config-backup/zsh/aliases.zsh
 ** TODO merge ~/.config/dotty-nix/config/bin/ with ~/.config/dotty-nix/config/wm/bspwm/bin/
 ** TODO remove redundant bins
 ** TODO move /home/ztlevi/.config/dotty-nix/config-backup/home/
 ** TODO agenix
+** TODO fix workflow https://github.com/berberman/flakes/tree/master/.github/workflows
