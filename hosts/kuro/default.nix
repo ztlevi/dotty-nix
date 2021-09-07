@@ -64,7 +64,6 @@
       direnv.enable = true;
       git.enable = true;
       gnupg.enable = true;
-      misc.enable = true;
       # weechat.enable = true;
       fzf.enable = true;
       pass.enable = true;

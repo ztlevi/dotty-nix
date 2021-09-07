@@ -11,24 +11,32 @@ in {
   options.modules.dev.node = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [ nodejs yarn ];
+    user.packages = with pkgs; [
+      nodejs
+      yarn
+      nodePackages.prettier
+      nodePackages.typescript
+      nodePackages.typescript-language-server
+    ];
 
-    env.NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config";
-    env.NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
-    env.NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
-    env.NPM_CONFIG_PREFIX = "$XDG_CACHE_HOME/npm";
-    env.NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node/repl_history";
     env.PATH = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
-
-    # Run locally installed bin-script, e.g. n coffee file.coffee
-    environment.shellAliases = {
-      n = ''PATH="$(npm bin):$PATH"'';
-      ya = "yarn";
+    home.file = {
+      ".eslintrc".source = "${config.dotfiles.configDir}/dev/node/.eslintrc";
+      ".prettierrc".source =
+        "${config.dotfiles.configDir}/dev/node/.prettierrc";
+      ".tidyrc".source = "${config.dotfiles.configDir}/dev/node/.tidyrc";
     };
 
-    home.configFile."npm/config".text = ''
-      cache=$XDG_CACHE_HOME/npm
-      prefix=$XDG_DATA_HOME/npm
-    '';
+    # TODO: split cspell when it's available in nix package
+    home.configFile = {
+      "cspell" = { source = "${config.dotfiles.configDir}/misc/cspell"; };
+    };
+
+    modules.shell.zsh.rcFiles = [
+      "${config.dotfiles.configDir}/dev/node/rc.zsh"
+      "${config.dotfiles.configDir}/misc/cspell/rc.zsh"
+    ];
+    modules.shell.zsh.envFiles =
+      [ "${config.dotfiles.configDir}/dev/node/env.zsh" ];
   };
 }

@@ -36,10 +36,10 @@ in {
     };
     home.configFile = {
       "pudb" = {
-        source = "${config.dotfiles.configDir}/dev/python/pudb";
+        source = "${config.dotfiles.configDir}/dev/python/config/pudb";
         recursive = true;
       };
-      "flake8".source = "${config.dotfiles.configDir}/dev/python/flake8";
+      "flake8".source = "${config.dotfiles.configDir}/dev/python/config/flake8";
     };
   };
 }
