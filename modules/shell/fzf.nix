@@ -18,5 +18,6 @@ in {
       [ "${config.dotfiles.configDir}/shell/fzf/rc.zsh" ];
     modules.shell.zsh.envFiles =
       [ "${config.dotfiles.configDir}/shell/fzf/env.zsh" ];
+    env.PATH = [ "${config.dotfiles.configDir}/shell/fzf/bin" ];
   };
 }

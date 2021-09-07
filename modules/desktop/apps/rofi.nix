@@ -7,7 +7,7 @@ in {
   options.modules.desktop.apps.rofi = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    env.PATH = [ "${config.dotfiles.configDir}/desktop/rofi/bin" "$PATH" ];
+    env.PATH = [ "${config.dotfiles.configDir}/desktop/rofi/bin" ];
     home.configFile."rofi" = {
       source = "${config.dotfiles.configDir}/desktop/rofi";
       recursive = true;
@@ -19,35 +19,31 @@ in {
         exec ${rofi-unwrapped}/bin/rofi -terminal alacritty -m -1 "$@"
       '')
 
-      # For rapidly test changes to rofi's stylesheets
-      # (writeScriptBin "rofi-test" ''
-      #   #!${stdenv.shell}
-      #   themefile=$1
-      #   themename=${modules.theme.name}
-      #   shift
-      #   exec rofi \
-      #        -theme ~/.config/dotfiles/modules/themes/$themename/rofi/$themefile \
-      #        "$@"
-      #   '')
-
       # Fake rofi dmenu entries
       (makeDesktopItem {
-        name = "rofi-bookmarkmenu";
+        name = "rofi-browsermenu";
         desktopName = "Open Bookmark in Browser";
         icon = "bookmark-new-symbolic";
-        exec = "${config.dotfiles.configDir}/rofi/bin/bookmarkmenu";
+        exec = "${config.dotfiles.configDir}/desktop/rofi/bin/browsermenu";
+      })
+      (makeDesktopItem {
+        name = "rofi-browsermenu-history";
+        desktopName = "Open Browser History";
+        icon = "accessories-clock";
+        exec =
+          "${config.dotfiles.configDir}/desktop/rofi/bin/browsermenu history";
       })
       (makeDesktopItem {
         name = "rofi-filemenu";
         desktopName = "Open Directory in Terminal";
         icon = "folder";
-        exec = "${config.dotfiles.configDir}/rofi/bin/filemenu";
+        exec = "${config.dotfiles.configDir}/desktop/rofi/bin/filemenu";
       })
       (makeDesktopItem {
         name = "rofi-filemenu-scratch";
         desktopName = "Open Directory in Scratch Terminal";
         icon = "folder";
-        exec = "${config.dotfiles.configDir}/rofi/bin/filemenu -x";
+        exec = "${config.dotfiles.configDir}/desktop/rofi/bin/filemenu -x";
       })
 
       (makeDesktopItem {
