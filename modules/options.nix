@@ -10,7 +10,7 @@ with lib.my; {
         "${config.user.home}/.config/dotty-nix"
         "/etc/dotty-nix"
       ]);
-      binDir = mkOpt path "${config.dotfiles.dir}/bin";
+      binDir = mkOpt path "${config.dotfiles.dir}/config/bin";
       configDir = mkOpt path "${config.dotfiles.dir}/config";
       modulesDir = mkOpt path "${config.dotfiles.dir}/modules";
       themesDir = mkOpt path "${config.dotfiles.modulesDir}/themes";
@@ -89,7 +89,12 @@ with lib.my; {
 
     # must already begin with pre-existing PATH. Also, can't use binDir here,
     # because it contains a nix store path.
-    env.PATH = [ "$DOTTY_BIN_HOME" "$XDG_BIN_HOME" "$PATH" ];
+    env.PATH = [
+      "$DOTTY_BIN_HOME"
+      "$XDG_BIN_HOME"
+      "${config.dotfiles.dir}/bin"
+      "$PATH"
+    ];
 
     environment.extraInit = concatStringsSep "\n"
       (mapAttrsToList (n: v: ''export ${n}="${v}"'') config.env);

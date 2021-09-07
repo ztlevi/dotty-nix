@@ -11,5 +11,6 @@
 ** TODO compare with hlissner's modules
 ** TODO compare sxhkd
 ** TODO compare ~/.config/dotty-nix/config-backup/zsh/aliases.zsh
-** TODO merge /home/ztlevi/.config/dotty-nix/bin with config/bin
+** TODO merge ~/.config/dotty-nix/config/bin/ with ~/.config/dotty-nix/config/wm/bspwm/bin/
+** TODO remove redundant bins
 ** TODO agenix
