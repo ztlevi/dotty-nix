@@ -44,6 +44,13 @@ _Works on my machine_ ¯\\\_(ツ)\_/¯
 Note: `hey re` equals `sudo nixos-rebuild --flake .#kuro switch`. You can also add
 `-p <profile-name>` to assign a profile name.
 
+#### Post-Installation
+
+- for fcitx, run the following script
+``` sh
+${DOTTY_CONFIG_HOME}/misc/chinese/install_fcitx_config.sh
+```
+
 ### Non NixOS Linux
 
 ```sh
