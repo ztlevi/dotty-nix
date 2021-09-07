@@ -9,7 +9,6 @@
 ** TODO Use git-credential-manager-core
 ** TODO _call $DOTTY_CONFIG_HOME/bin/ding startup
 ** TODO compare with hlissner's modules
-** TODO compare sxhkd
 ** TODO compare ~/.config/dotty-nix/config-backup/zsh/aliases.zsh
 ** TODO merge ~/.config/dotty-nix/config/bin/ with ~/.config/dotty-nix/config/wm/bspwm/bin/
 ** TODO remove redundant bins
