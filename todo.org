@@ -12,4 +12,5 @@
 ** TODO compare ~/.config/dotty-nix/config-backup/zsh/aliases.zsh
 ** TODO merge ~/.config/dotty-nix/config/bin/ with ~/.config/dotty-nix/config/wm/bspwm/bin/
 ** TODO remove redundant bins
+** TODO move /home/ztlevi/.config/dotty-nix/config-backup/home/
 ** TODO agenix

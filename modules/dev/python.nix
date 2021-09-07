@@ -29,5 +29,17 @@ in {
       [ "${config.dotfiles.configDir}/dev/python/rc.zsh" ];
     modules.shell.zsh.envFiles =
       [ "${config.dotfiles.configDir}/dev/python/env.zsh" ];
+    home.file = {
+      ".pylintrc".source = "${config.dotfiles.configDir}/dev/python/.pylintrc";
+      ".mypy.ini".source = "${config.dotfiles.configDir}/dev/python/.mypy.ini";
+      ".condarc".source = "${config.dotfiles.configDir}/dev/python/.condarc";
+    };
+    home.configFile = {
+      "pudb" = {
+        source = "${config.dotfiles.configDir}/dev/python/pudb";
+        recursive = true;
+      };
+      "flake8".source = "${config.dotfiles.configDir}/dev/python/flake8";
+    };
   };
 }
