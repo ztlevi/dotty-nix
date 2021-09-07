@@ -21,11 +21,12 @@ in {
         nlSupport = true;
       })
       # sddm theme
-      (my.clairvoyance.override {
+      (my.sddm-clairvoyance.override {
         autoFocusPassword = true;
         enableHDPI = true;
-        backgroundURL = "https://i.imgur.com/zt68gmt.jpeg";
-        sha256 = "0gq2vqgwqnndwkr75b9zfn3hphrp2fdlsxxc6g94n4kkg68ibrbh";
+        backgroundURL =
+          "https://media.githubusercontent.com/media/ztlevi/dotty-assets/main/wallpapers/red-1.jpg?token=AD7CF6DZEJOSLTRQIWXFYADBG7TRU";
+        sha256 = "1y1yiq8f1mf4xa4m5ry26np5gpza8yp3jqc215rj7dnhrdf1p4b5";
       })
       # apps
       calibre # managing my ebooks
@@ -94,7 +95,6 @@ in {
         desktopManager.gnome.enable = true;
         # sddm is a better alternative rather gdm
         displayManager.sddm.enable = true;
-        # Clairvoyance theme for sddm https://github.com/JorelAli/nixos/blob/master/README.md
         displayManager.sddm.theme = "clairvoyance";
 
         windowManager.bspwm.enable = true;

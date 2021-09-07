@@ -2,6 +2,8 @@
 { stdenv, lib, fetchFromGitHub, autoFocusPassword ? false, backgroundURL ? null
 , sha256 ? null, enableHDPI ? false, fileType ? "jpg" }:
 
+# Clairvoyance theme for sddm https://github.com/JorelAli/nixos
+# Theme name is clairvoyance
 let
   boolToStr = b: if b then "true" else "false";
   autoFocusPassword' = boolToStr autoFocusPassword;
