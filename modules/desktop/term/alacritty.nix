@@ -7,11 +7,10 @@ in {
   options.modules.desktop.term.alacritty = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    # xst-256color isn't supported over ssh, so revert to a known one
-    modules.shell.zsh.rcInit =
-      ''[ "$TERM" = xst-256color ] && export TERM=xterm-256color'';
-
-    modules.shell.zsh.rcFiles = [ "${config.dotfiles.configDirBackupDir}/alacritty/aliases.zsh" ];
+    modules.shell.zsh.rcFiles =
+      [ "${config.dotfiles.configDir}/shell/alacritty/rc.zsh" ];
+    modules.shell.zsh.envFiles =
+      [ "${config.dotfiles.configDir}/shell/alacritty/env.zsh" ];
 
     user.packages = with pkgs; [
       alacritty
@@ -24,6 +23,11 @@ in {
         categories = "Development;System;Utility";
       })
     ];
-    home.configFile = { "alacritty" = { source = "${config.dotfiles.configDirBackupDir}/alacritty"; }; };
+    home.configFile = {
+      "alacritty/alacritty.yml" = {
+        source =
+          "${config.dotfiles.configDir}/shell/alacritty/config/nixos-alacritty.yml";
+      };
+    };
   };
 }
