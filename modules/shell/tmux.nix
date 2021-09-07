@@ -27,16 +27,10 @@ in {
     };
 
     home.configFile = {
-      "tmux" = {
-        source = "${config.dotfiles.configDir}/shell/tmux";
-        recursive = true;
-      };
+      "tmux/tmux.conf".source =
+        "${config.dotfiles.configDir}/shell/tmux/tmux.conf";
     };
 
-    env = {
-      TMUX_HOME = "$XDG_CONFIG_HOME/tmux";
-      TMUX_PLUGIN_MANAGER_PATH = "$XDG_DATA_HOME/tmux/plugins";
-      PATH = [ "$XDG_DATA_HOME/tmuxifier/bin" "$XDG_CONFIG_HOME/tmux/bin" ];
-    };
+    env.PATH = [ "${config.dotfiles.configDir}/shell/tmux/bin" ];
   };
 }

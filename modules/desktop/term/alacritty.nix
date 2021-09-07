@@ -22,6 +22,7 @@ in {
         exec = "${alacritty}/bin/alacritty";
         categories = "Development;System;Utility";
       })
+      vivid
     ];
     home.configFile = {
       "alacritty/alacritty.yml" = {
