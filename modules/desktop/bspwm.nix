@@ -41,7 +41,7 @@ in {
       # gnome control center
       dconf
       gnome.gnome-control-center
-      i3lock-color # screen lock
+      i3lock # screen lock
     ];
 
     home-manager.users.${config.user.name} = {
