@@ -9,7 +9,7 @@
 ** TODO Use git-credential-manager-core
 ** TODO _call $DOTTY_CONFIG_HOME/bin/ding startup
 ** TODO compare with hlissner's modules
-** TODO compare bspwm, sxhkd
+** TODO compare sxhkd
 ** TODO compare ~/.config/dotty-nix/config-backup/zsh/aliases.zsh
 ** TODO merge /home/ztlevi/.config/dotty-nix/bin with config/bin
 ** TODO agenix
