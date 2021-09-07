@@ -32,7 +32,8 @@ in {
         size = 64;
       };
 
-      fonts.fonts = [ pkgs.nerdfonts ];
+      fonts.fonts =
+        [ (pkgs.nerdfonts.override { fonts = [ "UbuntuMono" "FiraCode" ]; }) ];
 
       services.picom = {
         fade = true;

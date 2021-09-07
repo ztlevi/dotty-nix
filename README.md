@@ -148,6 +148,9 @@ And I say, `bin/hey`. [What's going on?](http://hemansings.com/)
   productive than complaining about it on the internet. Then I thought,
   [why not do both](https://youtube.com/watch?v=vgk-lA12FBk)?
 
+- **Where is `$out`?**
+  See `/etc/profiles/per-user/$USER/`.
+
 - **No space left on device. Build failed.**
 
   Increase `/tmp` folder size with `sudo mount -o remount,size=30G /tmp`
