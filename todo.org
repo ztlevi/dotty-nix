@@ -1,13 +1,15 @@
 * Inbox
 ** TODO For Gnome desktop, try https://github.com/vinceliuice/WhiteSur-gtk-theme
 ** TODO Personal packages https://git.ophanim.de/derped/nixos/src/commit/bb62fe82b496e863aa05efce00b6403a87c7ca4a/pkgs
+** TODO Use picom instead of compton
 ** picom hlissner setting with nvidia
 ** Doom clone options, and spacevim
 ** hlissner's kuro hardware conifguration nvidia select screen
-** TODO Reviewed hlissner's 25f0d8044a0e90fecf3da126fb2c3643c6d3dc32
 ** TODO Use fcitx 5
 ** TODO Use git-credential-manager-core
 ** TODO _call $DOTTY_CONFIG_HOME/bin/ding startup
+** TODO compare with hlissner's modules
 ** TODO compare bspwm, sxhkd
 ** TODO compare ~/.config/dotty-nix/config-backup/zsh/aliases.zsh
+** TODO merge /home/ztlevi/.config/dotty-nix/bin with config/bin
 ** TODO agenix
