@@ -10,6 +10,5 @@
 ** TODO fix emacs fcitx5
 * High Priority
 ** TODO fix workflow https://github.com/berberman/flakes/tree/master/.github/workflows
-** TODO merge ~/.config/dotty-nix/config/bin/ with ~/.config/dotty-nix/config/wm/bspwm/bin/
-** TODO remove redundant bins
+** TODO remove redundant config/bins
 ** TODO compare with hlissner's modules
