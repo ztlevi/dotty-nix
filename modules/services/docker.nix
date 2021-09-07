@@ -9,12 +9,12 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [ docker docker-compose ];
 
-    env.DOCKER_CONFIG = "$XDG_CONFIG_HOME/docker";
-    env.MACHINE_STORAGE_PATH = "$XDG_DATA_HOME/docker/machine";
-
     user.extraGroups = [ "docker" ];
 
-    modules.shell.zsh.rcFiles = [ "${config.dotfiles.configDirBackupDir}/docker/aliases.zsh" ];
+    modules.shell.zsh.rcFiles =
+      [ "${config.dotfiles.configDir}/misc/docker/rc.zsh" ];
+    modules.shell.zsh.envFiles =
+      [ "${config.dotfiles.configDir}/misc/docker/env.zsh" ];
 
     virtualisation = {
       docker = {
