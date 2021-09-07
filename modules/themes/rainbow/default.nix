@@ -22,15 +22,9 @@ in {
 
     # Desktop (X11) theming
     (mkIf config.services.xserver.enable {
+      # Other themes https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/themes/
       # icons are dumped to /etc/profiles/per-user/$USER/share
-      user.packages = with pkgs; [
-        flat-remix-gtk
-        flat-remix-icon-theme
-        # papirus-icon-theme
-        # my.ant-dracula
-        # materia-theme # "Materia-light-compact"
-        # paper-icon-theme # for both cursor and icon
-      ];
+      user.packages = with pkgs; [ flat-remix-gtk flat-remix-icon-theme ];
 
       home-manager.users.${config.user.name}.xsession.pointerCursor = {
         name = "capitaine-cursors-white";
