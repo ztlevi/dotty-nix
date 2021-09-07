@@ -17,5 +17,6 @@ in {
     };
     modules.shell.zsh.rcFiles =
       [ "${config.dotfiles.configDir}/shell/ranger/rc.zsh" ];
+    env.PATH = [ "${config.dotfiles.configDir}/bin" ];
   };
 }
