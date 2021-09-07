@@ -62,7 +62,7 @@ in {
     modules.shell.zsh.rcFiles =
       [ "${config.dotfiles.configDir}/editor/emacs/rc.zsh" ];
 
-    env.PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
+    env.PATH = [ "${config.dotfiles.configDir}/editor/emacs/bin" ];
 
     # init.doomEmacs = mkIf cfg.doom.enable ''
     #   if [ -d $HOME/.config/emacs ]; then

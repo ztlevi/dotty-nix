@@ -21,7 +21,13 @@ in {
       "git/config".source = "${config.dotfiles.configDir}/shell/git/config";
       "git/ignore".source = "${config.dotfiles.configDir}/shell/git/ignore";
     };
+    home.file = {
+      ".ignore".source = "${config.dotfiles.configDir}/shell/git/.ignore";
+    };
     modules.shell.zsh.rcFiles =
       [ "${config.dotfiles.configDir}/shell/git/rc.zsh" ];
+    modules.shell.zsh.envFiles =
+      [ "${config.dotfiles.configDir}/shell/git/env.zsh" ];
+    env.PATH = [ "${config.dotfiles.configDir}/shell/git/bin" ];
   };
 }

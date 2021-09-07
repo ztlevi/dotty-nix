@@ -71,7 +71,7 @@ in {
       "sxhkd".source = "${config.dotfiles.configDir}/desktop/sxhkd";
       "bspwm/bspwmrc".source = "${config.dotfiles.configDir}/wm/bspwm/bspwmrc";
     };
-    env.PATH = [ "$DOTTY_CONFIG_HOME/wm/bspwm/bin" ];
+    env.PATH = [ "${config.dotfiles.configDir}/wm/bspwm/bin" ];
     modules.shell.zsh.rcFiles =
       [ "${config.dotfiles.configDir}/wm/bspwm/rc.zsh" ];
     modules.shell.zsh.envFiles =
