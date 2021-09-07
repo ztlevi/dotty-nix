@@ -29,6 +29,7 @@
       # gaming.steam.enable = true;
       media = {
         mpv.enable = true;
+        downloader.enable = true;
         # spotify.enable = true;
         graphics.tools.enable = true; # raster/vector/sprites
         recording.video.enable = true; # recording screen/audio
