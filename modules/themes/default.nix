@@ -42,7 +42,10 @@ in {
     # Read xresources files in ~/.config/xtheme/* to allow modular
     # configuration of Xresources.
     (let
-      xrdb = ''${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/*'';
+      xrdb = ''
+        ${pkgs.coreutils}/bin/mkdir -p "$XDG_CONFIG_HOME"/xtheme/
+        ${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/*
+      '';
     in {
       services.xserver.displayManager.sessionCommands = xrdb;
       modules.theme.onReload.xtheme = xrdb;

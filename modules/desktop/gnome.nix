@@ -13,9 +13,9 @@ in {
       celluloid # nice GTK GUI for mpv
       gnome.gnome-tweaks
       # Extensions
-      gnomeExtensions.gtile
       gnomeExtensions.user-themes
       gnomeExtensions.dash-to-dock
+      gnomeExtensions.clipboard-indicator
     ];
 
     home-manager.users.${config.user.name} = {
@@ -47,7 +47,6 @@ in {
 
     console.useXkbConfig = true;
     services = {
-      clipmenu.enable = true;
       xserver = {
         enable = true;
         layout = "us";
