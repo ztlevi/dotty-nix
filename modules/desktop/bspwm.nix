@@ -24,9 +24,8 @@ in {
       (my.sddm-clairvoyance.override {
         autoFocusPassword = true;
         enableHDPI = true;
-        backgroundURL =
-          "https://media.githubusercontent.com/media/ztlevi/dotty-assets/main/wallpapers/red-1.jpg?token=AD7CF6DZEJOSLTRQIWXFYADBG7TRU";
-        sha256 = "1y1yiq8f1mf4xa4m5ry26np5gpza8yp3jqc215rj7dnhrdf1p4b5";
+        backgroundURL = "https://i.imgur.com/zt68gmt.jpeg";
+        sha256 = "0gq2vqgwqnndwkr75b9zfn3hphrp2fdlsxxc6g94n4kkg68ibrbh";
       })
       # apps
       calibre # managing my ebooks

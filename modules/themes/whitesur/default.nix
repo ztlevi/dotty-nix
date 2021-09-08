@@ -11,7 +11,7 @@ in {
         theme = {
           # This is useless, wallpaper for gnome is set by dconf
           wallpaper =
-            mkDefault "${config.dotfiles.assetsDir}/wallpapers/pink-2.jpg";
+            mkDefault "${config.dotfiles.configDir}/wallpapers/pink-1.jpg";
           gtk = {
             theme = "WhiteSur-light-blue";
             iconTheme = "WhiteSur";

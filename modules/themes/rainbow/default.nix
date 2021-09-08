@@ -10,7 +10,7 @@ in {
       modules = {
         theme = {
           wallpaper =
-            mkDefault "${config.dotfiles.assetsDir}/wallpapers/pink-2.jpg";
+            mkDefault "${config.dotfiles.configDir}/wallpapers/pink-1.jpg";
           gtk = {
             theme = "Flat-Remix-GTK-Blue";
             iconTheme = "Flat-Remix-Blue";
