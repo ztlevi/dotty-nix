@@ -50,6 +50,8 @@ in {
       xserver = {
         enable = true;
         layout = "us";
+        # This only works in tty, gnome xkb option is set by dconf
+        xkbOptions = "ctrl:swapcaps";
 
         desktopManager.gnome.enable = true;
         displayManager.gdm.enable = true;
