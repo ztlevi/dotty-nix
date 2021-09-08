@@ -11,6 +11,7 @@ jobs:
       matrix:
         host:
           - kuro
+
     steps:
       - uses: actions/checkout@v2.3.4
         with:
