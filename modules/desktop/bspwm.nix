@@ -85,7 +85,10 @@ in {
       # autorandr --force --save default && autorandr --default default
       autorandr.enable = true;
       clipmenu.enable = true;
-      picom.enable = true;
+      redshift = {
+        enable = true;
+        extraOptions = [ "-m randr" ];
+      };
       xserver = {
         enable = true;
         layout = "us";
@@ -124,6 +127,67 @@ in {
           fi
         '';
       };
+      picom = {
+        enable = true;
+        backend = "glx";
+        vSync = true;
+        fade = true;
+        fadeDelta = 5;
+        fadeSteps = [ 4.0e-2 8.0e-2 ];
+        shadow = true;
+        shadowOffsets = [ (-5) (-5) ];
+        shadowOpacity = 0.36;
+        # activeOpacity = "1.00";
+        # inactiveOpacity = "0.90";
+        settings = {
+          focus-exclude = [ "class_g = 'Rofi'" "class_g = 'Dunst'" ];
+          shadow-radius = 10;
+          inactive-dim = 0.1;
+          # blur-background = true;
+          # blur-background-frame = true;
+          # blur-background-fixed = true;
+          blur-kern = "7x7box";
+          blur-strength = 320;
+        };
+        opacityRules = [
+          # "100:class_g = 'Firefox'"
+          # "100:class_g = 'Vivaldi-stable'"
+          "100:class_g = 'VirtualBox Machine'"
+          # Art/image programs where we need fidelity
+          "100:class_g = 'Gimp'"
+          "100:class_g = 'Inkscape'"
+          "100:class_g = 'aseprite'"
+          "100:class_g = 'krita'"
+          "100:class_g = 'feh'"
+          "100:class_g = 'mpv'"
+          "100:class_g = 'Rofi'"
+          "100:class_g = 'Peek'"
+          "99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
+        ];
+        shadowExclude = [
+          # Put shadows on notifications, the scratch popup and rofi only
+          "name *= 'rect-overlay'" # microsoft teams screenshare
+          "name ='scratch'"
+          "name ='Dunst'"
+          "class_g = 'Rofi'"
+          "class_g = 'Polybar'"
+        ];
+        settings.blur-background-exclude = [
+          "name *= 'rect-overlay'" # microsoft teams screenshare
+          "window_type = 'dock'"
+          "window_type = 'desktop'"
+          "class_g = 'Rofi'"
+          "_GTK_FRAME_EXTENTS@:c"
+        ];
+      };
+    };
+
+    # Try really hard to get QT to respect my GTK theme.
+    env.GTK_DATA_PREFIX = [ "${config.system.path}" ];
+    env.QT_QPA_PLATFORMTHEME = "gtk2";
+    qt5 = {
+      style = "gtk2";
+      platformTheme = "gtk2";
     };
   };
 }

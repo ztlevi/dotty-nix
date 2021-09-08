@@ -5,15 +5,16 @@ with lib;
 with lib.my;
 let cfg = config.modules.theme;
 in {
-  config = mkIf (cfg.active == "rainbow") (mkMerge [
+  config = mkIf (cfg.active == "whitesur") (mkMerge [
     {
       modules = {
         theme = {
+          # This is useless, wallpaper for gnome is set by dconf
           wallpaper =
             mkDefault "${config.dotfiles.assetsDir}/wallpapers/pink-2.jpg";
           gtk = {
-            theme = "Flat-Remix-GTK-Blue";
-            iconTheme = "Flat-Remix-Blue";
+            theme = "WhiteSur-light-blue";
+            iconTheme = "WhiteSur";
             cursorTheme = "capitaine-cursors-white";
             dark = false;
           };
@@ -25,7 +26,7 @@ in {
     (mkIf config.services.xserver.enable {
       # Other themes https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/themes/
       # icons are dumped to /etc/profiles/per-user/$USER/share
-      user.packages = with pkgs; [ flat-remix-gtk flat-remix-icon-theme ];
+      user.packages = with pkgs; [ whitesur-gtk-theme whitesur-icon-theme ];
 
       home-manager.users.${config.user.name}.xsession.pointerCursor = {
         name = "capitaine-cursors-white";
@@ -34,21 +35,11 @@ in {
       };
 
       home.configFile = with config.modules;
-        mkMerge [
-          {
-            # Sourced from sessionCommands in modules/themes/default.nix
-            "xtheme/90-theme".source =
-              "${config.dotfiles.configDir}/wm/general/Xresources";
-          }
-          (mkIf (desktop.bspwm.enable) {
-            "polybar" = {
-              source = "${config.dotfiles.configDir}/desktop/polybar";
-              recursive = true;
-            };
-            "dunst/dunstrc".source =
-              "${config.dotfiles.configDir}/desktop/dunst/dunstrc";
-          })
-        ];
+        mkMerge [{
+          # Sourced from sessionCommands in modules/themes/default.nix
+          "xtheme/90-theme".source =
+            "${config.dotfiles.configDir}/wm/general/Xresources";
+        }];
     })
   ]);
 }

@@ -4,8 +4,11 @@
   imports = [ ../home.nix ./hardware-configuration.nix ];
 
   modules = {
+    # theme.active = "rainbow";
+    theme.active = "whitesur";
     desktop = {
-      bspwm.enable = true;
+      # bspwm.enable = true;
+      gnome.enable = true;
 
       apps = {
         rofi.enable = true;
@@ -78,9 +81,6 @@
       fcitx.enable = true;
       ssh.enable = true;
     };
-
-    theme.active = "rainbow";
-    # theme.active = "alucard";
   };
 
   ## Local config

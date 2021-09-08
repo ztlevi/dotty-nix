@@ -45,6 +45,7 @@ in {
         noto-fonts
         noto-fonts-cjk
         font-awesome-ttf
+        (nerdfonts.override { fonts = [ "UbuntuMono" "FiraCode" ]; })
       ];
       fontconfig.defaultFonts = {
         sansSerif = [ "DejaVu Sans" "Noto Sans CJK SC" "Noto Color Emoji" ];
@@ -53,60 +54,9 @@ in {
       };
     };
 
-    services.redshift = {
-      enable = true;
-      extraOptions = [ "-m randr" ];
-    };
-
-    services.xserver = {
-      displayManager.lightdm.greeters.mini.user = config.user.name;
-    };
-
-    services.picom = {
-      backend = "glx";
-      vSync = true;
-      opacityRules = [
-        # "100:class_g = 'Firefox'"
-        # "100:class_g = 'Vivaldi-stable'"
-        "100:class_g = 'VirtualBox Machine'"
-        # Art/image programs where we need fidelity
-        "100:class_g = 'Gimp'"
-        "100:class_g = 'Inkscape'"
-        "100:class_g = 'aseprite'"
-        "100:class_g = 'krita'"
-        "100:class_g = 'feh'"
-        "100:class_g = 'mpv'"
-        "100:class_g = 'Rofi'"
-        "100:class_g = 'Peek'"
-        "99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
-      ];
-      shadowExclude = [
-        # Put shadows on notifications, the scratch popup and rofi only
-        "name *= 'rect-overlay'" # microsoft teams screenshare
-        "name ='scratch'"
-        "name ='Dunst'"
-        "class_g = 'Rofi'"
-        "class_g = 'Polybar'"
-      ];
-      settings.blur-background-exclude = [
-        "name *= 'rect-overlay'" # microsoft teams screenshare
-        "window_type = 'dock'"
-        "window_type = 'desktop'"
-        "class_g = 'Rofi'"
-        "_GTK_FRAME_EXTENTS@:c"
-      ];
-    };
-
-    # Try really hard to get QT to respect my GTK theme.
-    env.GTK_DATA_PREFIX = [ "${config.system.path}" ];
-    env.QT_QPA_PLATFORMTHEME = "gtk2";
-    qt5 = {
-      style = "gtk2";
-      platformTheme = "gtk2";
-    };
-    services.xserver.displayManager.sessionCommands = ''
-      # GTK2_RC_FILES must be available to the display manager.
-      export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+    system.userActivationScripts.copyFonts = with pkgs; ''
+      ${fd}/bin/fd ".*\.(ttf|otf)" "$DOTTY_ASSETS_HOME/fonts/general" --print0 | \
+      xargs -0 -n 1 -I{} rsync -a --ignore-existing {} $HOME/.local/share/fonts/
     '';
 
     # Clean up leftovers, as much as we can

@@ -49,6 +49,8 @@ in {
     })
 
     {
+      # GTK2_RC_FILES must be available to the display manager.
+      env.GTK2_RC_FILES = "$XDG_CONFIG_HOME/gtk-2.0/gtkrc";
       home.configFile = {
         # GTK
         "gtk-3.0/settings.ini".text = ''
@@ -125,13 +127,5 @@ in {
         [ -z "$NORELOAD" ] && ${reloadTheme}/bin/reloadTheme
       '';
     }))
-
-    ({
-      system.userActivationScripts.copyFonts = with pkgs; ''
-        ${fd}/bin/fd ".*\.(ttf|otf)" "$DOTTY_ASSETS_HOME/fonts/general" --print0 | \
-        xargs -0 -n 1 -I{} rsync -a --ignore-existing {} $HOME/.local/share/fonts/
-      '';
-    })
-
   ]);
 }
