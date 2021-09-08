@@ -10,5 +10,6 @@
 ** TODO fix emacs fcitx5
 * High Priority
 ** TODO fix workflow https://github.com/berberman/flakes/tree/master/.github/workflows
+https://github.com/NixOS/nix/issues/4423
 ** TODO remove redundant config/bins
 ** TODO compare with hlissner's modules

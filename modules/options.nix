@@ -54,6 +54,9 @@ with lib.my; {
     # Install user packages to /etc/profiles instead. Necessary for
     # nixos-rebuild build-vm to work.
     home-manager = {
+      # cannot look up '<nixpkgs>' in pure evaluation mode
+      # https://github.com/divnix/devos/issues/30
+      useGlobalPkgs = true;
       useUserPackages = true;
 
       # I only need a subset of home-manager's capabilities. That is, access to
