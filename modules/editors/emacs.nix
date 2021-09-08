@@ -58,7 +58,10 @@ in {
     modules.shell.zsh.rcFiles =
       [ "${config.dotfiles.configDir}/editor/emacs/rc.zsh" ];
 
-    env.PATH = [ "${config.dotfiles.configDir}/editor/emacs/bin" ];
+    env.PATH = [
+      "$XDG_CONFIG_HOME/editor/emacs/bin"
+      "${config.dotfiles.configDir}/editor/emacs/bin"
+    ];
 
     # TODO:
     system.userActivationScripts.installDoomEmacs = ''
