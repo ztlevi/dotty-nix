@@ -54,6 +54,9 @@ in {
       "media.block-autoplay-until-in-foreground" = false;
       # The Browser Console command line is disabled by default. https://developer.mozilla.org/en-US/docs/Tools/Browser_Console#browser_console_command_line
       "devtools.chrome.enabled" = true;
+      # Toolbar, always show menu bar and bookmark bar
+      "ui.key.menuAccessKeyFocuses" = false;
+      "browser.toolbars.bookmarks.visibility" = "always";
       # Enable userContent.css and userChrome.css for our theme modules
       # "toolkit.legacyUserProfileCustomizations.stylesheets" = false;
       #   # Don't use the built-in password manager; a nixos user is more likely
