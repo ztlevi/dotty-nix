@@ -80,6 +80,7 @@
       docker.enable = true;
       fcitx.enable = true;
       ssh.enable = true;
+      woeusb.enable = true;
     };
   };
 
