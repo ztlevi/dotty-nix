@@ -67,6 +67,7 @@ with lib.my; {
     fd
     gnumake
     nixfmt
+    lshw
 
     killall
     unzip
