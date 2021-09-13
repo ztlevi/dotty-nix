@@ -20,14 +20,16 @@ in {
       [ "${config.dotfiles.configDirBackupDir}/gpg/aliases.zsh" ];
 
     system.userActivationScripts.gnupgInit = ''
-      [[ ! -f $HOME/.gnupg/pubring.kbx ]] && $DOTTY_CONFIG_HOME/misc/gpg/gpg_import.sh
+      if [[ $HOME != "/home/runner" ]]; then
+        [[ ! -f $HOME/.gnupg/pubring.kbx ]] && $DOTTY_CONFIG_HOME/misc/gpg/gpg_import.sh
 
-      # https://github.com/microsoft/Git-Credential-Manager-Core/blob/main/docs/linuxcredstores.md
-      if [[ ! -f $HOME/.local/share/password-store/.gpg-id ]]; then
-        if (git config --get user.email) >/dev/null; then
-          pass init $(git config --get user.email)
-        else
-          echo-fail "Please config git email first\!"
+        # https://github.com/microsoft/Git-Credential-Manager-Core/blob/main/docs/linuxcredstores.md
+        if [[ ! -f $HOME/.local/share/password-store/.gpg-id ]]; then
+            if (git config --get user.email) >/dev/null; then
+            pass init $(git config --get user.email)
+            else
+            echo-fail "Please config git email first\!"
+            fi
         fi
       fi
     '';

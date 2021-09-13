@@ -25,8 +25,10 @@ in {
 
     # Install spacevim
     system.userActivationScripts.InstallSpaceVim = ''
-      if [ ! -d "$HOME/.SpaceVim" ]; then
-        curl -sLf https://spacevim.org/install.sh | bash
+      if [[ $HOME != "/home/runner" ]]; then
+        if [ ! -d "$HOME/.SpaceVim" ]; then
+            curl -sLf https://spacevim.org/install.sh | bash
+        fi
       fi
     '';
   };

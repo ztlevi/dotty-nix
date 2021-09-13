@@ -65,19 +65,23 @@ in {
 
     # TODO:
     system.userActivationScripts.installDoomEmacs = ''
-      if [[ ! -d ''${XDG_CONFIG_HOME}/doom ]]; then
-        ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config $XDG_CONFIG_HOME/doom
-      fi
-      if [[ ! -d ''${XDG_CONFIG_HOME}/emacs ]];then
-        ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs -b develop $XDG_CONFIG_HOME/emacs
-        ''${XDG_CONFIG_HOME}/emacs/bin/doom install
+      if [[ $HOME != "/home/runner" ]]; then
+        if [[ ! -d ''${XDG_CONFIG_HOME}/doom ]]; then
+            ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config $XDG_CONFIG_HOME/doom
+        fi
+        if [[ ! -d ''${XDG_CONFIG_HOME}/emacs ]];then
+            ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs -b develop $XDG_CONFIG_HOME/emacs
+            ''${XDG_CONFIG_HOME}/emacs/bin/doom install
+        fi
       fi
     '';
 
     system.userActivationScripts.cacheEmacsInMemory = ''
-      [[ -d ''${XDG_CONFIG_HOME}/doom ]] && ${pkgs.vmtouch}/bin/vmtouch -t ''${XDG_CONFIG_HOME}/doom &>/dev/null
-      [[ -d ''${XDG_CONFIG_HOME}/emacs ]] && ${pkgs.vmtouch}/bin/vmtouch -t ''${XDG_CONFIG_HOME}/emacs &>/dev/null
-      ${pkgs.libnotify}/bin/notify-send --urgency=low "Emacs config has been cached in memory!"
+      if [[ $HOME != "/home/runner" ]]; then
+        [[ -d ''${XDG_CONFIG_HOME}/doom ]] && ${pkgs.vmtouch}/bin/vmtouch -t ''${XDG_CONFIG_HOME}/doom &>/dev/null
+        [[ -d ''${XDG_CONFIG_HOME}/emacs ]] && ${pkgs.vmtouch}/bin/vmtouch -t ''${XDG_CONFIG_HOME}/emacs &>/dev/null
+        ${pkgs.libnotify}/bin/notify-send --urgency=low "Emacs config has been cached in memory!"
+      fi
     '';
 
     fonts.fonts = [ pkgs.emacs-all-the-icons-fonts ];
