@@ -36,10 +36,11 @@ _Works on my machine_ ¯\\\_(ツ)\_/¯
 2. Boot into the installer.
 3. Do your partitions and mount your root to `/mnt`
 4. `git clone --recurse-submodules -j8 https://github.com/ztlevi/nix-dotfiles /mnt/etc/nixos`
-5. Install NixOS: `nixos-install --root /mnt --flake /mnt/etc/nixos#XYZ`, where `XYZ` is your
+5. OPTIONAL: Clone my private assets repo, `cd /mnt/etc/nixos && git clone https://github.com/ztlevi/dotty-assets.git assets`
+6. Install NixOS: `nixos-install --root /mnt --flake /mnt/etc/nixos#XYZ`, where `XYZ` is your
    hostname. Use `#generic` for a simple, universal config.
-6. OPTIONAL: Create a sub-directory in `hosts/` for your device. See [host/kuro] as an example.
-7. Reboot!
+7. OPTIONAL: Create a sub-directory in `hosts/` for your device. See [host/kuro] as an example.
+8. Reboot!
 
 Note: `hey re` equals `sudo nixos-rebuild --flake .#kuro switch`. You can also add
 `-p <profile-name>` to assign a profile name.

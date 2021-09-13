@@ -1,8 +1,3 @@
-[submodule "assets"]
-	path = assets
-	url = https://github.com/ztlevi/dotty-assets.git
-    update = merge
-    branch = main
 [submodule "config"]
 	path = config
 	url = https://github.com/ztlevi/dotty-config.git
