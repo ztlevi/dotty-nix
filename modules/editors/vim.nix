@@ -20,16 +20,11 @@ in {
     env.EDITOR = "nvim";
     env.VISUAL = "nvim";
 
-    home.file.".SpaceVim.d".source = "${config.dotfiles.configDirBackupDir}/vim/SpaceVim.d";
-    home.file.".ideavimrc".source = "${config.dotfiles.configDirBackupDir}/vim/ideavimrc";
-
-    # Install spacevim
-    system.userActivationScripts.InstallSpaceVim = ''
-      if [[ $HOME != "/home/runner" ]]; then
-        if [ ! -d "$HOME/.SpaceVim" ]; then
-            curl -sLf https://spacevim.org/install.sh | bash
-        fi
-      fi
-    '';
+    modules.shell.zsh.rcFiles =
+      [ "${config.dotfiles.configDir}/editor/neovim/rc.zsh" ];
+    home.file.".ideavimrc".source =
+      "${config.dotfiles.configDir}/editor/neovim/.ideavimrc";
+    home.configFile."nvim".source =
+      "${config.dotfiles.configDir}/editor/neovim/config/nvim";
   };
 }

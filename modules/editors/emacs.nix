@@ -63,7 +63,6 @@ in {
       "${config.dotfiles.configDir}/editor/emacs/bin"
     ];
 
-    # TODO:
     system.userActivationScripts.installDoomEmacs = ''
       if [[ $HOME != "/home/runner" ]]; then
         if [[ ! -d ''${XDG_CONFIG_HOME}/doom ]]; then

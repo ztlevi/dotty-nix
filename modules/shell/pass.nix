@@ -20,5 +20,18 @@ in {
             [ ])))
       ];
     env.PASSWORD_STORE_DIR = cfg.passwordStoreDir;
+
+    system.userActivationScripts.passInit = ''
+      # https://github.com/microsoft/Git-Credential-Manager-Core/blob/main/docs/linuxcredstores.md
+      if [[ $HOME != "/home/runner" ]]; then
+        if (${pkgs.git}/bin/git config --get user.email) >/dev/null; then
+          if [[ ! -f $HOME/.local/share/password-store/.gpg-id ]]; then
+            ${pkgs.pass}/bin/pass init $(${pkgs.git}/bin/git config --get user.email)
+          fi
+        else
+          ${pkgs.coreutils}/bin/echo "Please config git email first\!"
+        fi
+      fi
+    '';
   };
 }
