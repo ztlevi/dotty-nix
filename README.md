@@ -2,10 +2,8 @@
 [![Made with Doom Emacs](https://img.shields.io/badge/Made_with-Doom_Emacs-blueviolet.svg?style=flat-square&logo=GNU%20Emacs&logoColor=white)](https://github.com/hlissner/doom-emacs)
 [![NixOS 20.03](https://img.shields.io/badge/NixOS-v20.03-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 
-![Me looking busy](/../screenshots/fluorescence/fakebusy.png?raw=true)
-
 <p align="center">
-<span><img src="/../screenshot/nix-gnome-whitesur.png?raw=true" height="188" /></span>
+<span><img src="/../screenshot/nix-gnome-whitesur.png?raw=true" height="500" /></span>
 </p>
 
 
