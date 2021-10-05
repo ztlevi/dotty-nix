@@ -5,7 +5,7 @@
 ![Me looking busy](/../screenshots/fluorescence/fakebusy.png?raw=true)
 
 <p align="center">
-<span><img src="/../screenshots/nix-gnome-whitesur.png?raw=true" height="188" /></span>
+<span><img src="/../screenshot/nix-gnome-whitesur.png?raw=true" height="188" /></span>
 </p>
 
 
