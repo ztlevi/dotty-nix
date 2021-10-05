@@ -44,7 +44,7 @@ in {
     (let
       xrdb = ''
         ${pkgs.coreutils}/bin/mkdir -p "$XDG_CONFIG_HOME"/xtheme/
-        ${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/*
+        ${pkgs.xorg.xrdb}/bin/xrdb -merge "$XDG_CONFIG_HOME"/xtheme/* || echo "Cannot use xrdb in tty..."
       '';
     in {
       services.xserver.displayManager.sessionCommands = xrdb;
