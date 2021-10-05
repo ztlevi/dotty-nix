@@ -1,7 +1,7 @@
 # flake.nix --- the heart of my dotfiles
 #
-# Author:  Henrik Lissner <henrik@lissner.net>
-# URL:     https://github.com/ztlevi/dotfiles
+# Author:  Ting Zhou<ztlevi.work@gmail.com>, (Forked from Henrik Lissner <henrik@lissner.net>)
+# URL:     https://github.com/ztlevi/dotty-nix
 # License: MIT
 #
 # Welcome to ground zero. Where the whole flake gets set up and all its modules
