@@ -15,11 +15,11 @@ in {
   config = mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
     user.packages = with pkgs; [
-      # emacs
+      emacs
       binutils
-      # emacsPgtkGcc
-      ((emacsPackagesNgGen emacsPgtkGcc).emacsWithPackages
-        (epkgs: [ epkgs.vterm ]))
+      # emacsPgtkGcc # emacs 28
+      # ((emacsPackagesNgGen emacsPgtkGcc).emacsWithPackages
+      #   (epkgs: [ epkgs.vterm ]))
 
       ## Doom dependencies
       librime
@@ -59,7 +59,7 @@ in {
       [ "${config.dotfiles.configDir}/editor/emacs/rc.zsh" ];
 
     env.PATH = [
-      "$XDG_CONFIG_HOME/editor/emacs/bin"
+      "$XDG_CONFIG_HOME/emacs/bin"
       "${config.dotfiles.configDir}/editor/emacs/bin"
     ];
 
