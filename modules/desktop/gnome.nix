@@ -16,6 +16,13 @@ in {
       gnomeExtensions.user-themes
       gnomeExtensions.dash-to-dock
       gnomeExtensions.clipboard-indicator
+      # sddm theme
+      (my.sddm-clairvoyance.override {
+        autoFocusPassword = true;
+        enableHDPI = true;
+        backgroundURL = "https://i.imgur.com/zt68gmt.jpeg";
+        sha256 = "0gq2vqgwqnndwkr75b9zfn3hphrp2fdlsxxc6g94n4kkg68ibrbh";
+      })
     ];
 
     home-manager.users.${config.user.name} = {
@@ -54,7 +61,8 @@ in {
         xkbOptions = "ctrl:swapcaps";
 
         desktopManager.gnome.enable = true;
-        displayManager.gdm.enable = true;
+        displayManager.sddm.enable = true;
+        displayManager.sddm.theme = "clairvoyance";
         displayManager.defaultSession = "gnome";
       };
     };

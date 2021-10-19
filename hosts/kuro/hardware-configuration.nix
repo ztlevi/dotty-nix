@@ -9,7 +9,7 @@
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "wl" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [
     # FIXME: Watch this thread for fix https://github.com/NixOS/nixpkgs/issues/101040
     # config.boot.kernelPackages.broadcom_sta
@@ -19,7 +19,7 @@
   # To restart wifi module, `sudo modprobe -r iwlwifi && sudo modprobe iwlwifi`
   boot.blacklistedKernelModules = [
     # "iwlwifi"
-    "bcma-pci-bridge"
+    # "bcma-pci-bridge"
   ];
   modules.hardware = {
     audio.enable = true;
@@ -27,7 +27,7 @@
       enable = true;
       ssd.enable = true;
     };
-    amd.enable = true;
+    nvidia.enable = true;
   };
 
   environment.variables.WIRELESS_DEVICE = "wlo1";
@@ -46,6 +46,8 @@
 
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  hardware.cpu.intel.updateMicrocode = true;
+
   # High-DPI console
   console.font =
     lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
