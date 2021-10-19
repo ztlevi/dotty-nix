@@ -7,7 +7,7 @@
 </p>
 
 
-# My dotfiles
+# My dotfiles: forked from https://github.com/hlissner/dotfiles
 
 - **Operating System:** NixOS
 - **Shell:** zsh + antigen
