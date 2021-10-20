@@ -15,7 +15,6 @@ in {
     user.packages = with pkgs; [
       python38
       # jetbrains.pycharm-professional
-      pipenv
       python38Packages.pip
       python38Packages.grip
       python38Packages.ipython
@@ -23,6 +22,7 @@ in {
       python38Packages.setuptools
       python38Packages.gnureadline
       python38Packages.pylint
+      python38Packages.poetry
     ];
 
     modules.shell.zsh.rcFiles =
