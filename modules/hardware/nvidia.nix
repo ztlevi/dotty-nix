@@ -18,7 +18,7 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      cudatoolkit
+      cudatoolkit_10_2
       # Respect XDG conventions, damn it!
       (writeScriptBin "nvidia-settings" ''
         #!${stdenv.shell}
