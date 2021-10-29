@@ -15,7 +15,7 @@ in {
     user.packages = with pkgs; [
       python38
       # You can install multiple python versions, the first one installed will be mapped as global python3
-      # python39
+      python39
       jetbrains.pycharm-professional
       python38Packages.pip
       python38Packages.grip
