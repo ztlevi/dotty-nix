@@ -1,11 +1,6 @@
 * Inbox
-** TODO For Gnome desktop, try https://github.com/vinceliuice/WhiteSur-gtk-theme
 ** TODO Personal packages https://git.ophanim.de/derped/nixos/src/commit/bb62fe82b496e863aa05efce00b6403a87c7ca4a/pkgs
-** TODO Use picom instead of compton
-** picom hlissner setting with nvidia
-** Doom clone options, and spacevim
 ** hlissner's kuro hardware conifguration nvidia select screen
-** TODO Use git-credential-manager-core
 ** TODO agenix
 ** TODO fix emacs fcitx5
 * High Priority
