@@ -2,7 +2,6 @@
 ** TODO Personal packages https://git.ophanim.de/derped/nixos/src/commit/bb62fe82b496e863aa05efce00b6403a87c7ca4a/pkgs
 ** hlissner's kuro hardware conifguration nvidia select screen
 ** TODO agenix
-** TODO fix emacs fcitx5
 * High Priority
 ** TODO fix workflow https://github.com/berberman/flakes/tree/master/.github/workflows
 https://github.com/NixOS/nix/issues/4423
