@@ -53,6 +53,11 @@ in {
       # :lang rust
       rustfmt
       unstable.rust-analyzer
+      # :app everywhere
+      xclip
+      xdotool
+      xorg.xprop
+      xorg.xwininfo
     ];
 
     modules.shell.zsh.rcFiles =
