@@ -43,7 +43,7 @@ in {
       # :tools lookup & :lang org +roam
       sqlite
       # :lang cc
-      ccls
+      clang-tools
       # :lang python
       nodePackages.pyright
       # :lang javascript

@@ -12,6 +12,18 @@ in {
   options.modules.dev.cc = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [ clang gcc bear gdb cmake llvmPackages.libcxx ];
+    user.packages = with pkgs; [
+      clang
+      lldb
+      gcc
+      bear
+      ninja
+      gdb
+      cmake
+      mono # for dap-cpptools
+      llvmPackages.libcxx
+    ];
+    modules.shell.zsh.rcFiles =
+      [ "${config.dotfiles.configDir}/dev/cc/rc.zsh" ];
   };
 }
