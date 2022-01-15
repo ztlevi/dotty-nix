@@ -74,7 +74,7 @@ in {
             ${pkgs.git}/bin/git clone https://github.com/ztlevi/doom-config $XDG_CONFIG_HOME/doom
         fi
         if [[ ! -d ''${XDG_CONFIG_HOME}/emacs ]];then
-            ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs -b develop $XDG_CONFIG_HOME/emacs
+            ${pkgs.git}/bin/git clone https://github.com/hlissner/doom-emacs --depth 1 $XDG_CONFIG_HOME/emacs
             ''${XDG_CONFIG_HOME}/emacs/bin/doom install
         fi
       fi
