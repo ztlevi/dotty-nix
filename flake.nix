@@ -20,10 +20,6 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    # darwin channels
-    # darwin.url = "github:lnl7/nix-darwin";
-    # darwin.inputs.nixpkgs.follows = "nixpkgs";
-
     # Extras
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -86,14 +82,5 @@
         type = "app";
         program = ./bin/hey;
       };
-
-      # darwinConfigurations."shiro" = darwin.lib.darwinSystem {
-      #   specialArgs = { inherit lib inputs; };
-      #   modules = [
-      #     ./default-darwin.nix
-      #     # darwin.darwinModules.simple
-      #   ];
-      # };
-      # darwinPackages = self.darwinConfigurations."shiro".pkgs;
     };
 }
