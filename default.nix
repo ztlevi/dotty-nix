@@ -26,6 +26,10 @@ with lib.my; {
   in {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 8d";
+    };
     nixPath = nixPathInputs ++ [
       "nixpkgs-overlays=${config.dotfiles.dir}/overlays"
       "dotfiles=${config.dotfiles.dir}"
