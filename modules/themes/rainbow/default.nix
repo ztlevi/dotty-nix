@@ -12,8 +12,8 @@ in {
           wallpaper =
             mkDefault "${config.dotfiles.configDir}/wallpapers/pink-1.jpg";
           gtk = {
-            theme = "Flat-Remix-GTK-Blue";
-            iconTheme = "Flat-Remix-Blue";
+            theme = "Flat-Remix-GTK-Blue-Light";
+            iconTheme = "Flat-Remix-Blue-Light";
             cursorTheme = "capitaine-cursors-white";
             dark = false;
           };

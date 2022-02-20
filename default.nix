@@ -42,7 +42,7 @@ with lib.my; {
     autoOptimiseStore = true;
   };
   system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
-  system.stateVersion = "21.05";
+  system.stateVersion = "21.11";
 
   ## Some reasonable, global defaults
   # This is here to appease 'nix flake check' for generic hosts with no
@@ -52,7 +52,7 @@ with lib.my; {
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot = {
-    kernelPackages = mkDefault pkgs.linuxPackages_5_4;
+    kernelPackages = mkDefault pkgs.linuxPackages_5_16;
     loader = {
       efi.canTouchEfiVariables = mkDefault true;
       systemd-boot.configurationLimit = 10;

@@ -11,12 +11,13 @@
       gnome.enable = true;
 
       apps = {
-        rofi.enable = true;
-        etcher.enable = true;
-        webtorrent.enable = true;
+        # rofi.enable = true;
+        # etcher.enable = true;
+        # woeusb.enable = true;
+        # webtorrent.enable = true;
       };
 
-      vm.virtualbox.enable = true;
+      # vm.virtualbox.enable = true;
 
       term.default = "alacritty";
       # term.st.enable = true;
@@ -37,7 +38,7 @@
         graphics.tools.enable = true; # raster/vector/sprites
         recording.video.enable = true; # recording screen/audio
         docs.pdf.enable = true;
-        docs.libreoffice.enable = true;
+        # docs.libreoffice.enable = true;
         chat.telegram.enable = true;
         chat.discord.enable = true;
         # chat.skype.enable = true;
@@ -80,7 +81,6 @@
       docker.enable = true;
       fcitx.enable = true;
       ssh.enable = true;
-      woeusb.enable = true;
     };
   };
 
