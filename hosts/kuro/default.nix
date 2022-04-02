@@ -4,8 +4,7 @@
   imports = [ ../home.nix ./hardware-configuration.nix ];
 
   modules = {
-    # theme.active = "rainbow";
-    theme.active = "whitesur";
+    theme.active = "flat-remix";
     desktop = {
       # bspwm.enable = true;
       gnome.enable = true;

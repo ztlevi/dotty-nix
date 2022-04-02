@@ -5,7 +5,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.theme;
 in {
-  config = mkIf (cfg.active == "rainbow") (mkMerge [
+  config = mkIf (cfg.active == "flat-remix") (mkMerge [
     {
       modules = {
         theme = {
@@ -14,7 +14,7 @@ in {
           gtk = {
             theme = "Flat-Remix-GTK-Blue-Light";
             iconTheme = "Flat-Remix-Blue-Light";
-            cursorTheme = "capitaine-cursors-white";
+            cursorTheme = "Qogir-dark";
             dark = false;
           };
         };
@@ -25,11 +25,15 @@ in {
     (mkIf config.services.xserver.enable {
       # Other themes https://github.com/NixOS/nixpkgs/blob/master/pkgs/data/themes/
       # icons are dumped to /etc/profiles/per-user/$USER/share
-      user.packages = with pkgs; [ flat-remix-gtk flat-remix-icon-theme ];
+      user.packages = with pkgs; [
+        flat-remix-gtk
+        flat-remix-gnome
+        flat-remix-icon-theme
+      ];
 
       home-manager.users.${config.user.name}.xsession.pointerCursor = {
-        name = "capitaine-cursors-white";
-        package = pkgs.capitaine-cursors;
+        name = "Qugir-dark";
+        package = pkgs.qogir-icon-theme;
         size = 64;
       };
 

@@ -76,6 +76,9 @@ in {
       "starship.toml" = {
         source = "${config.dotfiles.configDir}/shell/zsh/config/starship.toml";
       };
+      "ripgreprc" = {
+        source = "${config.dotfiles.configDir}/shell/zsh/config/ripgreprc";
+      };
 
       # Why am I creating extra.zsh{rc,env} when I could be using extraInit?
       # Because extraInit generates those files in /etc/profile, and mine just
