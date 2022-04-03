@@ -18,8 +18,10 @@ in {
       (mkIf config.modules.shell.gnupg.enable gitAndTools.git-crypt)
     ];
     home.configFile = {
-      "git/config".source = "${config.dotfiles.configDir}/shell/git/config";
-      "git/ignore".source = "${config.dotfiles.configDir}/shell/git/ignore";
+      "git" = {
+        source = "${config.dotfiles.configDir}/shell/git/config/git";
+        recursive = true;
+      };
     };
     home.file = {
       ".ignore".source = "${config.dotfiles.configDir}/shell/git/.ignore";

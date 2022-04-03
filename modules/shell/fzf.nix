@@ -14,8 +14,11 @@ in {
         recursive = true;
       };
     };
-    modules.shell.zsh.rcFiles =
-      [ "${config.dotfiles.configDir}/shell/fzf/rc.zsh" ];
+    modules.shell.zsh.rcFiles = [
+      "${pkgs.fzf}/share/fzf/key-bindings.zsh"
+      "${pkgs.fzf}/share/fzf/completion.zsh"
+      "${config.dotfiles.configDir}/shell/fzf/rc.zsh"
+    ];
     modules.shell.zsh.envFiles =
       [ "${config.dotfiles.configDir}/shell/fzf/env.zsh" ];
     env.PATH = [ "${config.dotfiles.configDir}/shell/fzf/bin" ];

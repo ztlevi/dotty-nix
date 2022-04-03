@@ -69,6 +69,7 @@
       gnupg.enable = true;
       # weechat.enable = true;
       fzf.enable = true;
+      # sk.enable = true;
       pass.enable = true;
       tmux.enable = true;
       ranger.enable = true;
