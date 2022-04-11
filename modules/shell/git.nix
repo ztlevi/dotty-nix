@@ -12,9 +12,9 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
+      delta
       git-lfs
       gitAndTools.gh
-      gitAndTools.diff-so-fancy
       (mkIf config.modules.shell.gnupg.enable gitAndTools.git-crypt)
     ];
     home.configFile = {
