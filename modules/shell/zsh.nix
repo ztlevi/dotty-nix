@@ -38,7 +38,6 @@ in {
 
     user.packages = with pkgs; [
       zsh
-      antigen
       htop
       starship
       tldr
@@ -46,7 +45,6 @@ in {
       fasd
       fd
       direnv
-      bashdb
       exa
       bat
       du-dust
@@ -56,9 +54,9 @@ in {
       shfmt
       trash-cli
       neofetch
-      mosh
       jq
       bandwhich
+      eva
     ];
 
     env.ZDOTDIR = "$XDG_CONFIG_HOME/zsh";

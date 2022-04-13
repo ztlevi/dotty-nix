@@ -8,6 +8,7 @@ in {
 
   config = mkIf cfg.enable {
     hardware.opengl.enable = true;
+    hardware.nvidia.modesetting.enable = config.modules.desktop.wayland.enable;
 
     services.xserver.videoDrivers = [ "nvidia" ];
 

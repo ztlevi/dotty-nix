@@ -5,6 +5,7 @@ with lib.my;
 let cfg = config.modules.desktop.gnome;
 in {
   options.modules.desktop.gnome = { enable = mkBoolOpt false; };
+  options.modules.desktop.wayland = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
@@ -54,17 +55,25 @@ in {
 
     console.useXkbConfig = true;
     services = {
-      xserver = {
-        enable = true;
-        layout = "us";
-        # This only works in tty, gnome xkb option is set by dconf
-        xkbOptions = "ctrl:swapcaps";
-
-        desktopManager.gnome.enable = true;
-        displayManager.sddm.enable = true;
-        displayManager.sddm.theme = "clairvoyance";
-        displayManager.defaultSession = "gnome";
-      };
+      xserver = (mkMerge [
+        {
+          enable = true;
+          layout = "us";
+          # This only works in tty, gnome xkb option is set by dconf
+          xkbOptions = "ctrl:swapcaps";
+          desktopManager.gnome.enable = true;
+          displayManager.defaultSession = "gnome";
+        }
+        (mkIf (!config.modules.desktop.wayland.enable) {
+          displayManager.sddm.enable = true;
+          displayManager.sddm.theme = "clairvoyance";
+        })
+        (mkIf config.modules.desktop.wayland.enable {
+          displayManager.gdm.enable = true;
+          displayManager.gdm.wayland = true;
+          displayManager.gdm.nvidiaWayland = true;
+        })
+      ]);
     };
     system.userActivationScripts.loadDconfConfig = ''
       ${pkgs.dconf}/bin/dconf load /org/gnome/ <$DOTTY_CONFIG_HOME/wm/gnome/dconf/gnome.conf

@@ -8,6 +8,7 @@
     desktop = {
       # bspwm.enable = true;
       gnome.enable = true;
+      wayland.enable = false;
 
       apps = {
         # rofi.enable = true;

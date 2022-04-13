@@ -18,19 +18,7 @@ in {
       }
     ];
 
-    user.packages = with pkgs; [
-      xclip
-      xdotool
-      wmctrl
-      libqalculate # calculator cli w/ currency conversion
-      (makeDesktopItem {
-        name = "scratch-calc";
-        desktopName = "Calculator";
-        icon = "calc";
-        exec = ''scratch "${tmux}/bin/tmux new-session -s calc -n calc qalc"'';
-        categories = "Development";
-      })
-    ];
+    user.packages = with pkgs; [ xclip xdotool wmctrl ];
 
     ## Sound
     sound.enable = true;
@@ -54,9 +42,11 @@ in {
       };
     };
 
-    system.userActivationScripts.copyFonts = with pkgs; ''
-      ${fd}/bin/fd ".*\.(ttf|otf)" "$DOTTY_ASSETS_HOME/fonts/general" --print0 | \
-      xargs -0 -n 1 -I{} rsync -a --ignore-existing {} $HOME/.local/share/fonts/
+    system.userActivationScripts.copyFonts = ''
+      if [[ -d "$DOTTY_ASSETS_HOME/fonts/general" ]]; then
+        ${pkgs.fd}/bin/fd ".*\.(ttf|otf)" "$DOTTY_ASSETS_HOME/fonts/general" --print0 | \
+        xargs -0 -n 1 -I{} ${pkgs.rsync}/bin/rsync -a --ignore-existing {} $HOME/.local/share/fonts/
+      fi
     '';
 
     # Clean up leftovers, as much as we can
