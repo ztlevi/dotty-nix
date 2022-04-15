@@ -41,6 +41,11 @@ in {
         monospace = [ "UbuntuMono Nerd Font Mono" "DejaVu Sans Mono" ];
       };
     };
+    system.userActivationScripts.updateDotty = ''
+      [[ -d $DOTTY_ASSETS_HOME ]] && git -C $DOTTY_ASSETS_HOME pull || true
+      [[ -d $DOTTY_HOME ]] && git -C $DOTTY_HOME pull || true
+      [[ -d $DOTTY_CONFIG_HOME ]] && git -C $DOTTY_CONFIG_HOME pull || true
+    '';
 
     system.userActivationScripts.copyFonts = ''
       if [[ -d "$DOTTY_ASSETS_HOME/fonts/general" ]]; then

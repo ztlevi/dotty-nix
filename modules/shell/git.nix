@@ -31,5 +31,12 @@ in {
     modules.shell.zsh.envFiles =
       [ "${config.dotfiles.configDir}/shell/git/env.zsh" ];
     env.PATH = [ "${config.dotfiles.configDir}/shell/git/bin" ];
+
+    system.userActivationScripts.gitLocal = ''
+      if [[ -f $DOTTY_ASSETS_HOME/git-local.sh ]]; then
+        $DOTTY_ASSETS_HOME/git-local.sh
+      fi
+    '';
+
   };
 }
