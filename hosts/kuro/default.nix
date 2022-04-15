@@ -8,9 +8,10 @@
     desktop = {
       # bspwm.enable = true;
       gnome.enable = true;
-      wayland.enable = false;
+      # wayland.enable = true;
 
       apps = {
+        obsidian.enable = true;
         # rofi.enable = true;
         # etcher.enable = true;
         # woeusb.enable = true;
@@ -23,9 +24,10 @@
       # term.st.enable = true;
       term.alacritty.enable = true;
 
-      browsers.default = "firefox";
+      browsers.default = "microsoft-edge";
+      browsers.edge.enable = true;
       # browsers.chrome.enable = true;
-      browsers.firefox.enable = true;
+      # browsers.firefox.enable = true;
       # browsers.qutebrowser.enable = true;
       # browsers.vimb.enable = true;
 

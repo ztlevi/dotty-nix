@@ -8,7 +8,8 @@ https://github.com/NixOS/nix/issues/4423
 ** TODO remove redundant config/bins
 ** TODO compare with hlissner's modules
 ** TODO fix skim on nix
-** TODO fix numpy
+** TODO fix numpy on nixos
+* Wayland
 ** TODO Wayland app cannot start issue
 env WAYLAND_DISPLAY= alacritty
 elecrton apps: code --enable-features=UseOzonePlatform --ozone-platform=wayland

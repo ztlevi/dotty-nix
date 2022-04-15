@@ -15,11 +15,12 @@ in {
   config = mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
     user.packages = with pkgs; [
-      emacs
-      binutils
-      # emacsPgtkGcc # emacs 28
-      # ((emacsPackagesNgGen emacsPgtkGcc).emacsWithPackages
-      #   (epkgs: [ epkgs.vterm ]))
+      ## Emacs itself
+      binutils       # native-comp needs 'as', provided by this
+      # 29 + pgtk + native-comp
+      ((emacsPackagesFor emacsPgtkGcc).emacsWithPackages (epkgs: [
+        epkgs.vterm
+      ]))
 
       ## Doom dependencies
       librime
