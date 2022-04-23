@@ -18,7 +18,7 @@ in {
       }
     ];
 
-    user.packages = with pkgs; [ xclip xdotool wmctrl ];
+    user.packages = with pkgs; [ xclip xdotool wmctrl emote ];
 
     ## Sound
     sound.enable = true;
