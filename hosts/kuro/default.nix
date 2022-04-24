@@ -24,9 +24,9 @@
       # term.st.enable = true;
       term.alacritty.enable = true;
 
-      browsers.default = "google-chrome";
+      browsers.default = "microsoft-edge";
       browsers.edge.enable = true;
-      browsers.chrome.enable = true;
+      # browsers.chrome.enable = true;
       # browsers.firefox.enable = true;
       # browsers.qutebrowser.enable = true;
       # browsers.vimb.enable = true;
