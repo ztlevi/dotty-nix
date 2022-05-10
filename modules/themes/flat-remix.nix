@@ -31,7 +31,8 @@ in {
         flat-remix-icon-theme
       ];
 
-      home-manager.users.${config.user.name}.xsession.pointerCursor = {
+      home-manager.users.${config.user.name}.home.pointerCursor = {
+        x11.enable = true;
         name = "Qugir-dark";
         package = pkgs.qogir-icon-theme;
         size = 64;

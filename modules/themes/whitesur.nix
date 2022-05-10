@@ -28,7 +28,8 @@ in {
       # icons are dumped to /etc/profiles/per-user/$USER/share
       user.packages = with pkgs; [ whitesur-gtk-theme whitesur-icon-theme ];
 
-      home-manager.users.${config.user.name}.xsession.pointerCursor = {
+      home-manager.users.${config.user.name}.home.pointerCursor = {
+        x11.enable = true;
         name = "capitaine-cursors-white";
         package = pkgs.capitaine-cursors;
         size = 64;

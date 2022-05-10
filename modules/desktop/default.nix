@@ -32,7 +32,7 @@ in {
         dejavu_fonts
         noto-fonts
         noto-fonts-cjk
-        font-awesome-ttf
+        font-awesome
         (nerdfonts.override { fonts = [ "UbuntuMono" "FiraCode" ]; })
       ];
       fontconfig.defaultFonts = {

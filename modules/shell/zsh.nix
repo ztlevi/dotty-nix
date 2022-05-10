@@ -65,6 +65,9 @@ in {
     modules.shell.zsh.rcFiles =
       [ "${config.dotfiles.configDir}/shell/zsh/rc.zsh" ];
 
+    home.file = {
+      ".p10k.zsh".source = "${config.dotfiles.configDir}/shell/zsh/.p10k.zsh";
+    };
     # Write it recursively so other modules can write files to it
     home.configFile = {
       "zsh" = {

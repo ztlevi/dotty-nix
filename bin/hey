@@ -72,6 +72,7 @@ module Hey
   def self.rebuild(*args, sudo: false)
     sh ["nixos-rebuild",
         "--flake", "#{@@opts[:flake]}##{@@opts[:host]}",
+        "--use-remote-sudo",
         "--option", "pure-eval", "no",
         *args], sudo: sudo
   end

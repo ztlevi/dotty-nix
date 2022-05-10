@@ -19,8 +19,8 @@ in {
         desktopName = "Alacritty Terminal";
         genericName = "Default terminal";
         icon = "utilities-terminal";
-        exec = "${alacritty}/bin/alacritty";
-        categories = "Development;System;Utility";
+        exec = "env WAYLAND_DISPLAY= ${alacritty}/bin/alacritty";
+        categories = [ "Development" "System" "Utility" ];
       })
       vivid
     ];

@@ -11,7 +11,7 @@ let
     icon = "discord";
     terminal = "false";
     exec = pname;
-    categories = "Network;InstantMessaging;";
+    categories = [ "Network" "InstantMessaging" ];
   };
 in appimageTools.wrapType2 rec {
   name = "${pname}-${version}";

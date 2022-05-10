@@ -11,7 +11,7 @@
         enable = true;
         # forwardX11 = true;
         # permitRootLogin = "no";
-        challengeResponseAuthentication = false;
+        kbdInteractiveAuthentication = false;
         passwordAuthentication = true;
         # Need this for GPG forwarding
         extraConfig = ''

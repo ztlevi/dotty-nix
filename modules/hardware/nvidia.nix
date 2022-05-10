@@ -31,7 +31,7 @@ in {
       m4
       gperf
       unzip
-      cudatoolkit_11_1 # pytorch supports 11.1
+      cudaPackages_11_1.cudatoolkit # pytorch supports 11.1
       linuxPackages.nvidia_x11
       libGLU
       libGL
@@ -56,8 +56,8 @@ in {
     ];
 
     modules.shell.zsh.rcInit = ''
-      export CUDA_PATH=${pkgs.cudatoolkit_11_1}
-      export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.cudatoolkit_11_1.lib}/lib:${pkgs.cudatoolkit_11_1}/targets/x86_64-linux/lib:${pkgs.cudatoolkit_11_1}/extras/CUPTI/lib64:${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib:$LD_LIBRARY_PATH
+      export CUDA_PATH=${pkgs.cudaPackages_11_1.cudatoolkit}
+      # export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.cudaPackages_11_1.cudatoolkit.lib}/lib:${pkgs.cudaPackages_11_1.cudatoolkit}/targets/x86_64-linux/lib:${pkgs.cudaPackages_11_1.cudatoolkit}/extras/CUPTI/lib64:${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib:$LD_LIBRARY_PATH
       export EXTRA_LDFLAGS="-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib $EXTRA_LDFLAGS"
       export EXTRA_CCFLAGS="-I/usr/include $EXTRA_CCFLAGS"
     '';

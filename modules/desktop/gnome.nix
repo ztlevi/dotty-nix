@@ -71,7 +71,6 @@ in {
         (mkIf config.modules.desktop.wayland.enable {
           displayManager.gdm.enable = true;
           displayManager.gdm.wayland = true;
-          displayManager.gdm.nvidiaWayland = true;
         })
       ]);
     };
