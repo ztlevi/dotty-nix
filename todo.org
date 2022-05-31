@@ -9,15 +9,6 @@ https://github.com/NixOS/nix/issues/4423
 ** TODO compare with hlissner's modules
 ** TODO fix skim on nix
 ** TODO fix numpy on nixos
-** TODO
-#+begin_src sh
-  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=' '
-  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=' '
-  typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=' '
-  typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=' '
-  typeset -g POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=' '
-  typeset -g POWERLEVEL9K_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL=' '
-#+end_src
 
 * Wayland
 ** TODO Wayland app cannot start issue
