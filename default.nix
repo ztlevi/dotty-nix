@@ -49,10 +49,9 @@ with lib.my; {
   # hardware-configuration.nix or fileSystem config.
   fileSystems."/".device = mkDefault "/dev/disk/by-label/nixos";
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-
   boot = {
-    kernelPackages = mkDefault pkgs.linuxPackages_5_17;
+    # kernelPackages = mkDefault pkgs.linuxPackages_5_17;
+    kernelPackages = mkDefault pkgs.linuxPackages_latest;
     loader = {
       efi.canTouchEfiVariables = mkDefault true;
       systemd-boot.configurationLimit = 10;
