@@ -29,14 +29,16 @@ in {
         flat-remix-gtk
         flat-remix-gnome
         flat-remix-icon-theme
+        qogir-icon-theme
       ];
 
-      home-manager.users.${config.user.name}.home.pointerCursor = {
-        x11.enable = true;
-        name = "Qugir-dark";
-        package = pkgs.qogir-icon-theme;
-        size = 64;
-      };
+      # Not sure why this section not work anymore
+      # home-manager.users.${config.user.name}.home.pointerCursor = {
+      #   x11.enable = true;
+      #   name = "Qugir-dark";
+      #   package = pkgs.qogir-icon-theme;
+      #   size = 64;
+      # };
 
       home.configFile = with config.modules;
         mkMerge [

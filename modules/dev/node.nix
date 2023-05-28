@@ -24,7 +24,6 @@ in {
       ".eslintrc".source = "${config.dotfiles.configDir}/dev/node/.eslintrc";
       ".prettierrc".source =
         "${config.dotfiles.configDir}/misc/apps/.prettierrc";
-      ".tidyrc".source = "${config.dotfiles.configDir}/dev/node/.tidyrc";
     };
 
     # TODO: split cspell when it's available in nix package

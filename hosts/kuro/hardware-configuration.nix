@@ -44,7 +44,7 @@
 
   swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
 
-  nix.maxJobs = lib.mkDefault 8;
+  nix.settings.max-jobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.cpu.intel.updateMicrocode = true;
 

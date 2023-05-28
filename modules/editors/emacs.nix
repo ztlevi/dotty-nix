@@ -16,12 +16,13 @@ in {
     nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
     user.packages = with pkgs; [
       ## Emacs itself
-      binutils # native-comp needs 'as', provided by this
+      # binutils # native-comp needs 'as', provided by this
       # 29 + pgtk + native-comp
       # ((emacsPackagesFor emacsPgtkGcc).emacsWithPackages (epkgs: [
       #   epkgs.vterm
       # ]))
-      emacsPgtkNativeComp
+      # emacsPgtkNativeComp
+      emacs
 
       ## Doom dependencies
       librime

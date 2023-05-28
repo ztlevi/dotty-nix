@@ -60,6 +60,7 @@ in {
           enable = true;
           layout = "us";
           # This only works in tty, gnome xkb option is set by dconf
+          # Set it via Tweaks -> Keyboard & Mouse -> Additional Layout Options -> Ctrl position -> Swap Ctrl and Caps Lock
           xkbOptions = "ctrl:swapcaps";
           desktopManager.gnome.enable = true;
           displayManager.defaultSession = "gnome";

@@ -34,15 +34,15 @@ with lib.my; {
       "nixpkgs-overlays=${config.dotfiles.dir}/overlays"
       "dotfiles=${config.dotfiles.dir}"
     ];
-    binaryCaches = [ "https://nix-community.cachix.org" ];
-    binaryCachePublicKeys = [
+    settings.substituters = [ "https://nix-community.cachix.org" ];
+    settings.trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
     registry = registryInputs // { dotfiles.flake = inputs.self; };
-    autoOptimiseStore = true;
+    settings.auto-optimise-store = true;
   };
   system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
-  system.stateVersion = "22.05";
+  system.stateVersion = "22.11";
 
   ## Some reasonable, global defaults
   # This is here to appease 'nix flake check' for generic hosts with no
@@ -50,8 +50,8 @@ with lib.my; {
   fileSystems."/".device = mkDefault "/dev/disk/by-label/nixos";
 
   boot = {
-    # kernelPackages = mkDefault pkgs.linuxPackages_5_17;
-    kernelPackages = mkDefault pkgs.linuxPackages_latest;
+    kernelPackages = mkDefault pkgs.linuxPackages_6_1;
+    # kernelPackages = mkDefault pkgs.linuxPackages_latest;
     loader = {
       efi.canTouchEfiVariables = mkDefault true;
       systemd-boot.configurationLimit = 10;

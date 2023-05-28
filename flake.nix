@@ -12,9 +12,9 @@
 
   inputs = {
     # Core dependencies.
-    nixpkgs.url = "nixpkgs/nixos-22.05";
+    nixpkgs.url = "nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable"; # for packages on the edge
-    home-manager.url = "github:rycee/home-manager/master";
+    home-manager.url = "github:rycee/home-manager/release-21.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";

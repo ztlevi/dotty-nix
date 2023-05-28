@@ -15,16 +15,16 @@ in {
     user.packages = with pkgs; [
       python38
       # You can install multiple python versions, the first one installed will be mapped as global python3
-      python39
+      python310
     #   jetbrains.pycharm-professional
-      python38Packages.pip
-      python38Packages.grip
-      python38Packages.ipython
-      python38Packages.black
-      python38Packages.setuptools
-      python38Packages.gnureadline
-      python38Packages.pylint
-      python38Packages.poetry
+      python310Packages.pip
+      python310Packages.grip
+      python310Packages.ipython
+      python310Packages.black
+      python310Packages.setuptools
+      python310Packages.gnureadline
+      python310Packages.pylint
+      python310Packages.poetry
     ];
 
     modules.shell.zsh.rcFiles =

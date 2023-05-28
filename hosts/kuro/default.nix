@@ -8,7 +8,7 @@
     desktop = {
       # bspwm.enable = true;
       gnome.enable = true;
-      wayland.enable = true;
+      wayland.enable = false;
 
       apps = {
         obsidian.enable = true;
@@ -24,9 +24,9 @@
       # term.st.enable = true;
       term.alacritty.enable = true;
 
-      browsers.default = "google-chrome";
+      browsers.default = "microsoft-edge";
       browsers.edge.enable = true;
-      browsers.chrome.enable = true;
+      # browsers.chrome.enable = true;
       # browsers.firefox.enable = true;
       # browsers.qutebrowser.enable = true;
       # browsers.vimb.enable = true;
@@ -58,7 +58,7 @@
 
     dev = {
       cc.enable = true;
-      common-lisp.enable = true;
+      # common-lisp.enable = true;
       rust.enable = true;
       node.enable = true;
       python.enable = true;
@@ -69,7 +69,7 @@
     shell = {
       direnv.enable = true;
       git.enable = true;
-      gnupg.enable = true;
+      # gnupg.enable = true;
       # weechat.enable = true;
       fzf.enable = true;
       # sk.enable = true;

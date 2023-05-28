@@ -11,5 +11,5 @@ in {
   };
 
   config =
-    mkIf cfg.enable { user.packages = with pkgs; [ unstable.microsoft-edge ]; };
+    mkIf cfg.enable { user.packages = with pkgs; [ microsoft-edge ]; };
 }

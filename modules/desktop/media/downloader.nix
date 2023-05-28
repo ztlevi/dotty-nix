@@ -9,7 +9,9 @@ in {
   options.modules.desktop.media.downloader = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [ youtube-dl you-get ];
+    user.packages = with pkgs; [
+        youtube-dl
+        you-get ];
 
     environment.shellAliases = {
       yg = "you-get";

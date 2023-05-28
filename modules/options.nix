@@ -68,6 +68,11 @@ with lib.my; {
       #   home.configFile  ->  home-manager.users.ztlevi.home.xdg.configFile
       #   home.dataFile    ->  home-manager.users.ztlevi.home.xdg.dataFile
       users.${config.user.name} = {
+        # https://github.com/nix-community/home-manager/issues/3344
+        # Marked broken Oct 20, 2022 check later to remove this
+        # Confirmed still broken, Mar 5, 2023
+        manual.manpages.enable = false;
+
         home = {
           file = mkAliasDefinitions options.home.file;
           # Necessary for home-manager to work with flakes, otherwise it will
@@ -83,11 +88,10 @@ with lib.my; {
     };
 
     users.users.${config.user.name} = mkAliasDefinitions options.user;
-
     nix = let users = [ "root" config.user.name ];
     in {
-      trustedUsers = users;
-      allowedUsers = users;
+      settings.trusted-users = users;
+      settings.allowed-users = users;
     };
 
     # must already begin with pre-existing PATH. Also, can't use binDir here,
