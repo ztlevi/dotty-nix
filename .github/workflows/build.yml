@@ -31,5 +31,5 @@ jobs:
           sudo apt clean
           docker rmi $(docker image ls -aq)
           df -h
-      - run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel -L
+      - run: nix build .?submodules=1#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel -L
       # - run: nix flake check
