@@ -1,4 +1,4 @@
-![Test](https://github.com/ztlevi/nix-dotfiles/workflows/Test/badge.svg)
+[![Test nixos build](https://github.com/ztlevi/dotty-nix/actions/workflows/build.yml/badge.svg)](https://github.com/ztlevi/dotty-nix/actions/workflows/build.yml)
 [![Made with Doom Emacs](https://img.shields.io/badge/Made_with-Doom_Emacs-blueviolet.svg?style=flat-square&logo=GNU%20Emacs&logoColor=white)](https://github.com/hlissner/doom-emacs)
 [![NixOS 20.03](https://img.shields.io/badge/NixOS-v20.03-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 
