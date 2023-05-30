@@ -10,7 +10,7 @@ in {
       vscode
       (makeDesktopItem {
         name = "VSCode";
-        desktopName = "VSCode";
+        desktopName = "VSCode (Wayland)";
         genericName = "VSCode";
         icon = "visual-studio-code";
         exec =

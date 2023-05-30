@@ -23,6 +23,13 @@ in {
       # ]))
       # emacsPgtkNativeComp
       emacs
+      (makeDesktopItem {
+        name = "emacs-launcher";
+        desktopName = "Emacs Launcher";
+        icon = "emacs";
+        exec = "emacs-launcher";
+        categories = [ "Development" ];
+      })
 
       ## Doom dependencies
       librime
